@@ -14,8 +14,8 @@ namespace Milionaires.Controllers
         {
             var _questions = new List<QuestionAndAnswer> { };
 
-            QuestionService questionsData = new QuestionService();
-            _questions = questionsData.AllQuestions();
+            QuestionService service = new QuestionService();
+            _questions = service.AllQuestions();
 
             return Json(_questions);
         }
