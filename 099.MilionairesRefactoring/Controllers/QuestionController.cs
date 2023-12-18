@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Milionaires.Models;
+using Milionaires.Service;
 
 namespace Milionaires.Controllers
 {
@@ -7,16 +8,15 @@ namespace Milionaires.Controllers
     {
         public QuestionController()
         {
-            SetQuestions();
         }
-        private List<QuestionAndAnswer> _questions = new List<QuestionAndAnswer> { };
-        public void SetQuestions()
-        {
-            QuestionsData questionsData = new QuestionsData();
-            _questions = questionsData.AllQuestions();
-        }
+
         public IActionResult GetQuestions()
         {
+            var _questions = new List<QuestionAndAnswer> { };
+
+            QuestionService questionsData = new QuestionService();
+            _questions = questionsData.AllQuestions();
+
             return Json(_questions);
         }
     }
