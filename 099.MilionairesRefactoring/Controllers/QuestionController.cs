@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Milionaires.Models;
 using Milionaires.Service;
 
 namespace Milionaires.Controllers
@@ -10,13 +9,12 @@ namespace Milionaires.Controllers
         public QuestionController(IQuestionService service)
         {
             _service = service;
+            _service.InitializeQuestions();
         }
 
         public IActionResult GetQuestions()
         {
-            var _questions = new List<QuestionAndAnswer> { };
-
-            _questions = _service.GetAll();
+            var _questions = _service.GetAll();
 
             return Json(_questions);
         }

@@ -11,11 +11,6 @@ namespace Milionaires.Service
     {
         private List<QuestionAndAnswer> _questions = new List<QuestionAndAnswer>();
 
-        public QuestionService()
-        {
-            InitializeQuestions();
-        }
-
         public void InitializeQuestions()
         {
             string question1 = "1. Jak wygląda operator inkrementacji?";
