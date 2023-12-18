@@ -6,16 +6,17 @@ namespace Milionaires.Controllers
 {
     public class QuestionController : Controller
     {
-        public QuestionController()
+        private readonly IQuestionService _service;
+        public QuestionController(IQuestionService service)
         {
+            _service = service;
         }
 
         public IActionResult GetQuestions()
         {
             var _questions = new List<QuestionAndAnswer> { };
 
-            QuestionService service = new QuestionService();
-            _questions = service.AllQuestions();
+            _questions = _service.GetAll();
 
             return Json(_questions);
         }

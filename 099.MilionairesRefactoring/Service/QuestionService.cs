@@ -2,7 +2,12 @@
 
 namespace Milionaires.Service
 {
-    public class QuestionService
+    public interface IQuestionService
+    {
+        List<QuestionAndAnswer> GetAll();
+        void InitializeQuestions();
+    }
+    public class QuestionService : IQuestionService
     {
         private List<QuestionAndAnswer> _questions = new List<QuestionAndAnswer>();
 
@@ -11,7 +16,7 @@ namespace Milionaires.Service
             InitializeQuestions();
         }
 
-        private void InitializeQuestions()
+        public void InitializeQuestions()
         {
             string question1 = "1. Jak wygląda operator inkrementacji?";
             string[] question1Answers = new string[4] { "A. ==", "B. ++", "C. --", "D. =" };
@@ -99,7 +104,7 @@ namespace Milionaires.Service
             };
         }
 
-        public List<QuestionAndAnswer> AllQuestions()
+        public List<QuestionAndAnswer> GetAll()
         {
             return _questions;
         }
