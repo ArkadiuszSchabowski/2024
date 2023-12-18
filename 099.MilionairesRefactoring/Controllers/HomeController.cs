@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC_3September.Models;
+using Milionaires.Models;
 using System.Diagnostics;
 
 namespace MVC_3September.Controllers

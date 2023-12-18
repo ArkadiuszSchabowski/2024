@@ -1,4 +1,4 @@
-namespace MVC_3September.Models
+namespace Milionaires.Models
 {
     public class ErrorViewModel
     {
