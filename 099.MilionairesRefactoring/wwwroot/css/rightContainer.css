@@ -41,7 +41,7 @@
     background-color: #303f9f;
 }
 
-.blueVioletRow {
+.blueVioletRow, .correct {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,7 +51,12 @@
     font-size: 1rem;
     border-bottom: 2px solid black;
     color: white;
+}
+.blueVioletRow {
     background-color: #303f9f;
+}
+.correct {
+    background-color: green;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {

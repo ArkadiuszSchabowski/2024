@@ -63,8 +63,10 @@ class Game {
 
             case 2:
                 this.SetQuestion(this.questions2);
-                this.prizeTable.childNodes[9].style.backgroundColor = "green";
+                this.prizeTable.childNodes[9].classList.remove("blueVioletRow");
+                this.prizeTable.childNodes[9].classList.add("correct");
                 break;
+
 
             case 3:
                 this.SetQuestion(this.questions3);
