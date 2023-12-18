@@ -36,7 +36,8 @@ class Game {
 
     GetContent = async () => {
         try {
-            let response = await fetch("/Question/GetQuestions");
+            let path = "/Question/GetQuestions"
+            let response = await fetch(path);
             this.data = await response.json();
             this.SetQuestionOnArrays(this.data);
         } catch (error) {
