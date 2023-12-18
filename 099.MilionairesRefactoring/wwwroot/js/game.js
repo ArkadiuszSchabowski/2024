@@ -75,12 +75,14 @@ class Game {
 
             case 4:
                 this.SetQuestion(this.questions4);
-                this.prizeTable.childNodes[7].style.backgroundColor = "green";
+                this.prizeTable.childNodes[7].classList.remove("blueVioletRow");
+                this.prizeTable.childNodes[7].classList.add("correct");
                 break;
 
             case 5:
                 this.SetQuestion(this.questions5);
-                this.prizeTable.childNodes[6].style.backgroundColor = "green";
+                this.prizeTable.childNodes[6].classList.remove("blueVioletRow");
+                this.prizeTable.childNodes[6].classList.add("correct");
                 break;
 
             case 6:
@@ -90,26 +92,31 @@ class Game {
 
             case 7:
                 this.SetQuestion(this.questions7);
-                this.prizeTable.childNodes[4].style.backgroundColor = "green";
+                this.prizeTable.childNodes[4].classList.remove("blueVioletRow");
+                this.prizeTable.childNodes[4].classList.add("correct");
                 break;
 
             case 8:
                 this.SetQuestion(this.questions8);
-                this.prizeTable.childNodes[3].style.backgroundColor = "green";
+                this.prizeTable.childNodes[3].classList.remove("blueVioletRow");
+                this.prizeTable.childNodes[3].classList.add("correct");
                 break;
 
             case 9:
                 this.SetQuestion(this.questions9);
-                this.prizeTable.childNodes[2].style.backgroundColor = "green";
+                this.prizeTable.childNodes[2].classList.remove("blueVioletRow");
+                this.prizeTable.childNodes[2].classList.add("correct");
                 break;
 
             case 10:
                 this.SetQuestion(this.questions10);
-                this.prizeTable.childNodes[1].style.backgroundColor = "green";
+                this.prizeTable.childNodes[1].classList.remove("blueVioletRow");
+                this.prizeTable.childNodes[1].classList.add("correct");
                 break;
 
             case 11:
-                this.prizeTable.childNodes[0].style.backgroundColor = "green";
+                this.prizeTable.childNodes[0].classList.remove("blueVioletRow");
+                this.prizeTable.childNodes[0].classList.add("correct");
                 this.AllCorrectAnswers();
                 break;
         }
