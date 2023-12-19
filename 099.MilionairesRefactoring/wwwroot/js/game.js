@@ -149,63 +149,60 @@ class Game {
                 this.SetTheResignListener();
                 break;
             case 2:
-                this.RemoveFirstQuestionListeners();
+                this.RemoveListenersWhenTheCorrectAnswerWasB();
                 this.balance = balance.SetCurrentBalance(500);
                 this.SetQuestionContent(questionData);
                 this.correctAnswer = "C";
                 this.SetListneres(this.correctAnswer);
                 break;
             case 3:
-                this.RemoveSecondQuestionListeners();
+                this.RemoveListenersWhenTheCorrectAnswerWasC();
                 this.balance = balance.SetCurrentBalance(2000);
                 this.SetQuestionContent(questionData);
                 this.correctAnswer = "A";
                 this.SetListneres(this.correctAnswer);
                 break;
             case 4:
-                this.RemoveThirdQuestionListeners();
+                this.RemoveListenersWhenTheCorrectAnswerWasA();
                 this.balance = balance.SetCurrentBalance(5000);
                 this.SetQuestionContent(questionData);
                 this.correctAnswer = "D";
                 this.SetListneres(this.correctAnswer);
                 break;
             case 5:
-                this.RemoveFourthQuestionListeners();
+                this.RemoveListenersWhenTheCorrectAnswerWasD();
                 this.balance = balance.SetCurrentBalance(10000);
                 this.SetQuestionContent(questionData);
                 this.correctAnswer = "A";
                 this.SetListneres(this.correctAnswer);
                 break;
             case 6:
-                this.RemoveFifthQuestionListeners();
                 this.balance = balance.SetCurrentBalance(40000);
                 this.SetQuestionContent(questionData);
-                this.correctAnswer = "A";
                 this.SetListneres(this.correctAnswer);
                 break;
-            case 7:
-                this.RemoveSixthQuestionListeners();
+            case 7: this.RemoveListenersWhenTheCorrectAnswerWasA();
                 this.balance = balance.SetCurrentBalance(75000);
                 this.SetQuestionContent(questionData);
                 this.correctAnswer = "C";
                 this.SetListneres(this.correctAnswer);
                 break;
             case 8:
-                this.RemoveSeventhQuestionListeners();
+                this.RemoveListenersWhenTheCorrectAnswerWasC();
                 this.balance = balance.SetCurrentBalance(150000);
                 this.SetQuestionContent(questionData);
                 this.correctAnswer = "B";
                 this.SetListneres(this.correctAnswer);
                 break;
             case 9:
-                this.RemoveEighthQuestionListeners();
+                this.RemoveListenersWhenTheCorrectAnswerWasB();
                 this.balance = balance.SetCurrentBalance(250000);
                 this.SetQuestionContent(questionData);
                 this.correctAnswer = "D";
                 this.SetListneres(this.correctAnswer);
                 break;
             case 10:
-                this.RemoveNinethQuestionListeners();
+                this.RemoveListenersWhenTheCorrectAnswerWasD();
                 this.balance = balance.SetCurrentBalance(500000);
                 this.SetQuestionContent(questionData);
                 this.correctAnswer = "C";
@@ -274,6 +271,7 @@ class Game {
 
         this.questionNumber++;
     }
+
     SetTheResignListener() {
         this.btnResign.addEventListener("click", () => {
             if (this.balance === 0) {
@@ -338,46 +336,6 @@ class Game {
         this.btnB.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
         this.btnC.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
         this.btnD.removeEventListener("click", this.myListener);
-    }
-
-    RemoveFirstQuestionListeners() {
-        this.RemoveListenersWhenTheCorrectAnswerWasB();
-    }
-
-    RemoveSecondQuestionListeners() {
-        this.RemoveListenersWhenTheCorrectAnswerWasC();
-    }
-
-    RemoveThirdQuestionListeners() {
-        this.RemoveListenersWhenTheCorrectAnswerWasA();
-    }
-
-    RemoveFourthQuestionListeners() {
-        this.RemoveListenersWhenTheCorrectAnswerWasD();
-    }
-
-    RemoveFifthQuestionListeners() {
-        this.RemoveListenersWhenTheCorrectAnswerWasA();
-    }
-
-    RemoveSixthQuestionListeners() {
-        this.RemoveListenersWhenTheCorrectAnswerWasA();
-    }
-
-    RemoveSeventhQuestionListeners() {
-        this.RemoveListenersWhenTheCorrectAnswerWasC();
-    }
-
-    RemoveEighthQuestionListeners() {
-        this.RemoveListenersWhenTheCorrectAnswerWasB();
-    }
-
-    RemoveNinethQuestionListeners() {
-        this.RemoveListenersWhenTheCorrectAnswerWasD();
-    }
-
-    RemoveTenthQuestionListeners() {
-        this.RemoveListenersWhenTheCorrectAnswerWasC();
     }
 }
 
