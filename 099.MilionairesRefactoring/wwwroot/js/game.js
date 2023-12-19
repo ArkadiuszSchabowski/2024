@@ -1,21 +1,22 @@
 ﻿
 class Game {
 
-    constructor(prizeTableDiv, randomNumber, balance, questionWindow, buttons) {
+    constructor(prizeTableDiv, randomNumber, balance, questionWindow) {
+
+        this.balance = 0;
+        this.correctAnswer;
 
         this.prizeTable = prizeTableDiv;
         this.randomNumber;
         this.lifelines = new Lifelines(this);
         this.questionWindow = questionWindow.mainWindow;
-        this.buttons;
-        this.balance = 0;
-        this.correctAnswer;
 
-        this.btnA = buttons.btnA;
-        this.btnB = buttons.btnB;
-        this.btnC = buttons.btnC;
-        this.btnD = buttons.btnD;
-        this.btnResign = buttons.btnResign;
+        this.btnA = document.querySelector("#btnA");
+        this.btnB = document.querySelector("#btnB");
+        this.btnC = document.querySelector("#btnC");
+        this.btnD = document.querySelector("#btnD");
+        this.btnResign = document.querySelector("#btnResign");
+
         this.correctedIndex;
 
         this.questionNumber = 1;
@@ -339,4 +340,4 @@ class Game {
     }
 }
 
-const game = new Game(prizeTableDiv, randomNumberGenerator, balance, questionWindow, buttons);
+const game = new Game(prizeTableDiv, randomNumberGenerator, balance, questionWindow);
