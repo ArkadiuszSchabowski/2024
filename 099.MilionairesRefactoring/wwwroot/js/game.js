@@ -244,11 +244,11 @@ class Game {
     }
     SetTheResignListener() {
         this.btnResign.addEventListener("click", () => {
-            if ((this.balance !== 0) && (this.balance !== 2000) && (this.balance !== 40000)) {
-                this.questionWindow.innerHTML = `To dobra decyzja, zeby sie wycofac. Gratulacje wygrywasz ${this.balance} zl !!!`;
-            }
-            else if (this.balance === 0) {
+            if (this.balance === 0) {
                 this.questionWindow.innerHTML = 'Jeszcze nie zaczelismy gry, a juz sie wycofales. Mimo wszystko dziekuje za udzial w grze!';
+            }
+            else if ((this.balance !== 0) && (this.balance !== 2000) && (this.balance !== 40000)) {
+                this.questionWindow.innerHTML = `To dobra decyzja, zeby sie wycofac. Gratulacje wygrywasz ${this.balance} zl !!!`;
             }
             else if ((this.balance === 2000) || (this.balance === 40000)){
                 this.questionWindow.innerHTML = `Zrezygnowales na progu gwarantowanym. Wygrywasz ${this.balance} zl!`;
