@@ -1,6 +1,6 @@
 class RandomNumberGenerator {
     constructor() {
-        this.arrayRandomNumbers =[];
+        this.arrayRandomNumbers = [];
         this.randomNumber;
     }
     SetRandomNumberForQuestion() {
