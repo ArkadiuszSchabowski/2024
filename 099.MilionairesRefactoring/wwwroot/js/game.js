@@ -1,7 +1,7 @@
 ﻿
 class Game {
 
-    constructor(prizeTableDiv, randomNumber, questionWindow) {
+    constructor(prizeTableDiv, randomNumber) {
 
         this.balance = 0;
         this.correctAnswer;
@@ -10,7 +10,8 @@ class Game {
         this.prizeTable = prizeTableDiv;
         this.randomNumber;
         this.lifelines = new Lifelines(this);
-        this.questionWindow = questionWindow.mainWindow;
+
+        this.questionWindow = document.querySelector("#questionWindow");
 
         this.btnA = document.querySelector("#btnA");
         this.btnB = document.querySelector("#btnB");
@@ -35,6 +36,9 @@ class Game {
         this.GetContent();
         })
     }
+    FetchError() {
+        this.mainWindow.innerHTML = "Wystąpił błąd podczas pobierania danych.";
+    }
 
     GetContent = async () => {
         try {
@@ -43,7 +47,7 @@ class Game {
             this.data = await response.json();
             this.SetQuestionOnArrays(this.data);
         } catch (error) {
-            this.questionWindow = questionWindow.FetchError();
+            FetchError();
         }
     }
     SetQuestionOnArrays = (data) => {
@@ -340,4 +344,4 @@ class Game {
     }
 }
 
-const game = new Game(prizeTableDiv, randomNumberGenerator, questionWindow);
+const game = new Game(prizeTableDiv, randomNumberGenerator);
