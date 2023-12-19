@@ -37,7 +37,7 @@ class Game {
         })
     }
     FetchError() {
-        this.mainWindow.innerHTML = "Wystąpił błąd podczas pobierania danych.";
+        this.questionWindow.innerHTML = "Wystąpił błąd podczas pobierania danych.";
     }
 
     GetContent = async () => {
@@ -47,7 +47,7 @@ class Game {
             this.data = await response.json();
             this.SetQuestionOnArrays(this.data);
         } catch (error) {
-            FetchError();
+            this.FetchError();
         }
     }
     SetQuestionOnArrays = (data) => {
