@@ -1,13 +1,13 @@
 ﻿
 class Game {
 
-    constructor(prizeTableDiv, randomNumber) {
+    constructor(randomNumber) {
 
         this.balance = 0;
         this.correctAnswer;
         this.correctedIndex;
 
-        this.prizeTable = prizeTableDiv;
+        this.prizeTable = document.querySelector("#prizeTable");
         this.randomNumber;
         this.lifelines = new Lifelines(this);
 
@@ -344,4 +344,4 @@ class Game {
     }
 }
 
-const game = new Game(prizeTableDiv, randomNumberGenerator);
+const game = new Game(randomNumberGenerator);

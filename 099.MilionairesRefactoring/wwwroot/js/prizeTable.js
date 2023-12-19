@@ -1,8 +1,6 @@
-﻿
-let prizeTableDiv = document.getElementById("prizeTable");
-
-class PrizeTable {
+﻿class PrizeTable {
     constructor() {
+        this.prizeTable = document.getElementById("prizeTable");
         this.CreateTableInsidePrizeTable();
     }
 
@@ -55,7 +53,7 @@ class PrizeTable {
                     table.style.borderBottom = "none";
                     break;
             }
-            prizeTableDiv.appendChild(table);
+            this.prizeTable.appendChild(table);
         }
     }
 }
