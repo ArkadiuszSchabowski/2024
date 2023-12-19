@@ -1,9 +1,7 @@
 class Balance {
-    constructor() {
-        this.startedBalance = 0;
-    }
+
     SetStartBalance() {
-        return this.startedBalance;
+        return 0;
     }
     SetCurrentBalance(number) {
         return number;
