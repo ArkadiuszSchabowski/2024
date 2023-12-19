@@ -55,7 +55,7 @@ namespace Milionaires.Service
             string[] question13Answers = new string[4] { "A. +", "B. -", "C. new", "D. /" };
 
             string question14 = "7. Co oznacza słowo kluczowe 'base' w języku C#?";
-            string[] question14Answers = new string[4] { "A. Wywołanie metody bazowej w klasie pochodnej", "B. Tworzenie nowej instancji obiektu", "C. Deklaracje nowej klasy bazowej", "D. Przekazanie wartości do konstruktora" };
+            string[] question14Answers = new string[4] { "A. Deklaracje nowej klasy bazowej", "B. Tworzenie nowej instancji obiektu", "C. Wywołanie metody bazowej w klasie pochodnej", "D. Przekazanie wartości do konstruktora" };
 
             string question15 = "8. Jaki jest wynik działania operatora 'is' w C#?";
             string[] question15Answers = new string[4] { "A. Porównuje dwie liczby całkowite", "B. Sprawdza, czy obiekt jest instancją określonej klasy lub interfejsu", "C. Wywołuje wyjątek w przypadku błędu", "D. Oznacza przypisanie do zmiennej" };

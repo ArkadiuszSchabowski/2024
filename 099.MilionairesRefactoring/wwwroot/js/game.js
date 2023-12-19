@@ -63,60 +63,52 @@ class Game {
 
             case 2:
                 this.SetQuestion(this.questions2);
-                this.prizeTable.childNodes[9].classList.remove("blueVioletRow");
-                this.prizeTable.childNodes[9].classList.add("correct");
+                this.prizeTable.childNodes[9].classList.add("correctColor");
                 break;
 
 
             case 3:
                 this.SetQuestion(this.questions3);
-                this.prizeTable.childNodes[8].style.backgroundColor = "rgb(11, 221, 11)";
+                this.prizeTable.childNodes[8].classList.add("guaranteedPrizeColor");
                 break;
 
             case 4:
                 this.SetQuestion(this.questions4);
-                this.prizeTable.childNodes[7].classList.remove("blueVioletRow");
-                this.prizeTable.childNodes[7].classList.add("correct");
+                this.prizeTable.childNodes[7].classList.add("correctColor");
                 break;
 
             case 5:
                 this.SetQuestion(this.questions5);
-                this.prizeTable.childNodes[6].classList.remove("blueVioletRow");
-                this.prizeTable.childNodes[6].classList.add("correct");
+                this.prizeTable.childNodes[6].classList.add("correctColor");
                 break;
 
             case 6:
                 this.SetQuestion(this.questions6);
-                this.prizeTable.childNodes[5].style.backgroundColor = "rgb(11, 221, 11)";
+                this.prizeTable.childNodes[5].classList.add("guaranteedPrizeColor");
                 break;
 
             case 7:
                 this.SetQuestion(this.questions7);
-                this.prizeTable.childNodes[4].classList.remove("blueVioletRow");
-                this.prizeTable.childNodes[4].classList.add("correct");
+                this.prizeTable.childNodes[4].classList.add("correctColor");
                 break;
 
             case 8:
                 this.SetQuestion(this.questions8);
-                this.prizeTable.childNodes[3].classList.remove("blueVioletRow");
-                this.prizeTable.childNodes[3].classList.add("correct");
+                this.prizeTable.childNodes[3].classList.add("correctColor");
                 break;
 
             case 9:
                 this.SetQuestion(this.questions9);
-                this.prizeTable.childNodes[2].classList.remove("blueVioletRow");
-                this.prizeTable.childNodes[2].classList.add("correct");
+                this.prizeTable.childNodes[2].classList.add("correctColor");
                 break;
 
             case 10:
                 this.SetQuestion(this.questions10);
-                this.prizeTable.childNodes[1].classList.remove("blueVioletRow");
-                this.prizeTable.childNodes[1].classList.add("correct");
+                this.prizeTable.childNodes[1].classList.add("correctColor");
                 break;
 
             case 11:
-                this.prizeTable.childNodes[0].classList.remove("blueVioletRow");
-                this.prizeTable.childNodes[0].classList.add("correct");
+                this.prizeTable.childNodes[0].classList.add("correctColor");
                 this.AllCorrectAnswers();
                 break;
         }
@@ -199,39 +191,41 @@ class Game {
         this.questionWindow.innerHTML = ` Odpowiedziales poprawnie na wszystkie pytania! Wygrywasz ${this.balance} zl!!!`;
 
     }
-
-    EndGameWhenAnswerIsIncorrect = () => {
-
-        buttons.LockButtons();
-        buttons.SetDefaultTextForButtons();
-
+    SetColorRowsWhenAnswerIsIncorrect() {
         switch (this.questionNumber) {
             case 3:
                 this.balance = balance.SetStartBalance();
-                this.prizeTable.childNodes[9].style.backgroundColor = "#303f9f";
+                this.prizeTable.childNodes[9].classList.remove("correctColor");
                 break;
-                //case 4 - pierwszy prog gwarantowany
+            //case 4 - pierwszy prog gwarantowany
             case 5:
             case 6:
                 this.balance = balance.SetBalanceToFirstCheckpoint();
                 for (let i = 6; i < 8; i++) {
-                    this.prizeTable.childNodes[i].style.backgroundColor = "#303f9f";
+                    this.prizeTable.childNodes[i].classList.remove("correctColor");
                 }
                 break;
-                //case 7 - drugi prog gwarantowany
+            //case 7 - drugi prog gwarantowany
             case 8:
             case 9:
             case 10:
             case 11:
                 this.balance = balance.SetBalanceToSecondCheckpoint();
                 for (let i = 1; i < 5; i++) {
-                    this.prizeTable.childNodes[i].style.backgroundColor = "#303f9f";
+                    this.prizeTable.childNodes[i].classList.remove("correctColor");
                 }
                 break;
         }
 
         this.questionWindow.innerHTML = `Dziekujemy za gre! Twoj wynik to ${this.balance} zl!`;
+    }
 
+    EndGameWhenAnswerIsIncorrect = () => {
+
+        buttons.LockButtons();
+        buttons.SetDefaultTextForButtons();
+
+        this.SetColorRowsWhenAnswerIsIncorrect();
     }
 
     SetQuestionContent(questionData) {

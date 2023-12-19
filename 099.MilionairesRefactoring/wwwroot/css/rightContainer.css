@@ -41,7 +41,7 @@
     background-color: #303f9f;
 }
 
-.blueVioletRow, .correct {
+.rowDimensions {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,11 +52,14 @@
     border-bottom: 2px solid black;
     color: white;
 }
-.blueVioletRow {
+.normalColor {
     background-color: #303f9f;
 }
-.correct {
+.correctColor {
     background-color: green;
+}
+.guaranteedPrizeColor {
+    background-color: rgb(11, 221, 11);
 }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {

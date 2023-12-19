@@ -9,8 +9,8 @@ class PrizeTable {
     CreateTableInsidePrizeTable = () => {
         for (let i = 10; i > 0; i--) {
             let table = document.createElement("div");
-            table.classList.add("blueVioletRow");
-
+            table.classList.add("rowDimensions");
+            table.classList.add("normalColor");
             switch (i) {
                 case 10:
                     table.innerText = 1000000;
