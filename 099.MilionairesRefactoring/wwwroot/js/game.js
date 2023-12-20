@@ -24,8 +24,8 @@ class Game {
 
     GetContent = async () => {
         try {
-            let path = "/Question/GetQuestions"
-            let response = await fetch(path);
+            const path = "/Question/GetQuestions"
+            const response = await fetch(path);
 
             this.btnA = document.querySelector("#btnA");
             this.btnB = document.querySelector("#btnB");
@@ -199,7 +199,7 @@ class Game {
         this.btnC.innerHTML = questionData[this.randomNumber].answers[2];
         this.btnD.innerHTML = questionData[this.randomNumber].answers[3];
 
-        let correctIndex = questionData[this.randomNumber].correctAnswerIndex;
+        const correctIndex = questionData[this.randomNumber].correctAnswerIndex;
 
         this.SetListneres(correctIndex);
 
