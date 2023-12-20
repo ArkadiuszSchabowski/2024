@@ -281,7 +281,7 @@ class Game {
         this.questionWindow.innerHTML = `Odpowiedziales poprawnie na wszystkie pytania! Wygrywasz ${this.balance} zl!!!`;
 
     }
-    handleIncorrectAnswer = () => {
+    EndGameWhenAnswerIsIncorrect = () => {
 
         buttons.LockButtons();
         buttons.SetDefaultTextForButtons();
