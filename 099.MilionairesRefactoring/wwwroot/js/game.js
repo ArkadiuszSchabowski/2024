@@ -9,18 +9,7 @@ class Game {
         this.data;
         this.randomNumber;
 
-        this.btnA = document.querySelector("#btnA");
-        this.btnB = document.querySelector("#btnB");
-        this.btnC = document.querySelector("#btnC");
-        this.btnD = document.querySelector("#btnD");
-        this.btnResign = document.querySelector("#btnResign");
-        this.questionWindow = document.querySelector("#questionWindow");
-        this.prizeTable = document.querySelector("#prizeTable");
-
         this.lifelines = new Lifelines(this);
-
-        this.handleCorrectAnswer = () => this.SetQuestionOnArrays(this.data);
-        this.handleIncorrectAnswer = () => this.EndGameWhenAnswerIsIncorrect();
 
         lifelines.AddLifelines();
 
@@ -38,6 +27,15 @@ class Game {
             let path = "/Question/GetQuestions"
             let response = await fetch(path);
             this.data = await response.json();
+
+            this.btnA = document.querySelector("#btnA");
+            this.btnB = document.querySelector("#btnB");
+            this.btnC = document.querySelector("#btnC");
+            this.btnD = document.querySelector("#btnD");
+            this.btnResign = document.querySelector("#btnResign");
+            this.questionWindow = document.querySelector("#questionWindow");
+            this.prizeTable = document.querySelector("#prizeTable");
+
             this.SetQuestionOnArrays(this.data);
         } catch (error) {
             this.FetchError();
@@ -114,19 +112,19 @@ class Game {
     SetListneres(correctIndex) {
         switch (correctIndex) {
             case 0:
-                this.SetListenersWhenTheCorrectAnswerIsA();
+                listener.SetListenersWhenTheCorrectAnswerIsA();
                 break;
 
             case 1:
-                this.SetListenersWhenTheCorrectAnswerIsB();
+                listener.SetListenersWhenTheCorrectAnswerIsB();
                 break;
 
             case 2:
-                this.SetListenersWhenTheCorrectAnswerIsC();
+                listener.SetListenersWhenTheCorrectAnswerIsC();
                 break;
 
             case 3:
-                this.SetListenersWhenTheCorrectAnswerIsD();
+                listener.SetListenersWhenTheCorrectAnswerIsD();
                 break;
         }
     }
@@ -142,47 +140,47 @@ class Game {
                 break;
 
             case 2:
-                this.RemoveListenersWhenTheCorrectAnswerWasB();
+                listener.RemoveListenersWhenTheCorrectAnswerWasB();
                 this.balance = balance.SetCurrentBalance(500);
                 this.SetQuestionContent(questionData);
                 break;
 
             case 3:
-                this.RemoveListenersWhenTheCorrectAnswerWasC();
+                listener.RemoveListenersWhenTheCorrectAnswerWasC();
                 this.balance = balance.SetCurrentBalance(2000);
                 this.SetQuestionContent(questionData);
                 break;
             case 4:
-                this.RemoveListenersWhenTheCorrectAnswerWasA();
+                listener.RemoveListenersWhenTheCorrectAnswerWasA();
                 this.balance = balance.SetCurrentBalance(5000);
                 this.SetQuestionContent(questionData);
                 break;
             case 5:
-                this.RemoveListenersWhenTheCorrectAnswerWasD();
+                listener.RemoveListenersWhenTheCorrectAnswerWasD();
                 this.balance = balance.SetCurrentBalance(10000);
                 this.SetQuestionContent(questionData);
                 break;
             case 6:
                 this.balance = balance.SetCurrentBalance(40000);
                 this.SetQuestionContent(questionData);
-                this.SetListneres(this.correctAnswer);
                 break;
-            case 7: this.RemoveListenersWhenTheCorrectAnswerWasA();
+            case 7:
+                listener.RemoveListenersWhenTheCorrectAnswerWasA();
                 this.balance = balance.SetCurrentBalance(75000);
                 this.SetQuestionContent(questionData);
                 break;
             case 8:
-                this.RemoveListenersWhenTheCorrectAnswerWasC();
+                listener.RemoveListenersWhenTheCorrectAnswerWasC();
                 this.balance = balance.SetCurrentBalance(150000);
                 this.SetQuestionContent(questionData);
                 break;
             case 9:
-                this.RemoveListenersWhenTheCorrectAnswerWasB();
+                listener.RemoveListenersWhenTheCorrectAnswerWasB();
                 this.balance = balance.SetCurrentBalance(250000);
                 this.SetQuestionContent(questionData);
                 break;
             case 10:
-                this.RemoveListenersWhenTheCorrectAnswerWasD();
+                listener.RemoveListenersWhenTheCorrectAnswerWasD();
                 this.balance = balance.SetCurrentBalance(500000);
                 this.SetQuestionContent(questionData);
                 break;
@@ -222,55 +220,6 @@ class Game {
         })
     }
 
-    SetListenersWhenTheCorrectAnswerIsA() {
-        this.btnA.addEventListener("click", this.handleCorrectAnswer);
-        this.btnB.addEventListener("click", this.handleIncorrectAnswer);
-        this.btnC.addEventListener("click", this.handleIncorrectAnswer);
-        this.btnD.addEventListener("click", this.handleIncorrectAnswer);
-    }
-    SetListenersWhenTheCorrectAnswerIsB() {
-        this.btnA.addEventListener("click", this.handleIncorrectAnswer);
-        this.btnB.addEventListener("click", this.handleCorrectAnswer);
-        this.btnC.addEventListener("click", this.handleIncorrectAnswer);
-        this.btnD.addEventListener("click", this.handleIncorrectAnswer);
-    }
-    SetListenersWhenTheCorrectAnswerIsC() {
-        this.btnA.addEventListener("click", this.handleIncorrectAnswer);
-        this.btnB.addEventListener("click", this.handleIncorrectAnswer);
-        this.btnC.addEventListener("click", this.handleCorrectAnswer);
-        this.btnD.addEventListener("click", this.handleIncorrectAnswer);
-    }
-    SetListenersWhenTheCorrectAnswerIsD() {
-        this.btnA.addEventListener("click", this.handleIncorrectAnswer);
-        this.btnB.addEventListener("click", this.handleIncorrectAnswer);
-        this.btnC.addEventListener("click", this.handleIncorrectAnswer);
-        this.btnD.addEventListener("click", this.handleCorrectAnswer);
-    }
-
-    RemoveListenersWhenTheCorrectAnswerWasA() {
-        this.btnA.removeEventListener("click", this.handleCorrectAnswer);
-        this.btnB.removeEventListener("click", this.handleIncorrectAnswer);
-        this.btnC.removeEventListener("click", this.handleIncorrectAnswer);
-        this.btnD.removeEventListener("click", this.handleIncorrectAnswer);
-    }
-    RemoveListenersWhenTheCorrectAnswerWasB() {
-        this.btnA.removeEventListener("click", this.handleIncorrectAnswer);
-        this.btnB.removeEventListener("click", this.handleCorrectAnswer);
-        this.btnC.removeEventListener("click", this.handleIncorrectAnswer);
-        this.btnD.removeEventListener("click", this.handleIncorrectAnswer);
-    }
-    RemoveListenersWhenTheCorrectAnswerWasC() {
-        this.btnA.removeEventListener("click", this.handleIncorrectAnswer);
-        this.btnB.removeEventListener("click", this.handleIncorrectAnswer);
-        this.btnC.removeEventListener("click", this.handleCorrectAnswer);
-        this.btnD.removeEventListener("click", this.handleIncorrectAnswer);
-    }
-    RemoveListenersWhenTheCorrectAnswerWasD() {
-        this.btnA.removeEventListener("click", this.handleIncorrectAnswer);
-        this.btnB.removeEventListener("click", this.handleIncorrectAnswer);
-        this.btnC.removeEventListener("click", this.handleIncorrectAnswer);
-        this.btnD.removeEventListener("click", this.handleCorrectAnswer);
-    }
     AllCorrectAnswers() {
 
         buttons.LockButtons();
