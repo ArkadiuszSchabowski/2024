@@ -26,7 +26,6 @@ class Game {
         try {
             let path = "/Question/GetQuestions"
             let response = await fetch(path);
-            this.data = await response.json();
 
             this.btnA = document.querySelector("#btnA");
             this.btnB = document.querySelector("#btnB");
@@ -36,9 +35,12 @@ class Game {
             this.questionWindow = document.querySelector("#questionWindow");
             this.prizeTable = document.querySelector("#prizeTable");
 
+            this.data = await response.json();
+
             this.SetQuestionOnArrays(this.data);
+
         } catch (error) {
-            this.FetchError();
+            this.questionWindow.innerHTML = "Wystąpił błąd podczas pobierania danych.";
         }
     }
     SetQuestionOnArrays = (data) => {
@@ -264,9 +266,6 @@ class Game {
         }
 
         this.questionWindow.innerHTML = `Dziekujemy za gre! Twoj wynik to ${this.balance} zl!`;
-    }
-    FetchError() {
-        this.questionWindow.innerHTML = "Wystąpił błąd podczas pobierania danych.";
     }
 }
 
