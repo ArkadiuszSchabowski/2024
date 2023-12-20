@@ -25,7 +25,7 @@ class Lifelines {
                     this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br>${this.result}`
                 }
                 if (!this.fiftyFifty) {
-                    this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br>Przyjaciel: Niestety nie wiem, nie pomoge. Moze sproboj zaryzkowac.`
+                    this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br>Przyjaciel: Niestety nie wiem, nie pomog?. Moze spróbuj zaryzkowa?.`
                 }
                 this.phone = false;
                 buttons.btnPhone.classList.add("redColor");
@@ -65,7 +65,7 @@ class Lifelines {
                     this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br> A: ${this.result[0]}%, B: ${this.result[1]}%, C: ${this.result[2]}%, D: ${this.result[3]}%.`;
                 }
                 else {
-                    this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br> Tym razem glosy publicznosci dla kazdego przypadku wynosza dokladnie tyle samo %. Przed Toba ciezka decyzja.`
+                    this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br> Tym razem g?osy publiczno?ci dla ka?dego przypadku wynosz? dok?adnie tyle samo %. Przed Tob? ci??ka decyzja.`
                 }
                 buttons.btnAudience.classList.add("redColor");
                 this.audience = false;

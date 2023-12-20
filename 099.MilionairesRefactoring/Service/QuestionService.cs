@@ -41,7 +41,7 @@ namespace Milionaires.Service
             string[] question9Answers = new string[4] { "A. Internal", "B. Private", "C. Protected", "D. Public" };
 
             string question10 = "5. Co to jest delegat w C#?";
-            string[] question10Answers = new string[4] { "A. Typ reprezentujący wskaznik do metody", "B. Typ reprezentujący listę elementów", "C. Typ reprezentujący wyjatek", "D. Typ reprezentujący klasę abstrakcyjną" };
+            string[] question10Answers = new string[4] { "A. Typ reprezentujący wskaźnik do metody", "B. Typ reprezentujący listę elementów", "C. Typ reprezentujący wyjatek", "D. Typ reprezentujący klasę abstrakcyjną" };
 
 
             string question11 = "6. Jakie jest zastosowanie kolekcji `HashSet` w języku C#?";

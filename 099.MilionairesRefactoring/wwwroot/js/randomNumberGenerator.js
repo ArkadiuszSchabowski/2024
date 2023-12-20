@@ -18,15 +18,15 @@ class RandomNumberGenerator {
         this.randomNumber = Math.floor(Math.random() * 5);
         switch (this.randomNumber) {
             case 0:
-                return "Przyjaciel: Wydaje mi sie, ze poprawna odpowiedzia moze byc A lub C";
+                return "Przyjaciel: Wydaje mi si?, ?e poprawn? odpowiedzi? mo?e by? A lub C";
             case 1:
-                return "Przyjaciel: Stawialbym na B, ale nie jestem pewny";
+                return "Przyjaciel: Stawia?bym na B, ale nie jestem pewny";
             case 2:
-                return "Przyjaciel: Zrezygnowalbym na tym etapie, ale jesli mialbyc grac zaznaczylbym D";
+                return "Przyjaciel: Zrezygnowa?bym na tym etapie, ale je?li mia?bym gra? to zaznaczy?bym D";
             case 3:
-                return "Przyjaciel: Obstawialbym C lub D";
+                return "Przyjaciel: Obstawia?bym C lub D";
             case 4:
-                return "Przyjaciel: Odrzucilbym B. Jednak moze to czas, by sie wycofac?";
+                return "Przyjaciel: Odrzuci?bym B. Jednak mo?e to czas, by sie wycofa??";
         }
     }
     SetRandomNumberForFiftyFifty(correctedIndex) {

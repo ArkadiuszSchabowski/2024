@@ -209,13 +209,13 @@ class Game {
     SetButtonResign() {
         this.btnResign.addEventListener("click", () => {
             if (this.balance === 0) {
-                this.questionWindow.innerHTML = `Jeszcze nie zaczelismy gry, a juz sie wycofales. Mimo wszystko dziekuje za udzial w grze!`;
+                this.questionWindow.innerHTML = `Jeszcze nie zaczeliśmy gry, a juz sie wycofałes? Mimo wszystko dziekuję za udział w grze!`;
             }
             else if ((this.balance !== 0) && (this.balance !== 2000) && (this.balance !== 40000)) {
-                this.questionWindow.innerHTML = `To dobra decyzja, zeby sie wycofac. Gratulacje wygrywasz ${this.balance} zl !!!`;
+                this.questionWindow.innerHTML = `To dobra decyzja, żeby sie wycofać. Gratulacje wygrywasz ${this.balance} zł !!!`;
             }
             else if ((this.balance === 2000) || (this.balance === 40000)) {
-                this.questionWindow.innerHTML = `Zrezygnowales na progu gwarantowanym. Wygrywasz ${this.balance} zl!`;
+                this.questionWindow.innerHTML = `Zrezygnowałeś na progu gwarantowanym. Wygrywasz ${this.balance} zł!`;
             }
             buttons.SetDefaultTextForButtons();
             buttons.LockButtons();
@@ -229,7 +229,7 @@ class Game {
 
         this.balance = balance.SetCurrentBalance(1000000);
 
-        this.questionWindow.innerHTML = `Odpowiedziales poprawnie na wszystkie pytania! Wygrywasz ${this.balance} zl!!!`;
+        this.questionWindow.innerHTML = `Odpowiedziałeś poprawnie na wszystkie pytania! Wygrywasz ${this.balance} zł!!!`;
 
     }
     EndGameWhenAnswerIsIncorrect = () => {
@@ -265,7 +265,7 @@ class Game {
                 break;
         }
 
-        this.questionWindow.innerHTML = `Dziekujemy za gre! Twoj wynik to ${this.balance} zl!`;
+        this.questionWindow.innerHTML = `Dziękujemy za grę! Twój wynik to ${this.balance} zł!`;
     }
 }
 
