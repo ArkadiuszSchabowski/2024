@@ -61,7 +61,7 @@ namespace Milionaires.Service
             string[] question15Answers = new string[4] { "A. Porównuje dwie liczby całkowite", "B. Sprawdza, czy obiekt jest instancją określonej klasy lub interfejsu", "C. Wywołuje wyjątek w przypadku błędu", "D. Oznacza przypisanie do zmiennej" };
 
             string question16 = "8. Jakie jest zastosowanie interfejsów w języku C#?";
-            string[] question16Answers = new string[4] { "A. Dziedziczenie wielokrotne", "B. Określanie kontraktu, który musi być spełniony przez implementujące klasy", "C. Implementacja wielu klas bazowych", "D. Tworzenie abstrakcyjnych klas" };
+            string[] question16Answers = new string[4] { "A. Dziedziczenie wielokrotne", "B. Wymaganie dla klas implementujących interfejs", "C. Implementacja wielu klas bazowych", "D. Tworzenie abstrakcyjnych klas" };
 
             string question17 = "9. Co to jest LINQ w języku C#?";
             string[] question17Answers = new string[4] { "A. Biblioteka do pracy z plikami XML", "B. Framework do tworzenia interfejsów użytkownika", "C. Technologia do zarządzania pamięcią", "D. Język zapytań do baz danych" };
