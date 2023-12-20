@@ -28,7 +28,7 @@ class Lifelines {
                     this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br>Przyjaciel: Niestety nie wiem, nie pomoge. Moze sproboj zaryzkowac.`
                 }
                 this.phone = false;
-                buttons.btnPhone.style.backgroundColor = "red";
+                buttons.btnPhone.classList.add("redColor");
             }
         }
         )
@@ -50,7 +50,7 @@ class Lifelines {
                     buttons.btnD.style.visibility = "hidden";
                 }
 
-                buttons.btnFiftyFifty.style.backgroundColor = "red";
+                buttons.btnFiftyFifty.classList.add("redColor");
                 this.fiftyFifty = false;
             }
         }
@@ -67,7 +67,7 @@ class Lifelines {
                 else {
                     this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br> Tym razem glosy publicznosci dla kazdego przypadku wynosza dokladnie tyle samo %. Przed Toba ciezka decyzja.`
                 }
-                buttons.btnAudience.style.backgroundColor = "red";
+                buttons.btnAudience.classList.add("redColor");
                 this.audience = false;
             }
         }

@@ -58,6 +58,9 @@
 .correctColor {
     background-color: green;
 }
+.redColor{
+    background-color: red;
+}
 .guaranteedPrizeColor {
     background-color: rgb(11, 221, 11);
 }
