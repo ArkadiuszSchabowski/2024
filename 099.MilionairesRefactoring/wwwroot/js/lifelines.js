@@ -1,4 +1,4 @@
-
+﻿
 
 class Lifelines {
     constructor(randomNumberGenerator, game) {
@@ -25,7 +25,7 @@ class Lifelines {
                     this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br>${this.result}`
                 }
                 if (!this.fiftyFifty) {
-                    this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br>Przyjaciel: Niestety nie wiem, nie pomog?. Moze spr�buj zaryzkowa?.`
+                    this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br>Przyjaciel: Niestety nie wiem, nie pomogę. Moze spróbuj zaryzkować.`
                 }
                 this.phone = false;
                 buttons.btnPhone.classList.add("redColor");
@@ -65,7 +65,7 @@ class Lifelines {
                     this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br> A: ${this.result[0]}%, B: ${this.result[1]}%, C: ${this.result[2]}%, D: ${this.result[3]}%.`;
                 }
                 else {
-                    this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br> Tym razem g?osy publiczno?ci dla ka?dego przypadku wynosz? dok?adnie tyle samo %. Przed Tob? ci??ka decyzja.`
+                    this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br> Tym razem głosy publiczności dla każdego przypadku wynoszą dokładnie tyle samo %. Przed Tobą ciężka decyzja.`
                 }
                 buttons.btnAudience.classList.add("redColor");
                 this.audience = false;
