@@ -138,7 +138,7 @@ class Game {
             case 1:
                 this.balance = balance.SetStartBalance();
                 this.SetQuestionContent(questionData);
-                this.SetTheResignListener();
+                this.SetButtonResign();
                 break;
 
             case 2:
@@ -206,7 +206,7 @@ class Game {
         this.questionNumber++;
     }
 
-    SetTheResignListener() {
+    SetButtonResign() {
         this.btnResign.addEventListener("click", () => {
             if (this.balance === 0) {
                 this.questionWindow.innerHTML = `Jeszcze nie zaczelismy gry, a juz sie wycofales. Mimo wszystko dziekuje za udzial w grze!`;
