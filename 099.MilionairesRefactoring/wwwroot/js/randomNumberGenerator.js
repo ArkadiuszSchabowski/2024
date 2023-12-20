@@ -19,19 +19,14 @@ class RandomNumberGenerator {
         switch (this.randomNumber) {
             case 0:
                 return "Przyjaciel: Wydaje mi sie, ze poprawna odpowiedzia moze byc A lub C";
-                break;
             case 1:
                 return "Przyjaciel: Stawialbym na B, ale nie jestem pewny";
-                break;
             case 2:
                 return "Przyjaciel: Zrezygnowalbym na tym etapie, ale jesli mialbyc grac zaznaczylbym D";
-                break;
             case 3:
                 return "Przyjaciel: Obstawialbym C lub D";
-                break;
             case 4:
                 return "Przyjaciel: Odrzucilbym B. Jednak moze to czas, by sie wycofac?";
-                break;
         }
     }
     SetRandomNumberForFiftyFifty(correctedIndex) {
