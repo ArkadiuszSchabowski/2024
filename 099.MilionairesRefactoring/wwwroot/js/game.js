@@ -19,7 +19,8 @@ class Game {
 
         this.lifelines = new Lifelines(this);
 
-        this.myListener = () => this.SetQuestionOnArrays(this.data);
+        this.handleCorrectAnswer = () => this.SetQuestionOnArrays(this.data);
+        this.handleIncorrectAnswer = () => this.EndGameWhenAnswerIsIncorrect();
 
         lifelines.AddLifelines();
 
@@ -63,7 +64,6 @@ class Game {
                 this.SetQuestion(this.questions2);
                 this.prizeTable.childNodes[9].classList.add("correctColor");
                 break;
-
 
             case 3:
                 this.SetQuestion(this.questions3);
@@ -223,53 +223,53 @@ class Game {
     }
 
     SetListenersWhenTheCorrectAnswerIsA() {
-        this.btnA.addEventListener("click", this.myListener);
-        this.btnB.addEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnC.addEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnD.addEventListener("click", this.EndGameWhenAnswerIsIncorrect);
+        this.btnA.addEventListener("click", this.handleCorrectAnswer);
+        this.btnB.addEventListener("click", this.handleIncorrectAnswer);
+        this.btnC.addEventListener("click", this.handleIncorrectAnswer);
+        this.btnD.addEventListener("click", this.handleIncorrectAnswer);
     }
     SetListenersWhenTheCorrectAnswerIsB() {
-        this.btnA.addEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnB.addEventListener("click", this.myListener);
-        this.btnC.addEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnD.addEventListener("click", this.EndGameWhenAnswerIsIncorrect);
+        this.btnA.addEventListener("click", this.handleIncorrectAnswer);
+        this.btnB.addEventListener("click", this.handleCorrectAnswer);
+        this.btnC.addEventListener("click", this.handleIncorrectAnswer);
+        this.btnD.addEventListener("click", this.handleIncorrectAnswer);
     }
     SetListenersWhenTheCorrectAnswerIsC() {
-        this.btnA.addEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnB.addEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnC.addEventListener("click", this.myListener);
-        this.btnD.addEventListener("click", this.EndGameWhenAnswerIsIncorrect);
+        this.btnA.addEventListener("click", this.handleIncorrectAnswer);
+        this.btnB.addEventListener("click", this.handleIncorrectAnswer);
+        this.btnC.addEventListener("click", this.handleCorrectAnswer);
+        this.btnD.addEventListener("click", this.handleIncorrectAnswer);
     }
     SetListenersWhenTheCorrectAnswerIsD() {
-        this.btnA.addEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnB.addEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnC.addEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnD.addEventListener("click", this.myListener);
+        this.btnA.addEventListener("click", this.handleIncorrectAnswer);
+        this.btnB.addEventListener("click", this.handleIncorrectAnswer);
+        this.btnC.addEventListener("click", this.handleIncorrectAnswer);
+        this.btnD.addEventListener("click", this.handleCorrectAnswer);
     }
 
     RemoveListenersWhenTheCorrectAnswerWasA() {
-        this.btnA.removeEventListener("click", this.myListener);
-        this.btnB.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnC.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnD.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
+        this.btnA.removeEventListener("click", this.handleCorrectAnswer);
+        this.btnB.removeEventListener("click", this.handleIncorrectAnswer);
+        this.btnC.removeEventListener("click", this.handleIncorrectAnswer);
+        this.btnD.removeEventListener("click", this.handleIncorrectAnswer);
     }
     RemoveListenersWhenTheCorrectAnswerWasB() {
-        this.btnA.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnB.removeEventListener("click", this.myListener);
-        this.btnC.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnD.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
+        this.btnA.removeEventListener("click", this.handleIncorrectAnswer);
+        this.btnB.removeEventListener("click", this.handleCorrectAnswer);
+        this.btnC.removeEventListener("click", this.handleIncorrectAnswer);
+        this.btnD.removeEventListener("click", this.handleIncorrectAnswer);
     }
     RemoveListenersWhenTheCorrectAnswerWasC() {
-        this.btnA.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnB.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnC.removeEventListener("click", this.myListener);
-        this.btnD.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
+        this.btnA.removeEventListener("click", this.handleIncorrectAnswer);
+        this.btnB.removeEventListener("click", this.handleIncorrectAnswer);
+        this.btnC.removeEventListener("click", this.handleCorrectAnswer);
+        this.btnD.removeEventListener("click", this.handleIncorrectAnswer);
     }
     RemoveListenersWhenTheCorrectAnswerWasD() {
-        this.btnA.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnB.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnC.removeEventListener("click", this.EndGameWhenAnswerIsIncorrect);
-        this.btnD.removeEventListener("click", this.myListener);
+        this.btnA.removeEventListener("click", this.handleIncorrectAnswer);
+        this.btnB.removeEventListener("click", this.handleIncorrectAnswer);
+        this.btnC.removeEventListener("click", this.handleIncorrectAnswer);
+        this.btnD.removeEventListener("click", this.handleCorrectAnswer);
     }
     AllCorrectAnswers() {
 
@@ -281,7 +281,7 @@ class Game {
         this.questionWindow.innerHTML = `Odpowiedziales poprawnie na wszystkie pytania! Wygrywasz ${this.balance} zl!!!`;
 
     }
-    EndGameWhenAnswerIsIncorrect = () => {
+    handleIncorrectAnswer = () => {
 
         buttons.LockButtons();
         buttons.SetDefaultTextForButtons();
