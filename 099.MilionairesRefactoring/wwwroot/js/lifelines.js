@@ -1,8 +1,7 @@
 ﻿
 
 class Lifelines {
-    constructor(randomNumberGenerator, game) {
-        this.game = game;
+    constructor(randomNumberGenerator) {
         this.randomNumber = randomNumberGenerator;
         this.result;
 
@@ -76,4 +75,4 @@ class Lifelines {
         })
     };
 }
-let lifelines = new Lifelines(randomNumberGenerator, buttons);
+let lifelines = new Lifelines(randomNumberGenerator);
