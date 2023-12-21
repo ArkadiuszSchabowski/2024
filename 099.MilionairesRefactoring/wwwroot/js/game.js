@@ -5,6 +5,7 @@ class Game {
 
         this.balance = 0;
         this.questionNumber = 1;
+        this.correctIndex;
 
         this.data;
         this.randomNumber;
@@ -199,9 +200,9 @@ class Game {
         this.btnC.innerHTML = questionData[this.randomNumber].answers[2];
         this.btnD.innerHTML = questionData[this.randomNumber].answers[3];
 
-        const correctIndex = questionData[this.randomNumber].correctAnswerIndex;
+        this.correctIndex = questionData[this.randomNumber].correctAnswerIndex;
 
-        this.SetListneres(correctIndex);
+        this.SetListneres(this.correctIndex);
 
         this.questionNumber++;
     }

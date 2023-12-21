@@ -36,7 +36,7 @@ class Lifelines {
     FiftyFifty() {
         buttons.btnFiftyFifty.addEventListener("click", () => {
             if (this.fiftyFifty) {
-                this.result = randomNumberGenerator.SetRandomNumberForFiftyFifty(game.correctedIndex);
+                this.result = randomNumberGenerator.SetRandomNumberForFiftyFifty(game.correctIndex);
                 if (this.result.includes(0)) {
                     buttons.btnA.style.visibility = "hidden";
                 }
