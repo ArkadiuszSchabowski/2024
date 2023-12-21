@@ -12,39 +12,30 @@ class Lifelines {
         this.phone = true;
         this.fiftyFifty = true;
     }
+
     AddLifelines() {
         this.PhoneFriend();
         this.Audience();
         this.FiftyFifty()
     }
+
     PhoneFriend() {
         buttons.btnPhone.addEventListener("click", () => {
+
             if (this.phone) {
                 if (this.fiftyFifty) {
-                    this.result = randomNumberGenerator.SetRandomMessageForFriend();
-                    this.questionWindow.innerHTML = `${this.questionWindow.innerHTML} <br><br>${this.result}`
+                    this.result = randomNumberGenerator.MessageWhenHaveFiftyFifty();
                 }
                 if (!this.fiftyFifty) {
-                    if (game.correctIndex === 0) {
-                        this.questionWindow.innerHTML = `${this.questionWindow.innerHTML} <br><br>Przyjaciel: Zdecydowanie odpowiedź A`
-                    }
-                    else if (game.correctIndex === 1) {
-                        this.questionWindow.innerHTML = `${this.questionWindow.innerHTML} <br><br>Przyjaciel: Stawiałbym na odpowiedź B`
-                    }
-                    else if (game.correctIndex === 2) {
-                        this.questionWindow.innerHTML = `${this.questionWindow.innerHTML} <br><br>Przyjaciel: Wydaje mi się, że poprawna odpowiedź to C.`
-                    }
-                    else {
-                        this.questionWindow.innerHTML = `${this.questionWindow.innerHTML} <br><br>Przyjaciel: Wydaje mi się, że odpowiedź D jest prawidłowa.`
-                    }
-                    
+                    this.result = randomNumberGenerator.MessageWhenDontHaveFiftyFifty();
                 }
-                this.phone = false;
+                this.questionWindow.innerHTML = `${this.questionWindow.innerHTML}${this.result}`;
                 buttons.btnPhone.classList.add("redColor");
+                this.phone = false;
             }
-        }
-        )
+        })
     };
+
     FiftyFifty() {
         buttons.btnFiftyFifty.addEventListener("click", () => {
             if (this.fiftyFifty) {
@@ -65,25 +56,24 @@ class Lifelines {
                 buttons.btnFiftyFifty.classList.add("redColor");
                 this.fiftyFifty = false;
             }
-        }
-        )
+        })
     };
+
     Audience() {
         buttons.btnAudience.addEventListener("click", () => {
             if (this.audience) {
                 if (this.fiftyFifty) {
 
-                    this.result = randomNumberGenerator.SetRandomNumberForAudience();
-                    this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br> A: ${this.result[0]}%, B: ${this.result[1]}%, C: ${this.result[2]}%, D: ${this.result[3]}%.`;
+                    this.result = randomNumberGenerator.AudienceWhenHaveFiftyFifty();
                 }
                 else {
-                    this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br> Tym razem głosy publiczności dla każdego przypadku wynoszą dokładnie tyle samo %. Przed Tobą ciężka decyzja.`
+                    this.result = randomNumberGenerator.AudienceWhenDontHaveFiftyFifty();
                 }
+                this.questionWindow.innerHTML = `${this.questionWindow.innerHTML}${this.result}`;
                 buttons.btnAudience.classList.add("redColor");
                 this.audience = false;
             }
-        }
-        )
+        })
     };
 }
 let lifelines = new Lifelines(randomNumberGenerator, buttons);

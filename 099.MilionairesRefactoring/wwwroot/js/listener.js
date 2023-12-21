@@ -17,7 +17,6 @@ class Listener {
         this.btnD.addEventListener("click", this.handleIncorrectAnswer);
     }
     SetListenersWhenTheCorrectAnswerIsB() {
-        console.log(this.game.data);
         this.btnA.addEventListener("click", this.handleIncorrectAnswer);
         this.btnB.addEventListener("click", this.handleCorrectAnswer);
         this.btnC.addEventListener("click", this.handleIncorrectAnswer);
