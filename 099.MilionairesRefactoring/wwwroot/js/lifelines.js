@@ -1,10 +1,9 @@
 ﻿
 
 class Lifelines {
-    constructor(randomNumberGenerator) {
-        this.randomNumber = randomNumberGenerator;
-        this.result;
+    constructor() {
 
+        this.result;
         this.questionWindow = document.querySelector("#questionWindow");
 
         this.audience = true;
@@ -75,4 +74,4 @@ class Lifelines {
         })
     };
 }
-let lifelines = new Lifelines(randomNumberGenerator);
+let lifelines = new Lifelines();
