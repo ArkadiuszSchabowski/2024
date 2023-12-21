@@ -22,10 +22,22 @@ class Lifelines {
             if (this.phone) {
                 if (this.fiftyFifty) {
                     this.result = randomNumberGenerator.SetRandomMessageForFriend();
-                    this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br>${this.result}`
+                    this.questionWindow.innerHTML = `${this.questionWindow.innerHTML} <br><br>${this.result}`
                 }
                 if (!this.fiftyFifty) {
-                    this.questionWindow.innerHTML = `${game.questionWindow.innerHTML} <br><br>Przyjaciel: Niestety nie wiem, nie pomogę. Moze spróbuj zaryzkować.`
+                    if (game.correctIndex === 0) {
+                        this.questionWindow.innerHTML = `${this.questionWindow.innerHTML} <br><br>Przyjaciel: Zdecydowanie odpowiedź A`
+                    }
+                    else if (game.correctIndex === 1) {
+                        this.questionWindow.innerHTML = `${this.questionWindow.innerHTML} <br><br>Przyjaciel: Stawiałbym na odpowiedź B`
+                    }
+                    else if (game.correctIndex === 2) {
+                        this.questionWindow.innerHTML = `${this.questionWindow.innerHTML} <br><br>Przyjaciel: Wydaje mi się, że poprawna odpowiedź to C.`
+                    }
+                    else {
+                        this.questionWindow.innerHTML = `${this.questionWindow.innerHTML} <br><br>Przyjaciel: Wydaje mi się, że odpowiedź D jest prawidłowa.`
+                    }
+                    
                 }
                 this.phone = false;
                 buttons.btnPhone.classList.add("redColor");
