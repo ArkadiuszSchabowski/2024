@@ -1,6 +1,6 @@
 ﻿class Word {
     constructor() {
-
+        this.host = "https://wordmaster.azurewebsites.net";
         this.isFirstRun = true;
 
         this.plWordsDiv = document.getElementById("plWordsDiv");
@@ -17,7 +17,7 @@
             this.isFirstRun = false;
         }
 
-        let path = `https://localhost:5000/api/word/`;
+        let path = `${this.host}/api/word/`;
         let response = await fetch(path);
         let data = await response.json();
         this.CreateDiv(data.data);
