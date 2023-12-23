@@ -1,7 +1,7 @@
 ﻿class Word {
     constructor() {
 
-        this.host = "https://wordmaster.azurewebsites.net/";
+        this.host = "https://wordmaster.azurewebsites.net";
         this.isFirstRun = true;
 
         this.plWordsDiv = document.getElementById("plWordsDiv");
