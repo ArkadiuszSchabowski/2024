@@ -1,11 +1,10 @@
 ﻿#wordsListContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 24vh;
+    height: 21vh;
     max-height: 190px;
     overflow: auto;
 }
-
 #plWordDivTittle, #engWordDivTittle {
     display: flex;
     justify-content: center;
@@ -14,18 +13,15 @@
     font-weight: bold;
     background-color: #F5F5F5;
 }
-
 #plWordsDiv, #engWordsDiv {
     display: flex;
     flex-direction: column;
     border: 1px solid #404040;
     width: 100%;
 }
-
 #engWordsDiv {
     border-left: none;
 }
-
 .plClass, .engClass {
     width: 90%;
     height: 20px;

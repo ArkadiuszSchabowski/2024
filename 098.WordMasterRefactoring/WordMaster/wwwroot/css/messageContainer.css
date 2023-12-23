@@ -1,7 +1,7 @@
 ﻿#messageContainer {
     display: flex;
     align-items: center;
-    height: 5vh;
+    height: 7vh;
     font-size: 18px;
     font-weight: bold;
 }

@@ -2,31 +2,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 35vh;
+    height: 38vh;
 }
-
 #firstTopPanelRow,
 #secondTopPanelRow {
     display: flex;
     width: 100%;
 }
-
 #buttonsTopPanelContainer {
     display: flex;
     flex-direction: row;
 }
-
 .buttonTop {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-left: 2%;
     width: 23vw;
     height: 40px;
-    margin-top: 5%;
+    margin-top: 1%;
+    margin-left: 2%;
     font-weight: bold;
-    color: #404040;
     transition: background-color 0.3s ease;
 }
 #btnAdd{
@@ -41,7 +37,7 @@
     }
     .buttonTop{
         width: 20vw;
-        margin-top: 1%;
+        margin-top: 3vh;
     }
 }
 
@@ -54,6 +50,6 @@
     }
     .buttonTop {
         width: 20vw;
-        margin-top: 2.5%;
+        margin-top: 3vh;
     }
 }

@@ -4,18 +4,23 @@
     flex-direction: column;
     height: 25vh;
 }
-
 #firstBottomPanelRow,
 #secondBottomPanelRow {
     display: flex;
     flex-direction: row;
     width: 100%;
 }
-
 #buttonsBottomPanelContainer {
     display: flex;
     flex-direction: row;
     width: 40vw;
+}
+
+#secondBottomPanelRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 .buttonBottom {
     justify-content: center;
@@ -25,21 +30,12 @@
     font-weight: bold;
     transition: background-color 0.3s ease;
 }
-#btnSearch{
+#btnSearch {
     margin-left: 3vw;
 }
-#btnDelete{
+#btnDelete {
     margin-left: 2vw;
 }
-
-#secondBottomPanelRow {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3%;
-}
-
 #countWords {
     display: flex;
     justify-content: center;

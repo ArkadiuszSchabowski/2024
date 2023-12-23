@@ -5,7 +5,6 @@
     color: #404040;
     background-color: #FFFFFF;
 }
-
 .label {
     display: flex;
     justify-content: center;
@@ -15,19 +14,16 @@
     font-size: 1rem;
     font-weight: bold;
 }
-
 .input {
     width: 50vw;
     height: 30px;
     font-size: 24px;
     background-color: #F5F5F5;
 }
-
 .btnBlocked {
     opacity: 0.2;
     cursor: not-allowed;
 }
-
     .button:hover {
         background-color: #FF2929;
     }
@@ -36,15 +32,14 @@
     #messageContainer, #topPanelContainer, #wordsListContainer, #bottomPanelContainer {
         width: 90vw;
     }
+    #topPanelContainer, #wordsListContainer, #bottomPanelContainer {
+        margin-top: 1%;
+    }
     .label {
         width: 30vw;
     }
     .input {
         width: 45vw;
-    }
-
-    #topPanelContainer, #wordsListContainer, #bottomPanelContainer {
-        margin-top: 1%;
     }
 }
 
@@ -61,5 +56,4 @@
     .input {
         width: 45vw;
     }
-
 }
