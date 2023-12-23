@@ -7,19 +7,19 @@
 </div>
 
 <div id="topPanelContainer">
-    <div id="wordInputTopPanelContainer">
         <div id="firstTopPanelRow">
-            <label class="label">Polskie słowo:</label><input id="polishWordInput" type="text" class="input">
+            <label class="label" id="lblPolishWord">Polskie słowo:</label>
+            <input id="polishWordInput" type="text" class="input">
         </div>
         <div id="secondTopPanelRow">
-            <label class="label">Angielskie słowo:</label><input id="englishWordInput" type="text" class="input">
-        </div>
+            <label class="label" id="lblEnglishWord">Angielskie słowo:</label>
+            <input id="englishWordInput" type="text" class="input">
     </div>
     <div id="buttonsTopPanelContainer">
-        <button id="btnAdd" class="button">Dodaj</button>
-        <button id="btnUpdate" class="button">Edytuj</button>
-        <button id="btnDisplay" class="button">Wyświetl</button>
-        <button id="btnClear" class="button">Wyczyść</button>
+        <button id="btnAdd" class="buttonTop">Dodaj</button>
+        <button id="btnUpdate" class="buttonTop">Edytuj</button>
+        <button id="btnDisplay" class="buttonTop">Wyświetl</button>
+        <button id="btnClear" class="buttonTop">Wyczyść</button>
     </div>
 </div>
 
@@ -40,10 +40,10 @@
         <input id="idInput" type="text" class="input">
     </div>
     <div id="secondBottomPanelRow">
-        <button id="btnSearch" class="button">Szukaj</button>
-        <button id="btnDelete" class="button">Usuń</button>
-    </div>
-    <div id="thirdBottomPanelRow">
+        <div id="buttonsBottomPanelContainer">
+        <button id="btnSearch" class="buttonBottom">Szukaj</button>
+        <button id="btnDelete" class="buttonBottom">Usuń</button>
+        </div>
         <label id="countWords"></label>
     </div>
 </div>

@@ -12,7 +12,8 @@ namespace WordMaster
 
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddDbContext<MyDbContext>(options => options.UseInMemoryDatabase("WebDb"));
+            builder.Services.AddDbContext<MyDbContext>(options => options.UseInMemoryDatabase("MemoryDatabase"));
+
 
             builder.Services.AddScoped<IWordService, WordService>();
 

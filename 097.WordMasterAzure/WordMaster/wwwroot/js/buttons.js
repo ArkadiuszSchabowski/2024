@@ -1,6 +1,6 @@
 ﻿class Buttons {
     constructor() {
-        this.host = "https://wordmaster.azurewebsites.net";
+        this.host = "https://wordmaster.azurewebsites.net/";
 
         this.btnAdd = document.getElementById("btnAdd");
         this.btnUpdate = document.getElementById("btnUpdate");

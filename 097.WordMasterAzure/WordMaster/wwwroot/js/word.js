@@ -1,6 +1,7 @@
 ﻿class Word {
     constructor() {
-        this.host = "https://wordmaster.azurewebsites.net";
+
+        this.host = "https://wordmaster.azurewebsites.net/";
         this.isFirstRun = true;
 
         this.plWordsDiv = document.getElementById("plWordsDiv");
@@ -45,7 +46,7 @@
     }
     CountWords(data) {
         this.counter = data.length;
-        this.countWordsDiv.innerHTML = `Poznane słowa: ${this.counter}`;
+        this.countWordsDiv.innerHTML = `Licznik słów: ${this.counter}`;
     }
 }
 let word = new Word();
