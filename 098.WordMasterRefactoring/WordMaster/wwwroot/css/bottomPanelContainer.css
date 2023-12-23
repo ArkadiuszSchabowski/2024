@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 26vh;
+    height: 25vh;
 }
 
 #firstBottomPanelRow,
@@ -22,39 +22,75 @@
     align-items: center;
     width: 15vw;
     height: 40px;
-    margin-left: 1vw;
     font-weight: bold;
     transition: background-color 0.3s ease;
 }
 #btnSearch{
-    margin-left: 5vw;
+    margin-left: 3vw;
+}
+#btnDelete{
+    margin-left: 2vw;
 }
 
 #secondBottomPanelRow {
-    justify-content: center;
-}
-
-#firstBottomPanelRow, #secondBottomPanelRow {
-    margin-top: 1%;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
+    margin-top: 3%;
 }
 
 #countWords {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1%;
     width: 50vw;
-    height: 30px;
+    height: 40px;
     font-size: 20px;
     font-weight: bold;
     border: 1px solid black;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {
+    #bottomPanelContainer{
+        height: 22vh;
+    }
+    #secondBottomPanelRow {
+        justify-content: normal;
+        margin-top: 1%;
+    }
+    #buttonsBottomPanelContainer{
+        width: 30vw;
+    }
+    #countWords {
+        width: 45vw;
+    }
+    .buttonBottom {
+        width: 12vw;
+    }
+    #btnDelete {
+        margin-left: 1vw;
+    }
 }
 
 @media screen and (min-width: 1200px) {
+    #bottomPanelContainer {
+        height: 20vh;
+    }
+    #secondBottomPanelRow {
+        justify-content: normal;
+        margin-top: 1%;
+    }
+    #buttonsBottomPanelContainer {
+        width: 30vw;
+    }
+    #countWords {
+        width: 45vw;
+    }
+    .buttonBottom {
+        width: 12vw;
+    }
+    #btnDelete {
+        margin-left: 1vw;
+    }
 }

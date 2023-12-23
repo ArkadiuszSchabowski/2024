@@ -46,7 +46,7 @@
     }
     CountWords(data) {
         this.counter = data.length;
-        this.countWordsDiv.innerHTML = `Poznane słowa: ${this.counter}`;
+        this.countWordsDiv.innerHTML = `Licznik słów: ${this.counter}`;
     }
 }
 let word = new Word();

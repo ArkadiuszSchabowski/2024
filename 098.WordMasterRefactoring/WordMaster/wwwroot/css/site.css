@@ -39,9 +39,10 @@
     .label {
         width: 30vw;
     }
-    .input{
-
+    .input {
+        width: 45vw;
     }
+
     #topPanelContainer, #wordsListContainer, #bottomPanelContainer {
         margin-top: 1%;
     }
@@ -57,7 +58,8 @@
     .label {
         width: 30vw;
     }
-
     .input {
+        width: 45vw;
     }
+
 }
