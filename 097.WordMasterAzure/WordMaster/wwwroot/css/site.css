@@ -24,9 +24,6 @@
     opacity: 0.2;
     cursor: not-allowed;
 }
-    .button:hover {
-        background-color: #FF2929;
-    }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {
     #messageContainer, #topPanelContainer, #wordsListContainer, #bottomPanelContainer {
