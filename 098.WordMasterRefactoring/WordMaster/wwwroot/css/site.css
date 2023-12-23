@@ -48,98 +48,6 @@
     background-color: #FFFFFF;
 }
 
-#firstTopPanelRow,
-#secondTopPanelRow,
-#firstBottomPanelRow,
-#secondBottomPanelRow,
-#thirdBottomPanelRow {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-#firstBottomPanelRow, #secondBottomPanelRow {
-    margin-top: 1%;
-}
-#thirdBottomPanelRow{
-    justify-content: center;
-}
-
-#buttonsTopPanelContainer {
-    display: flex;
-    flex-direction: row;
-    margin-top: 1%;
-}
-
-#firstBottomPanelRow, #secondBottomPanelRow {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-#plWordDivTittle, #engWordDivTittle {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    font-size: 24px;
-    font-weight: bold;
-    color: #404040;
-    background-color: #F5F5F5;
-}
-
-#plWordsDiv, #engWordsDiv {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #404040;
-    width: 100%;
-}
-
-#engWordsDiv {
-    border-left: none;
-}
-
-#countWords {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1%;
-    width: 55vw;
-    height: 30px;
-    font-size: 20px;
-    font-weight: bold;
-    border: 1px solid black;
-    color: #404040;
-    background-color: #F5F5F5;
-}
-.label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 130px;
-    height: 30px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #404040;
-}
-
-.input {
-    width: 50vw;
-    height: 30px;
-    font-size: 24px;
-    background-color: #F5F5F5;
-}
-
-.plClass, .engClass {
-    width: 90%;
-    height: 20px;
-    margin-top: 1%;
-    margin-left: 5%;
-    color: #404040;
-    font-weight: bold;
-    background-color: #FFFFFF;
-}
-
 .button {
     display: flex;
     flex-direction: row;
@@ -163,31 +71,9 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {
-    .button {
-        width: 15vw;
-    }
-    .input{
-    width: 40vw;
-    }
-    #countWords {
-        width: 45vw;
-    }
-    #messageContainer{
-        font-size: 20px;
-    }
+
 }
 
 @media screen and (min-width: 1200px) {
-    .button {
-        width: 15vw;
-    }
-    .input {
-        width: 30vw;
-    }
-    #countWords {
-        width: 35vw;
-    }
-    #messageContainer {
-        font-size: 24px;
-    }
+
 }

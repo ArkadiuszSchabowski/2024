@@ -1,0 +1,36 @@
+﻿#firstTopPanelRow,
+#secondTopPanelRow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#buttonsTopPanelContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+}
+
+.label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #404040;
+}
+
+.input {
+    width: 50vw;
+    height: 30px;
+    font-size: 24px;
+    background-color: #F5F5F5;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+}
+
+@media screen and (min-width: 1200px) {
+}

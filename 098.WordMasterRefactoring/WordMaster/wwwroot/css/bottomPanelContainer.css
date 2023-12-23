@@ -1,0 +1,42 @@
+﻿#firstBottomPanelRow,
+#secondBottomPanelRow,
+#thirdBottomPanelRow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#firstBottomPanelRow, #secondBottomPanelRow {
+    margin-top: 1%;
+}
+
+#thirdBottomPanelRow {
+    justify-content: center;
+}
+
+#firstBottomPanelRow, #secondBottomPanelRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#countWords {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    width: 55vw;
+    height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid black;
+    color: #404040;
+    background-color: #F5F5F5;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+}
+
+@media screen and (min-width: 1200px) {
+}
