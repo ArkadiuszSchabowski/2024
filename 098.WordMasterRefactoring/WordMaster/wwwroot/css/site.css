@@ -1,79 +1,51 @@
-﻿#messageContainer {
-    display: flex;
+﻿#messageContainer, #topPanelContainer, #wordsListContainer, #bottomPanelContainer {
+    width: 100vw;
     justify-content: center;
-    align-items: center;
-    width: 90vw;
-    height: 12vh;
-    font-size: 18px;
-    font-weight: bold;
     border: 1px solid black;
     color: #404040;
     background-color: #FFFFFF;
 }
 
-#topPanelContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1%;
-    width: 90vw;
-    height: 25vh;
-    border: 1px solid black;
-    background-color: #FFFFFF;
-}
-
-#wordsListContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-    width: 90vw;
-    height: 24vh;
-    max-height: 190px;
-    margin-top: 1%;
-    border: 1px solid black;
-    background-color: #FFFFFF;
-    overflow: auto;
-}
-
-#bottomPanelContainer {
+.label {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 26vh;
-    margin-top: 1%;
-    border: 1px solid black;
-    background-color: #FFFFFF;
-}
-
-.button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 20vw;
-    height: 40px;
-    margin-left: 1%;
+    width: 45vw;
+    height: 30px;
+    font-size: 1rem;
     font-weight: bold;
-    color: #404040;
-    transition: background-color 0.3s ease;
 }
 
-    .button:hover {
-        background-color: #FF2929;
-    }
+.input {
+    width: 50vw;
+    height: 30px;
+    font-size: 24px;
+    background-color: #F5F5F5;
+}
 
 .btnBlocked {
     opacity: 0.2;
     cursor: not-allowed;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .button:hover {
+        background-color: #FF2929;
+    }
 
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    #messageContainer, #topPanelContainer, #wordsListContainer, #bottomPanelContainer {
+        width: 90vw;
+    }
+    #topPanelContainer, #wordsListContainer, #bottomPanelContainer {
+        margin-top: 1%;
+    }
 }
 
 @media screen and (min-width: 1200px) {
-
+    #messageContainer, #topPanelContainer, #wordsListContainer, #bottomPanelContainer {
+        width: 90vw;
+    }
+    #topPanelContainer, #wordsListContainer, #bottomPanelContainer {
+        margin-top: 1%;
+    }
 }

@@ -1,32 +1,31 @@
-﻿#firstTopPanelRow,
+﻿#topPanelContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 25vh;
+}
+
+#firstTopPanelRow,
 #secondTopPanelRow {
     display: flex;
-    flex-direction: row;
     width: 100%;
 }
 
 #buttonsTopPanelContainer {
     display: flex;
     flex-direction: row;
-    margin-top: 1%;
 }
 
-.label {
+.buttonTop {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 130px;
-    height: 30px;
-    font-size: 1rem;
+    width: 20vw;
+    height: 40px;
     font-weight: bold;
     color: #404040;
-}
-
-.input {
-    width: 50vw;
-    height: 30px;
-    font-size: 24px;
-    background-color: #F5F5F5;
+    transition: background-color 0.3s ease;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {
