@@ -1,13 +1,19 @@
 ﻿#messageContainer {
     display: flex;
     align-items: center;
-    height: 12vh;
+    height: 5vh;
     font-size: 18px;
     font-weight: bold;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {
+    #messageContainer{
+    height: 10vh;
+    }
 }
 
 @media screen and (min-width: 1200px) {
+    #messageContainer {
+        height: 12vh;
+    }
 }

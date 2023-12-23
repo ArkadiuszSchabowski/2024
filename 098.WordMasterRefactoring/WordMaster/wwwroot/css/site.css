@@ -36,6 +36,12 @@
     #messageContainer, #topPanelContainer, #wordsListContainer, #bottomPanelContainer {
         width: 90vw;
     }
+    .label {
+        width: 30vw;
+    }
+    .input{
+
+    }
     #topPanelContainer, #wordsListContainer, #bottomPanelContainer {
         margin-top: 1%;
     }
@@ -47,5 +53,11 @@
     }
     #topPanelContainer, #wordsListContainer, #bottomPanelContainer {
         margin-top: 1%;
+    }
+    .label {
+        width: 30vw;
+    }
+
+    .input {
     }
 }
