@@ -15,6 +15,7 @@ namespace WordMaster.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("This is Main Page");
             return View();
         }
 
