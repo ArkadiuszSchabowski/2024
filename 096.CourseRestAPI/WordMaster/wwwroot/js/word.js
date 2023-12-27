@@ -12,6 +12,9 @@
 
         this.loadingOverlay = document.getElementById("loadingOverlay");
     }
+    Start() {
+        this.loadingOverlay.style.display = "none";
+    }
     async Init() {
         if (this.isFirstRun) {
             loadingOverlay.style.display = "flex";
@@ -50,4 +53,4 @@
     }
 }
 let word = new Word();
-word.Init();
+word.Start();
