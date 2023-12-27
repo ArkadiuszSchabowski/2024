@@ -1,0 +1,20 @@
+﻿#mainContent{
+    width: 100vw;
+}
+
+#asian1, #asian2, #asian3, #asian4 {
+    width: 50vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+#asian1, #asian3{
+    margin-left: 35vw;
+}
+#asian2, #asian4{
+    margin-left: 5vw;
+}
+.section {
+   width: 90vw;
+   margin-left: 5vw;
+   border-bottom: 1px solid black;
+}
