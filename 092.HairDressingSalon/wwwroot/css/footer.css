@@ -1,0 +1,13 @@
+﻿footer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100vw;
+    height: 20%;
+    margin: 5vh 0;
+}
+#contactDetails{
+    margin-left: 10vw;
+}
+#openingHours{
+    margin-left: 10vw;
+}
