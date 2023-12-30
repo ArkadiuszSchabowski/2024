@@ -1,77 +1,99 @@
 ﻿#mainContent {
     width: 100vw;
 }
+
 .section {
     display: flex;
     width: 90vw;
     margin-top: 2vh;
     margin-left: 5vw;
-    border-bottom: 1px solid white;
 }
-#introductionSectionOne{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    margin-bottom: 1vw;
-}
-
 #sectionOne {
     flex-direction: column;
+    background-color: whitesmoke;
+    position: relative;
+}
+
+#imageSectionOne {
+    position: relative;
+    width: 100vw;
+    height: 90vh;
+}
+#imageSectionOne::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 20vw;
+    top: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+}
+#introductionTitleSectionOne{
+    top: 5%;
+    left: 45%;
+    position: absolute;
+    font-size: 40px;
+    color: black;
+}
+#introductionSectionOne {
+    position: absolute;
+    display: flex;
+    top: 18%;
+    left: 45%;
+    flex-direction: column;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 1vw;
+    color: black;
+    z-index: 1;
+}
+#sectionTwo {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    margin: 5vh auto 10vh auto;
+    color: white;
 }
 #offerPoints {
     margin-top: 1vh;
     margin-left: 1vw;
-    margin-bottom: 2vh;
+    font-size: 20px;
 }
-#sectionTwo {
-    margin-top: 3vh;
+#offerPhotos {
+    width: 80%;
+    height: 80%;
+    margin-left: 5vw;
+    background-color: gray;
+    border: 1px solid white;
 }
 
-#sectionTwo, #sectionFour {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#sectionThree {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 70vh;
+    color: white;
+    border-bottom: 1px solid white;
 }
+
 #newsContent {
-    width: 60vw;
-    height: 60vh;
+    width: 40vw;
+    height: 40vh;
     background-color: lightgray;
     margin-bottom: 3vh;
-    border-radius: 10px;
+    border-radius: 50px;
 }
-#sectionTwo button {
-    background-color: royalblue;
+#sectionFour {
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid white;
+}
+#prizeButton{
+    margin-top: 5vh;
+}
+button {
+    background-color: gold;
     height: 60px;
-    width: 100px;
-    border-radius: 5px;
-    margin: 0 2vw;
-}
-#sectionTwo button:hover{
-    background-color:red;
-}
-#sectionThree{
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-    margin-bottom: 1vh;
-}
-#sectionFour{
-    margin-bottom: 3vh;
-    height: 60vh;
-}
-    #sectionFour div {
-        width: 60vh;
-        height: 50vh;
-        margin: 0 1vw;
-        border-radius: 10px;
-        border: 1px solid white;
-    }
-#sectionFour button {
-    background-color: royalblue;
-    height: 60px;
-    width: 100px;
+    width: 150px;
     border-radius: 5px;
     margin: 0 2vw;
 }

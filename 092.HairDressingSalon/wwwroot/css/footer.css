@@ -4,6 +4,8 @@
     width: 100vw;
     height: 20%;
     margin: 5vh 0;
+    font-size: 20px;
+    color: white;
 }
 #contactDetails{
     margin-left: 10vw;

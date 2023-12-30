@@ -1,5 +1,6 @@
 ﻿class MainContent {
     constructor() {
+        this.imageSectionOne = document.getElementById("imageSectionOne");
 
         this.newsContent = document.getElementById("newsContent");
 
@@ -8,8 +9,20 @@
         this.rightImage = document.getElementById("rightImage");
     }
     Init() {
+        this.DisplayMainPhoto();
         this.DisplayNews();
         this.DisplayTeamMebers();
+    }
+    DisplayMainPhoto() {
+        let mainPhoto = document.createElement("img");
+
+        mainPhoto.src = "../images/others/hairSalon.jpg";
+
+        mainPhoto.style.width = "100%";
+        mainPhoto.style.height = "100%";
+        mainPhoto.style.borderBottom = "1px solid white";
+
+        this.imageSectionOne.appendChild(mainPhoto);
     }
     DisplayNews() {
         let news1 = document.createElement("img");
