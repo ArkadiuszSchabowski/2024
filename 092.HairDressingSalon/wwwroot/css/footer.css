@@ -3,8 +3,9 @@
     grid-template-columns: 1fr 1fr;
     width: 100vw;
     height: 20%;
-    margin: 5vh 0;
+    padding: 2vh 0;
     font-size: 20px;
+    border-top: 1px solid white;
     color: white;
 }
 #contactDetails{
