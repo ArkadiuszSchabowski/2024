@@ -8,6 +8,12 @@
 #contactDetails{
     margin-left: 10vw;
 }
+#contactDetailsBody{
+    margin-top: 2vh;
+}
 #openingHours{
     margin-left: 10vw;
+}
+#openingHoursBody{
+    margin-top: 2vh;
 }

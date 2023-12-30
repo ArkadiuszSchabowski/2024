@@ -26,10 +26,13 @@
     margin-bottom: 2vh;
 }
 #sectionTwo {
+    margin-top: 3vh;
+}
+
+#sectionTwo, #sectionFour {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3vh;
 }
 #newsContent {
     width: 60vw;
@@ -39,15 +42,36 @@
     border-radius: 10px;
 }
 #sectionTwo button {
-    background-color: green;
+    background-color: royalblue;
     height: 60px;
     width: 100px;
     border-radius: 5px;
     margin: 0 2vw;
+}
+#sectionTwo button:hover{
+    background-color:red;
 }
 #sectionThree{
     display: flex;
     flex-direction: column;
     font-size: 20px;
     margin-bottom: 1vh;
+}
+#sectionFour{
+    margin-bottom: 3vh;
+    height: 50vh;
+}
+    #sectionFour div {
+        width: 40vh;
+        height: 40vh;
+        background-color: lightgray;
+        margin: 0 1vw;
+        border-radius: 10px;
+    }
+#sectionFour button {
+    background-color: royalblue;
+    height: 60px;
+    width: 100px;
+    border-radius: 5px;
+    margin: 0 2vw;
 }
