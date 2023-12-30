@@ -7,8 +7,4 @@
     <RootNamespace>_092.HairDressingSalon</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\image\" />
-  </ItemGroup>
-
 </Project>

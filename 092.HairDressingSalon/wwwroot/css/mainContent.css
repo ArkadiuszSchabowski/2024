@@ -59,14 +59,14 @@
 }
 #sectionFour{
     margin-bottom: 3vh;
-    height: 50vh;
+    height: 60vh;
 }
     #sectionFour div {
-        width: 40vh;
-        height: 40vh;
-        background-color: lightgray;
+        width: 60vh;
+        height: 50vh;
         margin: 0 1vw;
         border-radius: 10px;
+        border: 1px solid white;
     }
 #sectionFour button {
     background-color: royalblue;
