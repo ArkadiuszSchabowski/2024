@@ -1,12 +1,6 @@
 ﻿#mainContent {
     width: 100vw;
 }
-
-.section {
-    display: flex;
-    width: 90vw;
-    margin-left: 5vw;
-}
 #sectionIntroduction {
     position: relative;
     flex-direction: column;
@@ -19,8 +13,8 @@
 }
 
     #imageSectionIntroduction::before {
-        content: "";
         position: absolute;
+        content: "";
         right: 0;
         bottom: 0;
         left: 20vw;
@@ -32,14 +26,14 @@
     top: 5%;
     left: 5%;
     position: absolute;
-    font-size: 34px;
+    font-size: 30px;
     color: black;
 }
 
 #introduction {
     position: absolute;
     display: flex;
-    top: 18%;
+    top: 6%;
     left: 5%;
     flex-direction: column;
     font-size: 18px;
@@ -52,13 +46,17 @@
 }
 #sectionDescription {
     display: flex;
+    width: 90vw;
+    margin-left: 5vw;
     flex-direction: column;
-    font-size: 28px;
+    font-size: 20px;
     margin: 0vh auto 10vh auto;
     padding-top: 5vh;
 }
 
 #sectionOffer {
+    width: 90vw;
+    margin-left: 5vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 70vh;
@@ -142,7 +140,30 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {
+    #introductionTitle {
+        left: 35%;
+        font-size: 36px;
+    }
+    #introduction {
+        top: 5%;
+        left: 35%;
+    }
+    #sectionDescription{
+        font-size: 24px;
+    }
 }
 
 @media screen and (min-width: 1200px) {
+    #introductionTitle {
+        left: 45%;
+        font-size: 40px;
+    }
+    #introduction {
+        top: 2%;
+        left: 45%;
+        font-size: 24px;
+    }
+    #sectionDescription {
+        font-size: 30px;
+    }
 }

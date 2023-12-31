@@ -24,17 +24,22 @@
 
     SetButtonsAction() {
         this.btnPreviousOpinion.addEventListener("click", () => {
-            if (this.cureentOpinion > 0) {
-                this.cureentOpinion--;
+            this.cureentOpinion--;
+
+            if (this.cureentOpinion < 0) {
+                this.cureentOpinion = this.arrayOpinions.length - 1;
                 this.DisplayOpinions();
             }
+            else this.DisplayOpinions();
         });
 
         this.btnNextOpinion.addEventListener("click", () => {
-            if (this.cureentOpinion < this.arrayOpinions.length - 1) {
-                this.cureentOpinion++;
+            this.cureentOpinion++
+            if (this.cureentOpinion == this.arrayOpinions.length) {
+                this.cureentOpinion = 0;
                 this.DisplayOpinions();
             }
+            else this.DisplayOpinions();
         });
     }
 
