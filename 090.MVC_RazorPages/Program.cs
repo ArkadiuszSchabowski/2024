@@ -1,4 +1,4 @@
-namespace _092.HairDressingSalon
+namespace _090.MVC_RazorPages
 {
     public class Program
     {
@@ -8,7 +8,6 @@ namespace _092.HairDressingSalon
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddRazorPages();
 
             var app = builder.Build();
 

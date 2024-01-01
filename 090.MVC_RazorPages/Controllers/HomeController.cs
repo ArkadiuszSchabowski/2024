@@ -1,8 +1,8 @@
-using _092.HairDressingSalon.Models;
+using _090.MVC_RazorPages.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace _092.HairDressingSalon.Controllers
+namespace _090.MVC_RazorPages.Controllers
 {
     public class HomeController : Controller
     {
@@ -15,13 +15,15 @@ namespace _092.HairDressingSalon.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.LoadSiteScript = true;
             return View();
         }
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
         public IActionResult Booking()
         {
-            ViewBag.LoadSiteScript = false;
             return View();
         }
 

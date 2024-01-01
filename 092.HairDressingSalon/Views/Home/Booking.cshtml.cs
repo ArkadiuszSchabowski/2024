@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace _092.HairDressingSalon.Views.Pages
+namespace _092.HairDressingSalon.Views.Home
 {
-    public class teamModel : PageModel
+    public class BookingModel : PageModel
     {
         public void OnGet()
         {

@@ -4,11 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>_092.HairDressingSalon</RootNamespace>
+    <RootNamespace>_090.MVC_RazorPages</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Pages\" />
-  </ItemGroup>
 
 </Project>
