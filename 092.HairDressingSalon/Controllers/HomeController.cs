@@ -13,15 +13,28 @@ namespace _092.HairDressingSalon.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            ViewBag.LoadSiteScript = true;
-            return View();
-        }
-
         public IActionResult Booking()
         {
-            ViewBag.LoadSiteScript = false;
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult PriceList()
+        { 
+            return View();
+        }
+        public IActionResult Registration()
+        {
             return View();
         }
 

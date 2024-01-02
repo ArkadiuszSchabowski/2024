@@ -6,17 +6,18 @@
     <title>@ViewData["Title"]Salon fryzjerski - Asia</title>
     <link rel="stylesheet" href="~/css/globalSite.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/header.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/mainContent.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/team.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/footer.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <div id="registration">Rejestracja</div>
-        <div id="login">Logowanie</div>
+        <a asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a>
+        <a asp-area="" asp-controller="Home" asp-action="Registration">Rejestracja</a>
+        <a asp-area="" asp-controller="Home" asp-action="Login">Logowanie</a>
         <a asp-area="" asp-controller="Home" asp-action="Booking">Rezerwacja</a>
-        <div id="priceList">Cennik</div>
-        <div id="contact">Kontakt</div>
+        <a asp-area="" asp-controller="Home" asp-action="PriceList">Cennik</a>
+        <a asp-area="" asp-controller="Home" asp-action="Contact">Kontakt</a>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -53,10 +54,6 @@
             </div>
         </div>
     </footer>
-    @if (ViewBag.LoadSiteScript == true)
-    {
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    }
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,27 +1,39 @@
-﻿#sectionTeam {
-    margin-top: 3vh;
-    color: white;
+﻿#sectionName {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 10vh;
+    font-size: 24px;
 }
-
-#sectionTeam {
+#hairdresserInfoName{
+    margin-top: 1%;
+    margin-left: 2vw;
+}
+#hairdresserName {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+
 #sectionTeam {
-    margin-bottom: 3vh;
-    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    margin-bottom: 2%;
+    margin-top: 2vh;
 }
-#centerImage {
+
+#centerImageTeam {
     width: 70vh;
-    height: 60vh;
+    height: 100%;
     margin: 0 1vw;
     border-radius: 10px;
     border: 1px solid white;
 }
 
-#leftImage, #rightImage {
+#leftImageTeam, #rightImageTeam {
     width: 40vh;
     height: 30vh;
     margin: 0 1vw;
@@ -30,9 +42,10 @@
 }
 
 #sectionTeam button {
-    background-color: royalblue;
+    background-color: transparent;
+    font-size: 50px;
     height: 60px;
-    width: 100px;
+    width: 60px;
     border-radius: 5px;
-    margin: 0 2vw;
+    margin: 0 5vw;
 }
