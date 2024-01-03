@@ -26,6 +26,7 @@
 }
 
 #centerImageTeam {
+    position: relative;
     width: 70vh;
     height: 100%;
     margin: 0 1vw;
@@ -34,6 +35,7 @@
 }
 
 #leftImageTeam, #rightImageTeam {
+    position: relative;
     width: 40vh;
     height: 30vh;
     margin: 0 1vw;

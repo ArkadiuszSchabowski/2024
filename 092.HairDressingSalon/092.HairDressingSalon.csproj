@@ -7,4 +7,16 @@
     <RootNamespace>_092.HairDressingSalon</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\js\priceList.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\priceList.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\priceList.js" />
+  </ItemGroup>
+
 </Project>
