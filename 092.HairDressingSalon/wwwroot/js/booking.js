@@ -6,48 +6,61 @@ class Booking {
         this.rightImageTeam = document.getElementById("rightImageTeam");
         this.btnPreviousImage = document.getElementById("btnPreviousImage");
         this.btnNextImage = document.getElementById("btnNextImage");
-        this.teamMembersArray = [
-            "../images/team/Araya.jpg",
+        this.teamMembers = [
+            "../images/team/araya.jpg",
             "../images/team/any.jpg",
-            "../images/team/Chen.jpg",
-            "../images/team/Kim.jpg",
-            "../images/team/Sanya.jpg"
+            "../images/team/chen.jpg",
+            "../images/team/kim.jpg",
+            "../images/team/sanya.jpg"
         ];
+        this.Araya = document.createElement("img");
+        this.Any = document.createElement("img");
+        this.Chen = document.createElement("img");
+        this.Kim = document.createElement("img");
+        this.Sanya = document.createElement("img");
+
+        this.centerImageNumber = 1;
 
         this.Init();
     }
     Init() {
         this.SetPhotosHairdressers();
+        this.SetButtonsAction();
+    }
+    SetButtonsAction() {
+        this.btnNextImage.addEventListener("click", () => {
+            this.centerImageNumber++;
+            this.SetPhotosHairdressers();
+        })
     }
     SetPhotosHairdressers() {
-        let leftImage = document.createElement("img");
-        let centerImage = document.createElement("img");
-        let rightImage = document.createElement("img");
 
-        leftImage.src = this.teamMembersArray[0];
-        centerImage.src = this.teamMembersArray[1];
-        rightImage.src = this.teamMembersArray[2];
+        this.Araya.src = this.teamMembers[this.centerImageTeam -1];
+        this.Any.src = this.teamMembers[this.centerImageNumber];
+        this.Chen.src = this.teamMembers[this.centerImageNumber +1];
+        this.Kim.src = this.teamMembers[this.centerImageNumber + 2];
+        this.Sanya.src = this.teamMembers[this.centerImageNumber + 3]
 
-        this.SetImagesProperties(leftImage, centerImage, rightImage)
+        this.SetImagesProperties()
     }
-    SetImagesProperties(firstImage, secondImage, thirdImage) {
-        let arrayImages = [
-            firstImage,
-            secondImage,
-            thirdImage
+    SetImagesProperties() {
+        let arrayMembers = [
+            this.Araya,
+            this.Any,
+            this.Chen,
+            this.Kim,
+            this.Sanya
         ];
 
-        for (let i = 0; i < arrayImages.length; i++) {
-            arrayImages[i].style.position = "absolute";
-            arrayImages[i].style.width = "100%";
-            arrayImages[i].style.height = "100%";
-            arrayImages[i].style.borderRadius = "10px";
+        for (let i = 0; i < arrayMembers.length; i++) {
+            arrayMembers[i].style.position = "absolute";
+            arrayMembers[i].style.width = "100%";
+            arrayMembers[i].style.height = "100%";
+            arrayMembers[i].style.borderRadius = "10px";
         }
-
-        this.leftImageTeam.appendChild(arrayImages[0]);
-        this.centerImageTeam.appendChild(arrayImages[1]);
-        this.rightImageTeam.appendChild(arrayImages[2]);
-
+        this.leftImageTeam.appendChild(arrayMembers[this.centerImageNumber-1]);
+        this.centerImageTeam.appendChild(arrayMembers[this.centerImageNumber]);
+        this.rightImageTeam.appendChild(arrayMembers[this.centerImageNumber+1]);
     }
 }
 let booking = new Booking();
