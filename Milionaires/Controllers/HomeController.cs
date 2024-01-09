@@ -17,8 +17,15 @@ namespace Milionaires.Controllers
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        public IActionResult Information()
+        {
+            return View();
+        }
+        public IActionResult Scores()
+        {
+            return View();
+        }
+        public IActionResult Settings()
         {
             return View();
         }
@@ -30,3 +37,4 @@ namespace Milionaires.Controllers
         }
     }
 }
+
