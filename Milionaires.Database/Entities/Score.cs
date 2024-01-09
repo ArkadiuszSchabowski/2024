@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MigrationTest.Database.Entities
+namespace Milionaires.Database.Entities
 {
-    public class Test
+    public class Score
     {
         public int Id { get; set; }
+        public int Result { get; set; }
         public string Name { get; set; }
+        public DateTime Date { get; set; }
     }
 }
