@@ -1,7 +1,7 @@
-using _088.Milionaires8.Database;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using MigrationTest.Database;
 
-namespace _088.Milionaires8
+namespace MigrationTest
 {
     public class Program
     {
@@ -14,12 +14,13 @@ namespace _088.Milionaires8
 
             if (builder.Environment.IsProduction())
             {
-                builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MilionairesConnectionString")));
+                builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Milionaires")));
             }
             else
             {
                 builder.Services.AddDbContext<MyDbContext>(options => options.UseInMemoryDatabase("MemoryDatabase"));
             }
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
