@@ -1,0 +1,53 @@
+﻿#sectionName {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 10vh;
+    font-size: 24px;
+}
+#hairdresserInfoName{
+    margin-top: 1%;
+    margin-left: 2vw;
+}
+#hairdresserName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#sectionTeam {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    margin-bottom: 2%;
+    margin-top: 2vh;
+}
+
+#centerImageTeam {
+    position: relative;
+    width: 70vh;
+    height: 100%;
+    margin: 0 1vw;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
+#leftImageTeam, #rightImageTeam {
+    position: relative;
+    width: 40vh;
+    height: 30vh;
+    margin: 0 1vw;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
+#sectionTeam button {
+    background-color: transparent;
+    font-size: 50px;
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+    margin: 0 5vw;
+}

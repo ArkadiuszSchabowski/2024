@@ -1,0 +1,40 @@
+﻿#scoresContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#scoresTable {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 90vh;
+    background-image: url(../images/backgroundInfo.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    align-items: center;
+}
+#scoresTableTitle {
+    display: flex;
+    width: 90%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    background-color: transparent;
+}
+.scoreRow {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vh;
+    font-size: 26px;
+    color: white;
+    background-color: transparent;
+}
+.score, .name, .numberScore {
+    margin: 2vh 2vw;
+}

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]Salon fryzjerski - Asia</title>
+    <link rel="stylesheet" href="~/css/globalSite.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/header.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/booking.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/footer.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <a asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a>
+        <a asp-area="" asp-controller="Home" asp-action="Registration">Rejestracja</a>
+        <a asp-area="" asp-controller="Home" asp-action="Login">Logowanie</a>
+        <a asp-area="" asp-controller="Home" asp-action="Booking">Rezerwacja</a>
+        <a asp-area="" asp-controller="Home" asp-action="PriceList">Cennik</a>
+        <a asp-area="" asp-controller="Home" asp-action="Contact">Kontakt</a>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer>
+        <div id="contactDetails">
+            <div id="contactDetailsTitle">
+                <p>Dane kontaktowe:</p>
+            </div>
+            <div id="contactDetailsBody">
+                <p>Asia Salon</p>
+                <p>ul. Azjatycka 5</p>
+                <p>41-506 Chorzów</p>
+                <p>Telefon: +48 500 000 000</p>
+                <p>arkadiuszschabowski@gmail.com</p>
+                <p>www.github.com</p>
+            </div>
+        </div>
+
+        <div id="openingHours">
+            <div id="openingHoursTitle">
+                <p>Godziny otwarcia:</p>
+            </div>
+            <div id="openingHoursBody">
+                <p>Poniedziałek: 10:00 - 21:00</p>
+                <p>Wtorek: 10:00 - 21:00</p>
+                <p>Środa: 10:00 - 21:00</p>
+                <p>Czwartek: 10:00 - 21:00</p>
+                <p>Piątek: 10:00 - 21:00</p>
+                <p>Sobota: 10:00 - 19:00</p>
+                <p>Niedziela: Nieczynne</p>
+            </div>
+        </div>
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

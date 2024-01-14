@@ -1,0 +1,42 @@
+﻿footer{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 20%;
+    padding: 2vh 0;
+    font-size: 20px;
+    border-top: 1px solid white;
+    color: white;
+}
+#contactDetails{
+    margin-left: 10vw;
+}
+#contactDetailsBody{
+    margin-top: 2vh;
+}
+#openingHours{
+    margin-top: 4vh;
+    margin-left: 10vw;
+}
+#openingHoursBody{
+    margin-top: 2vh;
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #openingHours {
+        margin-top: 0;
+    }
+}
+@media screen and (min-width: 1200px){
+    footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    #openingHours {
+        margin-top: 0;
+    }
+}

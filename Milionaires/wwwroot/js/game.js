@@ -1,0 +1,431 @@
+﻿
+class Game {
+
+    constructor() {
+
+        this.balance = 0;
+        this.questionNumber = 0;
+        this.correctIndex;
+
+        this.data;
+        this.randomNumber;
+
+        this.stateGameInformation;
+        this.explainCorrectAnswer;
+
+        this.stars = [
+            document.getElementById("point1"),
+            document.getElementById("point2"),
+            document.getElementById("point3"),
+            document.getElementById("point4"),
+            document.getElementById("point5"),
+            document.getElementById("point6"),
+            document.getElementById("point7"),
+            document.getElementById("point8"),
+            document.getElementById("point9"),
+            document.getElementById("point10")
+        ];
+        this.rowPrizeTable = [
+            document.getElementById("rowPrize1"),
+            document.getElementById("rowPrize2"),
+            document.getElementById("rowPrize3"),
+            document.getElementById("rowPrize4"),
+            document.getElementById("rowPrize5"),
+            document.getElementById("rowPrize6"),
+            document.getElementById("rowPrize7"),
+            document.getElementById("rowPrize8"),
+            document.getElementById("rowPrize9"),
+            document.getElementById("rowPrize10")
+        ];
+
+        this.lifelines = new Lifelines(this);
+
+        lifelines.AddLifelines();
+
+        this.Init();
+    }
+
+    Init = () => {
+        document.addEventListener("DOMContentLoaded", () => {
+            this.GetContent();
+        })
+    }
+
+    GetContent = async () => {
+        try {
+            const path = "/Question/GetQuestions";
+            const response = await fetch(path);
+
+            this.btnA = document.querySelector("#btnA");
+            this.btnB = document.querySelector("#btnB");
+            this.btnC = document.querySelector("#btnC");
+            this.btnD = document.querySelector("#btnD");
+            this.btnResign = document.querySelector("#btnResign");
+            this.questionText = document.querySelector("#questionText");
+            this.questionWindow = document.querySelector("#questionWindow");
+            this.prizeTable = document.querySelector("#prizeTable");
+
+            this.data = await response.json();
+
+            this.SetQuestionOnArrays(this.data);
+
+        } catch (error) {
+            this.questionText.innerHTML = "Wystąpił błąd podczas pobierania danych.";
+        }
+    }
+    SetQuestionOnArrays = (data) => {
+        this.questions1 = [this.data[0], this.data[1]];
+        this.questions2 = [this.data[2], this.data[3]];
+        this.questions3 = [this.data[4], this.data[5]];
+        this.questions4 = [this.data[6], this.data[7]];
+        this.questions5 = [this.data[8], this.data[9]];
+        this.questions6 = [this.data[10], this.data[11]];
+        this.questions7 = [this.data[12], this.data[13]];
+        this.questions8 = [this.data[14], this.data[15]];
+        this.questions9 = [this.data[16], this.data[17]];
+        this.questions10 = [this.data[18], this.data[19]];
+
+        buttons.SetButtonsAsVisible();
+
+        if (this.questionNumber > 0) {
+            this.stars[this.questionNumber - 1].classList.add("star");
+            this.rowPrizeTable[this.questionNumber - 1].classList.add("currentAnswer");
+        }
+
+        this.questionNumber++;
+
+        switch (this.questionNumber) {
+            case 1:
+                this.balance = balance.SetStartBalance();
+                this.SetQuestionContent(this.questions1);
+                this.SetButtonResign();
+                break;
+
+            case 2:
+                listener.RemoveListenersWhenTheCorrectAnswerWasB();
+                this.balance = balance.SetCurrentBalance(500);
+                this.SetQuestionContent(this.questions2);
+                break;
+
+            case 3:
+                this.rowPrizeTable[0].classList.remove("currentAnswer");
+                listener.RemoveListenersWhenTheCorrectAnswerWasC();
+                this.balance = balance.SetCurrentBalance(2000);
+                this.SetQuestionContent(this.questions3);
+                break;
+
+            case 4:
+                this.rowPrizeTable[1].classList.remove("currentAnswer");
+                listener.RemoveListenersWhenTheCorrectAnswerWasA();
+                this.balance = balance.SetCurrentBalance(5000);
+                this.SetQuestionContent(this.questions4);
+                break;
+
+            case 5:
+                this.rowPrizeTable[2].classList.remove("currentAnswer");
+                listener.RemoveListenersWhenTheCorrectAnswerWasD();
+                this.balance = balance.SetCurrentBalance(10000);
+                this.SetQuestionContent(this.questions5);
+                break;
+
+            case 6:
+                this.rowPrizeTable[3].classList.remove("currentAnswer");
+                this.balance = balance.SetCurrentBalance(40000);
+                this.SetQuestionContent(this.questions6);
+                break;
+
+            case 7:
+                this.rowPrizeTable[4].classList.remove("currentAnswer");
+                listener.RemoveListenersWhenTheCorrectAnswerWasA();
+                this.balance = balance.SetCurrentBalance(75000);
+                this.SetQuestionContent(this.questions7);
+                break;
+
+            case 8:
+                this.rowPrizeTable[5].classList.remove("currentAnswer");
+                listener.RemoveListenersWhenTheCorrectAnswerWasC();
+                this.balance = balance.SetCurrentBalance(150000);
+                this.SetQuestionContent(this.questions8);
+                break;
+
+            case 9:
+                this.rowPrizeTable[6].classList.remove("currentAnswer");
+                listener.RemoveListenersWhenTheCorrectAnswerWasB();
+                this.balance = balance.SetCurrentBalance(250000);
+                this.SetQuestionContent(this.questions9);
+                break;
+
+            case 10:
+                this.rowPrizeTable[7].classList.remove("currentAnswer");
+                listener.RemoveListenersWhenTheCorrectAnswerWasD();
+                this.balance = balance.SetCurrentBalance(500000);
+                this.SetQuestionContent(this.questions10);
+                break;
+            case 11:
+                this.rowPrizeTable[8].classList.remove("currentAnswer");
+                this.AllCorrectAnswers();
+                break;
+        }
+    }
+
+    SetQuestionContent(questionData) {
+
+        this.randomNumber = randomNumberGenerator.SetRandomNumberForQuestion();
+
+        this.questionText.innerHTML = questionData[this.randomNumber].questionText;
+        this.btnA.innerHTML = questionData[this.randomNumber].answers[0];
+        this.btnB.innerHTML = questionData[this.randomNumber].answers[1];
+        this.btnC.innerHTML = questionData[this.randomNumber].answers[2];
+        this.btnD.innerHTML = questionData[this.randomNumber].answers[3];
+
+        this.correctIndex = questionData[this.randomNumber].correctAnswerIndex;
+
+        this.SetListneres(this.correctIndex);
+        this.explainCorrectAnswer = questionData[this.randomNumber].explainAnswer;
+    }
+    HideQuestion() {
+        this.questionText.style.display = "none";
+    }
+    ShowQuestion() {
+        this.questionText.style.display = "block";
+    }
+    SetButtonResign() {
+        this.btnResign.addEventListener("click", () => {
+
+            let imageUrl = "url('../images/backgroundInfo.jpg')";
+            this.questionWindow.style.backgroundImage = imageUrl;
+
+            this.HideQuestion();
+            buttons.LockButtons();
+
+            let div = document.createElement("div");
+            div.classList.add("endGameDiv");
+
+            let label = document.createElement("label");
+            label.classList.add("endGameLabel");
+            label.innerText = "Definitywnie chcesz się wycofać?";
+
+            let buttonDiv = document.createElement("buttonDiv");
+            buttonDiv.classList.add("buttonsRow");
+
+            let buttonYes = document.createElement("button");
+            buttonYes.classList.add("endGameButton");
+            buttonYes.innerText = "TAK";
+
+            let buttonNo = document.createElement("button");
+            buttonNo.id = "btnResignNo";
+            buttonNo.classList.add("endGameButton");
+            buttonNo.innerText = "NIE";
+
+            buttonDiv.append(buttonYes, buttonNo);
+
+
+            div.append(label, buttonDiv);
+
+            this.questionWindow.appendChild(div);
+
+            buttonYes.addEventListener("click", () => {
+
+                this.ShowQuestion();
+                this.questionWindow.removeChild(div);
+
+                if (this.balance === 0) {
+                    this.stateGameInformation = `\nJeszcze nie zaczeliśmy gry, a juz sie wycofałeś? Mimo wszystko dziekuję za udział w grze!`;
+                }
+                else if ((this.balance !== 0) && (this.balance !== 2000) && (this.balance !== 40000)) {
+                    this.stateGameInformation = `\nTo dobra decyzja, żeby sie wycofać. Gratulacje wygrywasz ${this.balance} zł!`;
+                }
+                else if ((this.balance === 2000) || (this.balance === 40000)) {
+                    this.stateGameInformation = `\nZrezygnowałeś na progu gwarantowanym. Wygrywasz ${this.balance} zł!`;
+                }
+                this.questionText.innerHTML = this.explainCorrectAnswer + this.stateGameInformation;
+                this.EndGameAnimation();
+                buttons.SetDefaultTextForButtons();
+            });
+
+            buttonNo.addEventListener("click", () => {
+                imageUrl = "url('../images/background.jpg')";
+                this.questionWindow.style.backgroundImage = imageUrl;
+                this.ShowQuestion();
+                this.questionWindow.removeChild(div);
+                buttons.UnlockButtons();
+            })
+        })
+    }
+    SetBackground() {
+        let imageUrl;
+
+        if (this.balance === 1000000) {
+            imageUrl = "url('../images/highestPrice.gif')";
+        }
+        else {
+            imageUrl = "url('../images/backgroundInfo.jpg')";
+        }
+
+        this.questionWindow.style.backgroundImage = imageUrl;
+        this.questionText.style.backgroundColor = "transparent";
+        this.questionText.style.fontWeight = "bold";
+        this.questionWindow.classList.add("fullScreen");
+    }
+    EndGameAnimation() {
+        this.SetBackground();
+        if (this.balance == 0) {
+            return;
+        }
+
+        let div = document.createElement("div");
+        div.classList.add("endGameDiv");
+
+        let label = document.createElement("label");
+        label.classList.add("endGameLabel");
+        label.innerText = "Podaj swoje imię";
+
+        let input = document.createElement("input");
+        input.classList.add("endGameInput");
+
+        let button = document.createElement("button");
+        button.classList.add("endGameButton");
+        button.innerText = "OK";
+
+        button.addEventListener("click", this.SaveScore());
+
+        div.append(label, input, button);
+
+        this.questionWindow.appendChild(div);
+    }
+    SaveScore() {
+        //TODO
+    }
+    AllCorrectAnswers() {
+
+        buttons.LockButtons();
+        buttons.SetDefaultTextForButtons();
+
+        this.balance = balance.SetCurrentBalance(1000000);
+
+        this.stateGameInformation = `Odpowiedziałeś poprawnie na wszystkie pytania! Wygrywasz ${this.balance} zł!`;
+        this.questionText.innerHTML = this.stateGameInformation;
+        this.EndGameAnimation();
+
+    }
+    EndGameWhenAnswerIsIncorrect = (button) => {
+        switch (this.questionNumber) {
+            case 1:
+            case 2:
+                this.IncorrectAnswerCase1and2();
+                break;
+            case 3:
+            case 4:
+            case 5:
+                this.IncorrectAnswerCase3to5();
+                break;
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                this.IncorrectAnswerCase6to10();
+                break;
+        }
+        buttons.LockButtons();
+        this.EndGameAnimation();
+        this.ShowCorrectAnswer();
+        this.ShowIncorrectAnswer(button);
+    }
+    ShowIncorrectAnswer(button) {
+        button.style.backgroundColor = "orange";
+    }
+    IncorrectAnswerCase1and2 = () => {
+
+        this.rowPrizeTable[0].classList.remove("currentAnswer");
+        this.stars[0].classList.remove("star");
+
+        this.balance = 0;
+    }
+
+    IncorrectAnswerCase3to5 = () => {
+
+        this.stars[0].classList.add("star");
+        this.rowPrizeTable[1].classList.add("currentAnswer")
+
+        this.rowPrizeTable[2].classList.remove("currentAnswer")
+        this.rowPrizeTable[3].classList.remove("currentAnswer")
+
+        this.stars[2].classList.remove("star");
+        this.stars[3].classList.remove("star");
+        this.balance = 2000;
+    }
+
+    IncorrectAnswerCase6to10 = () => {
+
+        this.rowPrizeTable[4].classList.add("currentAnswer")
+
+        for (let i = 5; i < 10; i++) {
+            this.stars[i].classList.remove("star");
+            this.rowPrizeTable[i].classList.remove("currentAnswer")
+        }
+
+        this.balance = 40000;
+    }
+    SetListneres(correctIndex) {
+        switch (correctIndex) {
+            case 0:
+                listener.SetListenersWhenTheCorrectAnswerIsA();
+                break;
+
+            case 1:
+                listener.SetListenersWhenTheCorrectAnswerIsB();
+                break;
+
+            case 2:
+                listener.SetListenersWhenTheCorrectAnswerIsC();
+                break;
+
+            case 3:
+                listener.SetListenersWhenTheCorrectAnswerIsD();
+                break;
+        }
+    }
+    ShowCorrectAnswer() {
+        switch (this.correctIndex) {
+            case 0:
+                if (this.balance == 0) {
+                    this.stateGameInformation = `\nPoprawna odpowiedź to A. Niestety tym razem nic nie wygrałeś :(`
+                }
+                else {
+                    this.stateGameInformation= `\nNiestety poprawna odpowiedź to A. Wygrywasz ${this.balance} zł!`;
+                }
+                this.btnA.style.backgroundColor = "green";
+                break;
+            case 1:
+                if (this.balance == 0) {
+                    this.stateGameInformation = `\nPoprawna odpowiedź to B. Niestety tym razem nic nie wygrałeś :(`
+                }
+                else {
+                    this.stateGameInformation = `\nNiestety poprawna odpowiedź to B. Wygrywasz ${this.balance} zł!`;
+                }
+                this.btnB.style.backgroundColor = "green";
+                break;
+            case 2:
+                if (this.balance == 0) {
+                    this.stateGameInformation = `\nPoprawna odpowiedź to C. Niestety tym razem nic nie wygrałeś :(`
+                }
+                else {
+                    this.stateGameInformation = `\nNiestety poprawna odpowiedź to C. Wygrywasz ${this.balance} zł!`;
+                }
+                this.btnC.style.backgroundColor = "green";
+                break;
+            case 3:
+                if (this.balance == 0) {
+                    this.stateGameInformation = `\nPoprawna odpowiedź to D. Niestety tym razem nic nie wygrałeś :(`
+                }
+                else {
+                    this.stateGameInformation = `\nNiestety poprawna odpowiedź to D. Wygrywasz ${this.balance} zł!`;
+                }
+                this.btnD.style.backgroundColor = "green";
+                break;
+        }
+        this.questionText.innerHTML = this.explainCorrectAnswer + this.stateGameInformation;
+    }
+}
+const game = new Game();
