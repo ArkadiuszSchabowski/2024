@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Production"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5285"
+      "applicationUrl": "http://localhost:5050"
     }
   }
 }

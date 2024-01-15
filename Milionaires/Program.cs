@@ -15,7 +15,7 @@ namespace Milionaires
 
             if (builder.Environment.IsProduction())
             {
-            builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MilionairesConnectionString")));
+                builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MilionairesConnectionString")));
             }
             else
             {
