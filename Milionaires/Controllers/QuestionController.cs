@@ -34,21 +34,13 @@ namespace Milionaires.Controllers
         [HttpPost]
         public IActionResult SaveScore([FromBody] Score score)
         {
-            if (!ModelState.IsValid)
+            Score record = _service.CreateRecord(score);
+
+            if (record == null)
             {
-                return BadRequest("Nieprawidłowe dane");
+                return BadRequest("Niepoprawne dane");
             }
-
-            var result = _context.Scores.Add(new Score
-            {
-                Name = score.Name,
-                Result = score.Result,
-                Date = DateTime.Now
-            });
-
-            _context.SaveChanges();
             return Ok("Wynik został zapisany");
         }
-
     }
 }

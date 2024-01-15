@@ -1,19 +1,25 @@
 ﻿using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using Milionaires.Database;
+using Milionaires.Database.Entities;
 using Milionaires.Models;
 
 namespace Milionaires.Service
 {
     public interface IQuestionService
     {
+        Score CreateRecord(Score score);
         List<Question> GetAll();
     }
 
     public class QuestionService : IQuestionService
     {
+        private readonly MyDbContext _context;
         private readonly List<Question> _questions;
 
-        public QuestionService()
+        public QuestionService(MyDbContext context)
         {
+            _context = context;
             _questions = new List<Question>
             {
                 new Question("Jak wygląda operator inkrementacji?", new[] { "A. ==", "B. ++", "C. --", "D. =" }, 1, "Operator inkrementacji '++' zwiększa wartość zmiennej o 1.", 1),
@@ -37,6 +43,14 @@ namespace Milionaires.Service
                 new Question("Jakie jest zastosowanie słowa kluczowego 'async' w języku C#?", new[] { "A. Określanie klas abstrakcyjnych", "B. Określanie klasy zapieczętowanej", "C. Tworzenie asynchronicznych metod", "D. Tworzenie interfejsów" }, 2, "Słowo kluczowe 'async' oznacza, że metoda jest asynchroniczna.", 10),
                 new Question("Jakie jest zastosowanie słowa kluczowego 'using' w języku C#?", new[] { "A. Tworzenie pętli", "B. Określanie dostępu do elementów klasy", "C. Importowanie przestrzeni nazw", "D. Tworzenie klas generycznych" }, 2, "Słowo kluczowe 'using' jest używane do importowania przestrzeni nazw.", 10),
             };
+        }
+
+        public Score CreateRecord(Score score)
+        {
+            score.Date = DateTime.Now;
+            _context.Scores.Add(score);
+            _context.SaveChanges();
+            return score;
         }
 
         public List<Question> GetAll()
