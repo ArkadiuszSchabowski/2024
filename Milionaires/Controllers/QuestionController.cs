@@ -31,7 +31,7 @@ namespace Milionaires.Controllers
 
             return Ok(_questions);
         }
-        [HttpPost("score")]
+        [HttpPost]
         public IActionResult SaveScore([FromBody] Score score)
         {
             if (!ModelState.IsValid)
@@ -39,7 +39,7 @@ namespace Milionaires.Controllers
                 return BadRequest("Nieprawidłowe dane");
             }
 
-            _context.Scores.Add(new Score
+            var result = _context.Scores.Add(new Score
             {
                 Name = score.Name,
                 Result = score.Result,
