@@ -12,12 +12,12 @@ namespace Milionaires.Service
         List<Question> GetAll();
     }
 
-    public class QuestionService : IQuestionService
+    public class GameService : IQuestionService
     {
         private readonly MyDbContext _context;
         private readonly List<Question> _questions;
 
-        public QuestionService(MyDbContext context)
+        public GameService(MyDbContext context)
         {
             _context = context;
             _questions = new List<Question>

@@ -53,7 +53,7 @@ class Game {
 
     GetContent = async () => {
         try {
-            const path = "api/question";
+            const path = "api/game";
             const response = await fetch(path);
 
             this.btnA = document.querySelector("#btnA");

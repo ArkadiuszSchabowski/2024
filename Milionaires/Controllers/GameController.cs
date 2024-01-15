@@ -8,11 +8,11 @@ namespace Milionaires.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class QuestionController : ControllerBase
+    public class GameController : ControllerBase
     {
         private readonly MyDbContext _context;
         private readonly IQuestionService _service;
-        public QuestionController(IQuestionService service, MyDbContext context)
+        public GameController(IQuestionService service, MyDbContext context)
         {
             _service = service;
             _context = context;
