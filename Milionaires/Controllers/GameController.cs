@@ -11,18 +11,17 @@ namespace Milionaires.Controllers
     public class GameController : ControllerBase
     {
         private readonly MyDbContext _context;
-        private readonly IQuestionService _service;
-        public GameController(IQuestionService service, MyDbContext context)
+        private readonly IGameService _service;
+        public GameController(IGameService service, MyDbContext context)
         {
             _service = service;
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet("questions")]
         public IActionResult GetQuestions()
         {
-            var _questions = _service.GetAll();
-
+            var _questions = _service.GetAllQuestions();
 
             if (_questions == null)
             {
@@ -31,6 +30,17 @@ namespace Milionaires.Controllers
 
             return Ok(_questions);
         }
+        [HttpGet("scores")]
+        public IActionResult GetScores()
+        {
+            var scores = _service.GetAllScores();
+            if(scores == null)
+            {
+                return NotFound(new { message = "Brak wyników w bazie danych", data = scores });
+            }
+            return Ok(scores);
+        }
+
         [HttpPost]
         public IActionResult SaveScore([FromBody] Score score)
         {

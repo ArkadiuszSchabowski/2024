@@ -22,7 +22,7 @@ namespace Milionaires
                 builder.Services.AddDbContext<MyDbContext>(options => options.UseInMemoryDatabase("MemoryDb"));
             }
 
-            builder.Services.AddScoped<IQuestionService, GameService>();
+            builder.Services.AddScoped<IGameService, GameService>();
 
             var app = builder.Build();
 

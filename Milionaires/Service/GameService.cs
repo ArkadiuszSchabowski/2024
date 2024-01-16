@@ -6,13 +6,14 @@ using Milionaires.Models;
 
 namespace Milionaires.Service
 {
-    public interface IQuestionService
+    public interface IGameService
     {
         Score CreateRecord(Score score);
-        List<Question> GetAll();
+        List<Question> GetAllQuestions();
+        List<Score> GetAllScores();
     }
 
-    public class GameService : IQuestionService
+    public class GameService : IGameService
     {
         private readonly MyDbContext _context;
         private readonly List<Question> _questions;
@@ -53,9 +54,15 @@ namespace Milionaires.Service
             return score;
         }
 
-        public List<Question> GetAll()
+        public List<Question> GetAllQuestions()
         {
             return _questions;
+        }
+
+        public List<Score> GetAllScores()
+        {
+            var scores = _context.Scores.ToList();
+            return scores;
         }
     }
 }
