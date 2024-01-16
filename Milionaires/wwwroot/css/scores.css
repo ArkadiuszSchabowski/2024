@@ -1,7 +1,9 @@
-﻿#scoresContainer{
+﻿#scoresContainer {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100vw;
+    color: white;
 }
 
 #scoresTable {
@@ -17,24 +19,27 @@
 }
 #scoresTableTitle {
     display: flex;
-    width: 90%;
+    width: 100%;
     height: 10%;
     justify-content: center;
     align-items: center;
     margin-top: 2vh;
     font-size: 30px;
     font-weight: bold;
-    color: white;
     background-color: transparent;
+}
+#scoreTableRows{
+    justify-content: center;
+    text-align: center;
+    width: 30%;
+    height: 100%;
 }
 .scoreRow {
-    display: flex;
-    flex-direction: row;
-    margin-top: 2vh;
-    font-size: 26px;
-    color: white;
-    background-color: transparent;
-}
-.score, .name, .numberScore {
-    margin: 2vh 2vw;
+    width: 100%;
+    height: 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 1vh;
+    font-size: 20px;
+    font-weight: bold;
 }
