@@ -1,20 +1,16 @@
-﻿@model List<Milionaires.Database.Entities.Score>
-@{
-    ViewData["Title"] = "Najlepsze Wyniki";
-}
-
-<div id="scoresContainer">
-    <div id="scoresTable">
-        <div id="scoresTableTitle">Najlepsze wyniki</div>
-        <div id="scoreTableRows">
-            @foreach (var score in Model)
-            {
-                <div class="scoreRow">
-                    <div class="name">@score.Name</div>
-                    <div class="score">@score.Result</div>
-                    <div class="date">@score.Date.ToString("dd/MM/yyyy")</div>
-                </div>
-            }
-        </div>
+﻿<div id="scoreContainer">
+    <div id="scoreTitle">TABELA WYNIKÓW:</div>
+    <div id="scoreResult">
+        <div id="scoreNameRow"></div>
+        <div id="scoreResultRow"></div>
+        <div id="scoreDateRow"></div>
+    </div>
+    <div id="pageSizeContainer">
+        <label id="pageSizeLbl">Ilość wyników na stronie:</label>
+        <div id="pageSize5" class="pageSizeRow">5</div>
+        <div id="pageSize10" class="pageSizeRow">10</div>
+        <div id="pageSize25" class="pageSizeRow">25</div>
+        <div id="pageSize50" class="pageSizeRow">50</div>
     </div>
 </div>
+<script src="~/js/scores.js"></script>

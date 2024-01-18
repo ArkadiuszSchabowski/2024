@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Milionaires.Database;
+using Milionaires.Database.Entities;
 using Milionaires.Models;
 using System.Diagnostics;
 
@@ -23,7 +24,7 @@ namespace Milionaires.Controllers
         }
         public IActionResult Scores()
         {
-            var scores = _context.Scores.OrderByDescending(s => s.Result).ToList();
+            List<Score> scores = _context.Scores.OrderByDescending(s => s.Result).ToList();
 
             return View(scores);
         }

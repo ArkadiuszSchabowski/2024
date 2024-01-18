@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR.Protocol;
 using Milionaires.Database;
 using Milionaires.Database.Entities;
 using Milionaires.Service;
@@ -31,12 +32,13 @@ namespace Milionaires.Controllers
             return Ok(_questions);
         }
         [HttpGet("scores")]
-        public IActionResult GetScores()
+        public IActionResult GetScores([FromQuery] int pageSize)
         {
-            var scores = _service.GetAllScores();
+            var scores = _service.GetAllScores(pageSize);
+
             if(scores == null)
             {
-                return NotFound(new { message = "Brak wyników w bazie danych", data = scores });
+                return NotFound(new { message = "Nie udało połączyć się z bazą danych" });
             }
             return Ok(scores);
         }
