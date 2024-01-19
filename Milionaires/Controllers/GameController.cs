@@ -32,9 +32,9 @@ namespace Milionaires.Controllers
             return Ok(_questions);
         }
         [HttpGet("scores")]
-        public IActionResult GetScores([FromQuery] int pageSize)
+        public IActionResult GetScores([FromQuery] int pageSize, [FromQuery] int pageNumber)
         {
-            var scores = _service.GetAllScores(pageSize);
+            var scores = _service.GetAllScores(pageSize, pageNumber);
 
             if(scores == null)
             {

@@ -1,19 +1,22 @@
 ﻿#scoreContainer {
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    height: 90vh;
-    background-image: url(../images/backgroundInfo.jpg);
+    width: 90vw;
+    height: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(../images/backgroundResult.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
-    justify-content: center;
     align-items: center;
+    border: 2px solid black;
 }
 #scoreTitle {
     display: flex;
-    background-color: transparent;
-    color: white;
     font-size: 40px;
+    margin-top: 2vh;
+    color: white;
+    background-color: transparent;
 }
 #scoreResult {
     display: flex;
@@ -23,7 +26,7 @@
     width: 90vw;
     height: auto;
     color: white;
-    font-size: 14px;
+    font-size: 20px;
     background-color: transparent;
     margin-top: 5vh;
     margin-bottom: 5vh;
@@ -38,10 +41,29 @@
     align-items: center;
     height: auto;
     width: 90vw;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
 }
 .pageSizeRow{
     text-align: center;
     margin-left: 2vw;
+}
+#pageNumberContainer{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    font-size: 60px;
+}
+#pageCurrentNumber{
+    margin: 0 2vw;
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    #scoreContainer {
+        border-radius: 10px;
+    }
+}
+@media screen and (min-width: 1200px) {
+    #scoreContainer {
+        border-radius: 10px;
+    }
 }

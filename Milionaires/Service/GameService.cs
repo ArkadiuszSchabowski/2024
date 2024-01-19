@@ -10,7 +10,7 @@ namespace Milionaires.Service
     {
         Score CreateRecord(Score score);
         List<Question> GetAllQuestions();
-        List<Score> GetAllScores(int pageSize);
+        List<Score> GetAllScores(int pageSize, int pageNumber);
     }
 
     public class GameService : IGameService
@@ -59,15 +59,20 @@ namespace Milionaires.Service
             return _questions;
         }
 
-        public List<Score> GetAllScores(int pageSize)
+        public List<Score> GetAllScores(int pageSize, int pageNumber)
         {
-            List<Score> scores = new List<Score>();
-
-            if(pageSize == 0)
+            if (pageSize <= 0 || pageNumber <= 0)
             {
-                return scores;
+                return new List<Score>();
             }
-            scores = _context.Scores.Take(pageSize).OrderByDescending(x=>x.Result).ToList();
+
+
+            List<Score> scores = _context.Scores
+                .OrderByDescending(x => x.Result)
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
+                .ToList();
+
             return scores;
         }
     }

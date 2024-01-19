@@ -6,11 +6,14 @@ class Score {
         this.scoreDate = document.getElementById("scoreDateRow");
 
         this.pageSize = 10;
+        this.pageNumber = 1;
         this.pageSize5 = document.getElementById("pageSize5");
         this.pageSize10 = document.getElementById("pageSize10");
         this.pageSize25 = document.getElementById("pageSize25");
         this.pageSize50 = document.getElementById("pageSize50");
-
+        this.pageNumberDecrement = document.getElementById("pageNumberDecrement");
+        this.pageNumberIncrement = document.getElementById("pageNumberIncrement");
+        this.pageCurrentNumber = document.getElementById("pageCurrentNumber");
     }
     Init() {
         this.GetMainPage();
@@ -21,9 +24,28 @@ class Score {
         this.pageSize10.addEventListener("click", () => this.SetPageSize10());
         this.pageSize25.addEventListener("click", () => this.SetPageSize25());
         this.pageSize50.addEventListener("click", () => this.SetPageSize50());
+        this.pageNumberDecrement.addEventListener("click", () => this.PageNumberDecrement());
+        this.pageNumberIncrement.addEventListener("click", () => this.PageNumberIncrement());
     }
+    PageNumberDecrement() {
+        if (this.pageNumber <= 1) {
+            return;
+        }
+        this.pageNumber--;
+        this.pageCurrentNumber.innerText = this.pageNumber;
+        this.GetMainPage();
+    }
+    PageNumberIncrement() {
+        if (this.pageSize * this.pageNumber >= 100) {
+            return;
+        }
+        this.pageNumber++;
+        this.pageCurrentNumber.innerText = this.pageNumber;
+        this.GetMainPage();
+    }
+
     async GetMainPage() {
-        const path = `${this.host}/api/game/scores?pageSize=${this.pageSize}`
+        const path = `${this.host}/api/game/scores?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`;
         const response = await fetch(path);
         const data = await response.json();
 
@@ -36,23 +58,27 @@ class Score {
         this.scoreDate.innerHTML = "";
     }
     SetPageSize5() {
+        this.pageNumber = 1;
+        this.pageCurrentNumber.innerText = this.pageNumber;
         this.pageSize = 5;
-        this.pageSize5.style.pointerEvents = "auto";
         this.GetMainPage();
     }
     SetPageSize10() {
+        this.pageNumber = 1;
+        this.pageCurrentNumber.innerText = this.pageNumber;
         this.pageSize = 10;
-        this.pageSize10.style.pointerEvents = "auto";
         this.GetMainPage();
     }
     SetPageSize25() {
+        this.pageNumber = 1;
+        this.pageCurrentNumber.innerText = this.pageNumber;
         this.pageSize = 25;
-        this.pageSize25.style.pointerEvents = "auto";
         this.GetMainPage();
     }
     SetPageSize50() {
+        this.pageNumber = 1;
+        this.pageCurrentNumber.innerText = this.pageNumber;
         this.pageSize = 50;
-        this.pageSize50.style.pointerEvents = "auto";
         this.GetMainPage();
     }
 

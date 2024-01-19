@@ -16,7 +16,7 @@
     margin-left: 5%;
     padding: 1%;
     text-align: center;
-    background-color: #303f9f;
+    background-image: url(../images/backgroundResult.jpeg);
     border-radius: 5px;
 }
 
@@ -26,7 +26,7 @@
     justify-content: center;
     width: 100%;
     height: 50%;
-    background-color: #303f9f;
+    background-image: url(../images/backgroundResult.jpeg);
 }
 
 .btnAnswer {
