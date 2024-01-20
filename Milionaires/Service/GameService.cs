@@ -71,12 +71,14 @@ namespace Milionaires.Service
 
             int scoreCounter = baseQuery.Count();
 
+
             ScoreQuery query = new ScoreQuery(new ScoreDto
             {
                 PageNumber = scoreDto.PageNumber,
                 PageSize = scoreDto.PageSize,
             });
 
+            query.ListScores = scores;
 
             return query;
         }

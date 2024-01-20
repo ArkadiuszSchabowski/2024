@@ -52,10 +52,9 @@ class Score {
         const path = `${this.host}/api/game/scores?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`;
         const response = await fetch(path);
         const data = await response.json();
-        console.log(data)
-
+        console.log(data);
         this.ClearScores();
-        this.CreateNewTable(data);
+        this.CreateNewTable(data.listScores);
     }
     ClearScores() {
         this.scoreName.innerHTML = "";

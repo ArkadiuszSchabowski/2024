@@ -1,7 +1,10 @@
-﻿namespace Milionaires.Models
+﻿using Milionaires.Database.Entities;
+
+namespace Milionaires.Models
 {
     public class ScoreQuery
     {
+        public List<Score> ListScores { get; set; }
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
         public int ItemsFrom {  get; set; }
@@ -12,6 +15,7 @@
 
         public ScoreQuery(ScoreDto scoreDto)
         {
+            ListScores = new List<Score>();
             PageNumber = scoreDto.PageNumber;
             PageSize = scoreDto.PageSize;
             ItemsFrom = 0;
