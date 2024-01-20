@@ -7,6 +7,10 @@ class Score {
 
         this.pageSize = 10;
         this.pageNumber = 1;
+
+        this.counterResult;
+        this.counterSide;
+
         this.pageSize5 = document.getElementById("pageSize5");
         this.pageSize10 = document.getElementById("pageSize10");
         this.pageSize25 = document.getElementById("pageSize25");
@@ -48,6 +52,7 @@ class Score {
         const path = `${this.host}/api/game/scores?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`;
         const response = await fetch(path);
         const data = await response.json();
+        console.log(data)
 
         this.ClearScores();
         this.CreateNewTable(data);
@@ -58,24 +63,40 @@ class Score {
         this.scoreDate.innerHTML = "";
     }
     SetPageSize5() {
+        this.pageSize5.classList.add("currentPage");
+        this.pageSize10.classList.remove("currentPage");
+        this.pageSize25.classList.remove("currentPage");
+        this.pageSize50.classList.remove("currentPage");
         this.pageNumber = 1;
         this.pageCurrentNumber.innerText = this.pageNumber;
         this.pageSize = 5;
         this.GetMainPage();
     }
     SetPageSize10() {
+        this.pageSize5.classList.remove("currentPage");
+        this.pageSize10.classList.add("currentPage");
+        this.pageSize25.classList.remove("currentPage");
+        this.pageSize50.classList.remove("currentPage");
         this.pageNumber = 1;
         this.pageCurrentNumber.innerText = this.pageNumber;
         this.pageSize = 10;
         this.GetMainPage();
     }
     SetPageSize25() {
+        this.pageSize5.classList.remove("currentPage");
+        this.pageSize10.classList.remove("currentPage");
+        this.pageSize25.classList.add("currentPage");
+        this.pageSize50.classList.remove("currentPage");
         this.pageNumber = 1;
         this.pageCurrentNumber.innerText = this.pageNumber;
         this.pageSize = 25;
         this.GetMainPage();
     }
     SetPageSize50() {
+        this.pageSize5.classList.remove("currentPage");
+        this.pageSize10.classList.remove("currentPage");
+        this.pageSize25.classList.remove("currentPage");
+        this.pageSize50.classList.add("currentPage");
         this.pageNumber = 1;
         this.pageCurrentNumber.innerText = this.pageNumber;
         this.pageSize = 50;

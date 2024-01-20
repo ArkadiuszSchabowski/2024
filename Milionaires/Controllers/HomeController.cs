@@ -24,9 +24,7 @@ namespace Milionaires.Controllers
         }
         public IActionResult Scores()
         {
-            List<Score> scores = _context.Scores.OrderByDescending(s => s.Result).ToList();
-
-            return View(scores);
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

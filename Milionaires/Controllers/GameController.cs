@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.SignalR.Protocol;
 using Milionaires.Database;
 using Milionaires.Database.Entities;
+using Milionaires.Models;
 using Milionaires.Service;
 using System;
+using System.Xml;
 
 namespace Milionaires.Controllers
 {
@@ -11,12 +13,10 @@ namespace Milionaires.Controllers
     [ApiController]
     public class GameController : ControllerBase
     {
-        private readonly MyDbContext _context;
         private readonly IGameService _service;
-        public GameController(IGameService service, MyDbContext context)
+        public GameController(IGameService service)
         {
             _service = service;
-            _context = context;
         }
 
         [HttpGet("questions")]
@@ -32,9 +32,9 @@ namespace Milionaires.Controllers
             return Ok(_questions);
         }
         [HttpGet("scores")]
-        public IActionResult GetScores([FromQuery] int pageSize, [FromQuery] int pageNumber)
+        public IActionResult GetScores([FromQuery] ScoreDto scoreDto)
         {
-            var scores = _service.GetAllScores(pageSize, pageNumber);
+            ScoreQuery scores = _service.GetAllScores(scoreDto);
 
             if(scores == null)
             {
