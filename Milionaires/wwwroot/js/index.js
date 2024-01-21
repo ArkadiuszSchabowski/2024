@@ -98,7 +98,7 @@
             case 1:
                 this.balance = balance.SetStartBalance();
                 this.SetQuestionContent(this.questions1);
-                this.SetButtonResign();
+                userDecision.ResignOption();
                 break;
 
             case 2:
@@ -189,173 +189,12 @@
     ShowQuestion() {
         this.questionText.style.display = "block";
     }
-    SetButtonResign() {
-        this.btnResign.addEventListener("click", () => {
-
-            let imageUrl = "url('../images/backgroundInfo.jpg')";
-            this.questionWindow.style.backgroundImage = imageUrl;
-            this.questionText.style.backgroundImage = "none";
-
-            this.HideQuestion();
-            buttons.LockButtons();
-
-            let div = document.createElement("div");
-            div.classList.add("endGameDiv");
-
-            let label = document.createElement("label");
-            label.classList.add("endGameLabel");
-            label.innerText = "Definitywnie chcesz się wycofać?";
-
-            let buttonDiv = document.createElement("buttonDiv");
-            buttonDiv.classList.add("buttonsRow");
-
-            let buttonYes = document.createElement("button");
-            buttonYes.classList.add("endGameButton");
-            buttonYes.innerText = "TAK";
-
-            let buttonNo = document.createElement("button");
-            buttonNo.id = "btnResignNo";
-            buttonNo.classList.add("endGameButton");
-            buttonNo.innerText = "NIE";
-
-            buttonDiv.append(buttonYes, buttonNo);
-
-
-            div.append(label, buttonDiv);
-
-            this.questionWindow.appendChild(div);
-
-            buttonYes.addEventListener("click", () => {
-
-                this.ShowQuestion();
-                this.questionWindow.removeChild(div);
-
-                if (this.balance === 0) {
-                    this.stateGameInformation = `\nJeszcze nie zaczeliśmy gry, a juz sie wycofałeś? Mimo wszystko dziekuję za udział w grze!`;
-                }
-                else if ((this.balance !== 0) && (this.balance !== 2000) && (this.balance !== 40000)) {
-                    this.stateGameInformation = `\nTo dobra decyzja, żeby sie wycofać. Gratulacje wygrywasz ${this.balance} zł!`;
-                }
-                else if ((this.balance === 2000) || (this.balance === 40000)) {
-                    this.stateGameInformation = `\nZrezygnowałeś na progu gwarantowanym. Wygrywasz ${this.balance} zł!`;
-                }
-                this.questionText.innerHTML = this.explainCorrectAnswer + this.stateGameInformation;
-                this.EndGameAnimation();
-                buttons.SetDefaultTextForButtons();
-            });
-
-            buttonNo.addEventListener("click", () => {
-                imageUrl = "url('../images/background.jpg')";
-                this.questionWindow.style.backgroundImage = imageUrl;
-                this.ShowQuestion();
-                this.questionWindow.removeChild(div);
-                buttons.UnlockButtons();
-            })
-        })
-    }
     SetBackground() {
-        let imageUrl;
 
         if (this.balance === 1000000) {
-            imageUrl = "url('../images/highestPrice.gif')";
+            this.questionWindow.style.backgroundImage = "url('../images/highestPrice.gif')";
+            this.questionText.style.backgroundColor = "transparent";
         }
-        else {
-            imageUrl = "url('../images/backgroundInfo.jpg')";
-        }
-
-        this.questionWindow.style.backgroundImage = imageUrl;
-        this.questionText.style.backgroundImage = "none";
-        this.questionText.style.fontWeight = "bold";
-    }
-    EndGameAnimation() {
-        this.SetBackground();
-        if (this.balance === 0) {
-            this.ShowSaveConfirmation();
-            return;
-        }
-
-        let div = document.createElement("div");
-        div.classList.add("endGameDiv");
-
-        let label = document.createElement("label");
-        label.classList.add("endGameLabel");
-        label.innerText = "Podaj swoje imię";
-
-        let input = document.createElement("input");
-        input.classList.add("endGameInput");
-
-        let button = document.createElement("button");
-        button.classList.add("endGameButton");
-        button.innerText = "OK";
-
-
-        div.append(label, input, button);
-
-        this.questionWindow.appendChild(div);
-
-        button.addEventListener("click", () => {
-            let name = input.value;
-            let object = {
-                Name: name,
-                Result: this.balance
-            };
-
-            const path = `${this.host}/api/game`;
-            fetch(path, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(object)
-            }).then(response => {
-                if (response.ok) {
-                    this.ShowSaveConfirmation(div);
-                }
-            });
-        });
-    }
-
-    ShowSaveConfirmation(oldDiv) {
-
-        if (this.balance != 0) {
-        this.questionWindow.removeChild(oldDiv);
-        this.questionText.innerHTML = "Gratulacje wspaniałego wyniku!";
-        }
-
-        let div = document.createElement("div");
-        div.classList.add("endGameDiv");
-
-        let label = document.createElement("label");
-        label.classList.add("endGameLabel");
-        label.innerText = "Czy chcesz zagrać jeszcze raz?";
-
-        let buttonDiv = document.createElement("buttonDiv");
-        buttonDiv.classList.add("buttonsRow");
-
-        let buttonYes = document.createElement("button");
-        buttonYes.classList.add("endGameButton");
-        buttonYes.innerText = "TAK";
-
-        let buttonNo = document.createElement("button");
-        buttonNo.id = "btnResignNo";
-        buttonNo.classList.add("endGameButton");
-        buttonNo.innerText = "NIE";
-
-        buttonDiv.append(buttonYes, buttonNo);
-
-        buttonYes.addEventListener("click", () => {
-            window.location.href = "/Home/Index";
-        })
-        buttonNo.addEventListener("click", () => {
-            this.questionText.innerHTML = "Dziękujemy za grę!";
-            this.EndGame();
-            buttons.SetDefaultTextForButtons();
-            this.questionWindow.removeChild(div);
-        })
-
-        div.append(label, buttonDiv);
-
-        this.questionWindow.appendChild(div);
     }
 
     AllCorrectAnswers() {
@@ -367,7 +206,7 @@
 
         this.stateGameInformation = `Odpowiedziałeś poprawnie na wszystkie pytania! Wygrywasz ${this.balance} zł!`;
         this.questionText.innerHTML = this.stateGameInformation;
-        this.EndGameAnimation();
+        userDecision.SaveScoreOption();
 
     }
     EndGameWhenAnswerIsIncorrect = (button) => {
@@ -390,7 +229,7 @@
                 break;
         }
         buttons.LockButtons();
-        this.EndGameAnimation();
+        userDecision.SaveScoreOption();
         this.ShowCorrectAnswer();
         this.ShowIncorrectAnswer(button);
     }
@@ -409,6 +248,7 @@
     }
     IncorrectAnswerCase1and2 = () => {
 
+        this.questionText.style.backgroundColor = "transparent"
         this.rowPrizeTable[0].classList.remove("currentAnswer");
         this.stars[0].classList.remove("star");
 
