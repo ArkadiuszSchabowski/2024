@@ -13,10 +13,6 @@
     overflow-x: hidden;
 }
 
-.centerMobile {
-    justify-content: center;
-}
-
 .row {
     display: flex;
     flex-direction: row;
@@ -132,10 +128,6 @@
             margin-bottom: 5px;
         }
 
-    .centerMobile {
-        justify-content: normal;
-    }
-
     #scoreResult {
         justify-content: center;
         margin-left: 0;
@@ -179,10 +171,6 @@
 
     #currentScopeText {
         margin-right: 4%;
-    }
-
-    .centerMobile {
-        justify-content: normal;
     }
 
     #scoreResult {

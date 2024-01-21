@@ -194,6 +194,7 @@
 
             let imageUrl = "url('../images/backgroundInfo.jpg')";
             this.questionWindow.style.backgroundImage = imageUrl;
+            this.questionText.style.backgroundImage = "none";
 
             this.HideQuestion();
             buttons.LockButtons();
@@ -263,13 +264,13 @@
         }
 
         this.questionWindow.style.backgroundImage = imageUrl;
-        this.questionText.style.backgroundColor = "transparent";
+        this.questionText.style.backgroundImage = "none";
         this.questionText.style.fontWeight = "bold";
-        this.questionWindow.classList.add("fullScreen");
     }
     EndGameAnimation() {
         this.SetBackground();
-        if (this.balance == 0) {
+        if (this.balance === 0) {
+            this.ShowSaveConfirmation();
             return;
         }
 
@@ -287,13 +288,18 @@
         button.classList.add("endGameButton");
         button.innerText = "OK";
 
+
+        div.append(label, input, button);
+
+        this.questionWindow.appendChild(div);
+
         button.addEventListener("click", () => {
             let name = input.value;
             let object = {
                 Name: name,
                 Result: this.balance
             };
-            console.log(name, this.balance);
+
             const path = `${this.host}/api/game`;
             fetch(path, {
                 method: "POST",
@@ -301,145 +307,197 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(object)
-            })
+            }).then(response => {
+                if (response.ok) {
+                    this.ShowSaveConfirmation(div);
+                }
+            });
         });
+    }
 
+    ShowSaveConfirmation(oldDiv) {
 
-        div.append(label, input, button);
+        if (this.balance != 0) {
+        this.questionWindow.removeChild(oldDiv);
+        this.questionText.innerHTML = "Gratulacje wspaniałego wyniku!";
+        }
+
+        let div = document.createElement("div");
+        div.classList.add("endGameDiv");
+
+        let label = document.createElement("label");
+        label.classList.add("endGameLabel");
+        label.innerText = "Czy chcesz zagrać jeszcze raz?";
+
+        let buttonDiv = document.createElement("buttonDiv");
+        buttonDiv.classList.add("buttonsRow");
+
+        let buttonYes = document.createElement("button");
+        buttonYes.classList.add("endGameButton");
+        buttonYes.innerText = "TAK";
+
+        let buttonNo = document.createElement("button");
+        buttonNo.id = "btnResignNo";
+        buttonNo.classList.add("endGameButton");
+        buttonNo.innerText = "NIE";
+
+        buttonDiv.append(buttonYes, buttonNo);
+
+        buttonYes.addEventListener("click", () => {
+            window.location.href = "/Home/Index";
+        })
+        buttonNo.addEventListener("click", () => {
+            this.questionText.innerHTML = "Dziękujemy za grę!";
+            this.EndGame();
+            buttons.SetDefaultTextForButtons();
+            this.questionWindow.removeChild(div);
+        })
+
+        div.append(label, buttonDiv);
 
         this.questionWindow.appendChild(div);
     }
 
-AllCorrectAnswers() {
+    AllCorrectAnswers() {
 
-    buttons.LockButtons();
-    buttons.SetDefaultTextForButtons();
+        buttons.LockButtons();
+        buttons.SetDefaultTextForButtons();
 
-    this.balance = balance.SetCurrentBalance(1000000);
+        this.balance = balance.SetCurrentBalance(1000000);
 
-    this.stateGameInformation = `Odpowiedziałeś poprawnie na wszystkie pytania! Wygrywasz ${this.balance} zł!`;
-    this.questionText.innerHTML = this.stateGameInformation;
-    this.EndGameAnimation();
+        this.stateGameInformation = `Odpowiedziałeś poprawnie na wszystkie pytania! Wygrywasz ${this.balance} zł!`;
+        this.questionText.innerHTML = this.stateGameInformation;
+        this.EndGameAnimation();
 
-}
-EndGameWhenAnswerIsIncorrect = (button) => {
-    switch (this.questionNumber) {
-        case 1:
-        case 2:
-            this.IncorrectAnswerCase1and2();
-            break;
-        case 3:
-        case 4:
-        case 5:
-            this.IncorrectAnswerCase3to5();
-            break;
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-        case 10:
-            this.IncorrectAnswerCase6to10();
-            break;
     }
-    buttons.LockButtons();
-    this.EndGameAnimation();
-    this.ShowCorrectAnswer();
-    this.ShowIncorrectAnswer(button);
-}
-ShowIncorrectAnswer(button) {
-    button.style.backgroundColor = "orange";
-}
-IncorrectAnswerCase1and2 = () => {
+    EndGameWhenAnswerIsIncorrect = (button) => {
+        switch (this.questionNumber) {
+            case 1:
+            case 2:
+                this.IncorrectAnswerCase1and2();
+                break;
+            case 3:
+            case 4:
+            case 5:
+                this.IncorrectAnswerCase3to5();
+                break;
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                this.IncorrectAnswerCase6to10();
+                break;
+        }
+        buttons.LockButtons();
+        this.EndGameAnimation();
+        this.ShowCorrectAnswer();
+        this.ShowIncorrectAnswer(button);
+    }
+    ShowIncorrectAnswer(button) {
+        button.style.backgroundColor = "orange";
+    }
+    EndGame() {
+        for (let i = 0; i < 10; i++) {
+            this.stars[i].classList.remove("star");
+            this.rowPrizeTable[i].classList.remove("currentAnswer")
+        }
+        this.btnA.style.backgroundColor = "#d9d9d9";
+        this.btnB.style.backgroundColor = "#d9d9d9";
+        this.btnC.style.backgroundColor = "#d9d9d9";
+        this.btnD.style.backgroundColor = "#d9d9d9";
+    }
+    IncorrectAnswerCase1and2 = () => {
 
-    this.rowPrizeTable[0].classList.remove("currentAnswer");
-    this.stars[0].classList.remove("star");
+        this.rowPrizeTable[0].classList.remove("currentAnswer");
+        this.stars[0].classList.remove("star");
 
-    this.balance = 0;
-}
-
-IncorrectAnswerCase3to5 = () => {
-
-    this.stars[0].classList.add("star");
-    this.rowPrizeTable[1].classList.add("currentAnswer")
-
-    this.rowPrizeTable[2].classList.remove("currentAnswer")
-    this.rowPrizeTable[3].classList.remove("currentAnswer")
-
-    this.stars[2].classList.remove("star");
-    this.stars[3].classList.remove("star");
-    this.balance = 2000;
-}
-
-IncorrectAnswerCase6to10 = () => {
-
-    this.rowPrizeTable[4].classList.add("currentAnswer")
-
-    for (let i = 5; i < 10; i++) {
-        this.stars[i].classList.remove("star");
-        this.rowPrizeTable[i].classList.remove("currentAnswer")
+        this.balance = 0;
     }
 
-    this.balance = 40000;
-}
-SetListneres(correctIndex) {
-    switch (correctIndex) {
-        case 0:
-            listener.SetListenersWhenTheCorrectAnswerIsA();
-            break;
+    IncorrectAnswerCase3to5 = () => {
 
-        case 1:
-            listener.SetListenersWhenTheCorrectAnswerIsB();
-            break;
+        this.stars[0].classList.add("star");
+        this.rowPrizeTable[1].classList.add("currentAnswer")
 
-        case 2:
-            listener.SetListenersWhenTheCorrectAnswerIsC();
-            break;
+        this.rowPrizeTable[2].classList.remove("currentAnswer")
+        this.rowPrizeTable[3].classList.remove("currentAnswer")
 
-        case 3:
-            listener.SetListenersWhenTheCorrectAnswerIsD();
-            break;
+        this.stars[2].classList.remove("star");
+        this.stars[3].classList.remove("star");
+        this.balance = 2000;
     }
-}
-ShowCorrectAnswer() {
-    switch (this.correctIndex) {
-        case 0:
-            if (this.balance == 0) {
-                this.stateGameInformation = `\nPoprawna odpowiedź to A. Niestety tym razem nic nie wygrałeś :(`
-            }
-            else {
-                this.stateGameInformation = `\nNiestety poprawna odpowiedź to A. Wygrywasz ${this.balance} zł!`;
-            }
-            this.btnA.style.backgroundColor = "green";
-            break;
-        case 1:
-            if (this.balance == 0) {
-                this.stateGameInformation = `\nPoprawna odpowiedź to B. Niestety tym razem nic nie wygrałeś :(`
-            }
-            else {
-                this.stateGameInformation = `\nNiestety poprawna odpowiedź to B. Wygrywasz ${this.balance} zł!`;
-            }
-            this.btnB.style.backgroundColor = "green";
-            break;
-        case 2:
-            if (this.balance == 0) {
-                this.stateGameInformation = `\nPoprawna odpowiedź to C. Niestety tym razem nic nie wygrałeś :(`
-            }
-            else {
-                this.stateGameInformation = `\nNiestety poprawna odpowiedź to C. Wygrywasz ${this.balance} zł!`;
-            }
-            this.btnC.style.backgroundColor = "green";
-            break;
-        case 3:
-            if (this.balance == 0) {
-                this.stateGameInformation = `\nPoprawna odpowiedź to D. Niestety tym razem nic nie wygrałeś :(`
-            }
-            else {
-                this.stateGameInformation = `\nNiestety poprawna odpowiedź to D. Wygrywasz ${this.balance} zł!`;
-            }
-            this.btnD.style.backgroundColor = "green";
-            break;
+
+    IncorrectAnswerCase6to10 = () => {
+
+        this.rowPrizeTable[4].classList.add("currentAnswer")
+
+        for (let i = 5; i < 10; i++) {
+            this.stars[i].classList.remove("star");
+            this.rowPrizeTable[i].classList.remove("currentAnswer")
+        }
+
+        this.balance = 40000;
     }
-    this.questionText.innerHTML = this.explainCorrectAnswer + this.stateGameInformation;
-}
+    SetListneres(correctIndex) {
+        switch (correctIndex) {
+            case 0:
+                listener.SetListenersWhenTheCorrectAnswerIsA();
+                break;
+
+            case 1:
+                listener.SetListenersWhenTheCorrectAnswerIsB();
+                break;
+
+            case 2:
+                listener.SetListenersWhenTheCorrectAnswerIsC();
+                break;
+
+            case 3:
+                listener.SetListenersWhenTheCorrectAnswerIsD();
+                break;
+        }
+    }
+    ShowCorrectAnswer() {
+        switch (this.correctIndex) {
+            case 0:
+                if (this.balance == 0) {
+                    this.stateGameInformation = `\nPoprawna odpowiedź to A. Niestety tym razem nic nie wygrałeś :(`
+                }
+                else {
+                    this.stateGameInformation = `\nNiestety poprawna odpowiedź to A. Wygrywasz ${this.balance} zł!`;
+                }
+                this.btnA.style.backgroundColor = "green";
+                break;
+            case 1:
+                if (this.balance == 0) {
+                    this.stateGameInformation = `\nPoprawna odpowiedź to B. Niestety tym razem nic nie wygrałeś :(`
+                }
+                else {
+                    this.stateGameInformation = `\nNiestety poprawna odpowiedź to B. Wygrywasz ${this.balance} zł!`;
+                }
+                this.btnB.style.backgroundColor = "green";
+                break;
+            case 2:
+                if (this.balance == 0) {
+                    this.stateGameInformation = `\nPoprawna odpowiedź to C. Niestety tym razem nic nie wygrałeś :(`
+                }
+                else {
+                    this.stateGameInformation = `\nNiestety poprawna odpowiedź to C. Wygrywasz ${this.balance} zł!`;
+                }
+                this.btnC.style.backgroundColor = "green";
+                break;
+            case 3:
+                if (this.balance == 0) {
+                    this.stateGameInformation = `\nPoprawna odpowiedź to D. Niestety tym razem nic nie wygrałeś :(`
+                }
+                else {
+                    this.stateGameInformation = `\nNiestety poprawna odpowiedź to D. Wygrywasz ${this.balance} zł!`;
+                }
+                this.btnD.style.backgroundColor = "green";
+                break;
+        }
+        this.questionText.innerHTML = this.explainCorrectAnswer + this.stateGameInformation;
+    }
 }
 const game = new Game();

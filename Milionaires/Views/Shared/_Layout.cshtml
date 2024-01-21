@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]Czy zostaniesz milionerem?</title>
     <link rel="stylesheet" href="~/css/globalSite.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/index.css" />
     <link rel="stylesheet" href="~/css/leftContainer.css" />
     <link rel="stylesheet" href="~/css/rightContainer.css" />
     <link rel="stylesheet" href="~/css/scores.css" />
@@ -20,19 +20,19 @@
     </section>
     <footer></footer>
     @await RenderSectionAsync("Scripts", required: false)
-<script>
-    window.addEventListener('beforeunload', function (e) {
-        var currentPage = window.location.pathname.toLowerCase();
+    <script>
+        window.addEventListener('beforeunload', function (e) {
+            var currentPage = window.location.pathname.toLowerCase();
 
-            if(currentPage === '/'){
-            var result = confirm("Changes you made may not be saved. Are you sure you want to leave?");
-            if (!result) {
-                e.preventDefault();
-                e.returnValue = '';
+            if (currentPage === '/') {
+                var result = confirm("Changes you made may not be saved. Are you sure you want to leave?");
+                if (!result) {
+                    e.preventDefault();
+                    e.returnValue = '';
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 
 
 </body>
