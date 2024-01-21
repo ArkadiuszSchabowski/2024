@@ -1,11 +1,11 @@
 ﻿#container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 0.8fr;
     width: 100vw;
-    height: 96%;
+    height: 90vh;
+    max-height: 90vh;
     border: 2px solid black;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 #leftContainer, #rightContainer {
@@ -19,9 +19,11 @@
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {
     #container {
+        margin: 2vh auto;
         border-radius: 10px;
         grid-template-columns: 2fr 1fr;
         width: 90vw;
+        height: 82vh;
     }
 }
 
@@ -29,6 +31,7 @@
     #container {
         border-radius: 10px;
         grid-template-columns: 3fr 1fr;
-        width: 90vw;
+        width: 94vw;
+        height: 84vh;
     }
 }

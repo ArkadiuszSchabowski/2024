@@ -61,6 +61,8 @@ namespace Milionaires.Service
 
         public ScoreQuery GetAllScores(ScoreDto scoreDto)
         {
+            int AvailableScores = 100;
+
             List<Score> baseQuery = _context.Scores.ToList();
 
             List<Score> scores = _context.Scores
@@ -68,8 +70,6 @@ namespace Milionaires.Service
                 .Skip(scoreDto.PageSize * (scoreDto.PageNumber - 1))
                 .Take(scoreDto.PageSize)
                 .ToList();
-
-            int scoreCounter = baseQuery.Count();
 
 
             ScoreQuery query = new ScoreQuery(new ScoreDto
@@ -79,6 +79,10 @@ namespace Milionaires.Service
             });
 
             query.ListScores = scores;
+            query.TotalCount = baseQuery.Count();
+            query.TotalPages = AvailableScores / query.PageSize;
+            query.ItemsFrom = query.PageSize * (query.PageNumber - 1) + 1;
+            query.ItemsTo = query.ItemsFrom + query.PageSize - 1;
 
             return query;
         }

@@ -18,10 +18,20 @@ class Score {
         this.pageNumberDecrement = document.getElementById("pageNumberDecrement");
         this.pageNumberIncrement = document.getElementById("pageNumberIncrement");
         this.pageCurrentNumber = document.getElementById("pageCurrentNumber");
+        this.resultCounter = document.getElementById("resultCounter");
+        this.pageCounter = document.getElementById("pageCounter");
+        this.currentScope = document.getElementById("currentScope");
+
     }
     Init() {
         this.GetMainPage();
         this.SetListeners();
+    }
+    SetNavigatorText(data) {
+        console.log(data);
+        this.resultCounter.innerHTML = data.totalCount;
+        this.pageCounter.innerHTML = data.totalPages;
+        this.currentScope.innerHTML =`${data.itemsFrom} - ${data.itemsTo}`
     }
     SetListeners() {
         this.pageSize5.addEventListener("click", () => this.SetPageSize5());
@@ -52,9 +62,9 @@ class Score {
         const path = `${this.host}/api/game/scores?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`;
         const response = await fetch(path);
         const data = await response.json();
-        console.log(data);
         this.ClearScores();
         this.CreateNewTable(data.listScores);
+        this.SetNavigatorText(data);
     }
     ClearScores() {
         this.scoreName.innerHTML = "";
@@ -112,7 +122,9 @@ class Score {
 
             name.innerHTML = data[i].name;
             result.innerHTML = data[i].result;
-            date.innerHTML = data[i].date;
+
+            let formattedDate = new Date(data[i].date).toLocaleString();
+            date.innerHTML = formattedDate;
 
             this.scoreName.appendChild(name);
             this.scoreResult.appendChild(result);

@@ -1,84 +1,212 @@
 ﻿#scoreContainer {
     display: flex;
     flex-direction: column;
-    width: 90vw;
-    height: 96%;
-    margin-left: auto;
-    margin-right: auto;
-    background-image: url(../images/backgroundResult.jpeg);
+    width: 100vw;
+    min-height: 84vh;
+    margin: 0 auto;
+    text-align: center;
+    border: 2px solid black;
+    color: white;
     background-size: cover;
     background-repeat: no-repeat;
-    align-items: center;
-    border: 2px solid black;
+    background-image: url(../images/backgroundResult.jpeg);
+    overflow-x: hidden;
 }
-#scoreTitle {
-    display: flex;
-    font-size: 40px;
-    margin-top: 2vh;
-    color: white;
-    background-color: transparent;
-}
-#scoreResult {
-    display: flex;
+
+.centerMobile {
     justify-content: center;
-    flex-direction: row;
-    text-align: center;
-    width: 90vw;
-    height: auto;
-    color: white;
-    font-size: 20px;
-    background-color: transparent;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
 }
-.currentPage{
-    background-color: red;
-    border-radius: 50px;
-    padding: 10px;
-}
-#scoreNameRow, #scoreResultRow {
-    margin-right: 5vw;
-}
-#pageSizeContainer {
+
+.row {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+}
+
+.align {
     align-items: center;
-    height: auto;
-    width: 90vw;
-    font-size: 20px;
-    color: white;
 }
-.pageSizeRow{
-    text-align: center;
-    margin-left: 2vw;
+
+.marginBottom {
+    margin-bottom: 10px;
 }
-#pageNumberContainer{
-    display: flex;
-    flex-direction: row;
-    color: white;
-    font-size: 60px;
+
+.title {
+    font-size: 30px;
+    margin: 2vh auto;
 }
-#pageCurrentNumber{
+
+.marginRight {
+    margin-right: 2vw;
+}
+
+.marginTop {
+    margin-top: 3vh;
+}
+
+.marginLeftRight {
     margin: 0 2vw;
 }
-#pageCount {
-    display: flex;
-    flex-direction: column;
-    color: white;
-    font-size: 40px;
+
+.marginLeftRightBig {
+    margin: 0 5vw;
 }
-#pageResults, #pageSides{
-    margin: 2vh 2vw;
+
+.marginLeft {
+    margin: 2vw;
+}
+
+.marginAll {
+    margin: 1% 1%;
+}
+
+.paddingAll {
+    padding: 2%;
+}
+
+.paddingTopBottom {
+    padding: 1% 0;
+}
+
+.currentPage {
+    font-weight: bold;
+    background-color: orangered;
+    border-radius: 50px;
+}
+
+#currentPageText {
+    margin-right: 9%;
+}
+
+#resultCounterText {
+    margin-right: 3%;
+}
+
+#pageCounterText {
+    margin-right: 7%;
+}
+
+#currentScopeText {
+    margin-right: 5%;
+    text-align: left;
+    justify-content: left;
+}
+
+#scoreNameRow div, #scoreResultRow div, #scoreDateRow div {
+    margin-bottom: 25px;
+}
+
+#scoreTitle {
+    margin-bottom: 5%;
+}
+
+#navigatorTitle {
+    display: flex;
+    margin-bottom: 5%;
+}
+
+#scoreContainerLeft, #scoreContainerRight {
+    margin-left: 5vw;
+}
+
+#scoreResult, #scoreTitle, #navigatorTitle {
+    display: flex;
+    text-align: initial;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {
     #scoreContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 96vw;
+        min-height: 82vh;
         border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #scoreContainerLeft, #scoreContainerRight {
+        margin-left: 0;
+    }
+
+        #scoreContainerRight div {
+            margin-bottom: 5px;
+        }
+
+    .centerMobile {
+        justify-content: normal;
+    }
+
+    #scoreResult {
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    #scoreTitle, #navigatorTitle {
+        justify-content: center;
+    }
+
+    #currentPageText {
+        margin-right: 12%;
+    }
+
+    #resultCounterText {
+        margin-right: 2%;
+    }
+
+    #pageCounterText {
+        margin-right: 6%;
+    }
+
+    #currentScopeText {
+        margin-right: 4%;
     }
 }
+
 @media screen and (min-width: 1200px) {
     #scoreContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 94vw;
+        min-height: 84vh;
         border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #scoreContainerLeft, #scoreContainerRight {
+        margin-left: 0;
+    }
+
+    #currentScopeText {
+        margin-right: 4%;
+    }
+
+    .centerMobile {
+        justify-content: normal;
+    }
+
+    #scoreResult {
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    #scoreTitle, #navigatorTitle {
+        justify-content: center;
+    }
+
+    #currentPageText {
+        margin-right: 12%;
+    }
+
+    #resultCounterText {
+        margin-right: 2%;
+    }
+
+    #pageCounterText {
+        margin-right: 6%;
+    }
+
+    #scoreContainerRight div {
+        margin-bottom: 10px;
     }
 }
