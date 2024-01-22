@@ -1,4 +1,4 @@
-class Score {
+﻿class Score {
     constructor() {
         this.host = "http://localhost:5050";
         this.scoreName = document.getElementById("scoreNameRow");
@@ -28,7 +28,6 @@ class Score {
         this.SetListeners();
     }
     SetNavigatorText(data) {
-        console.log(data);
         this.resultCounter.innerHTML = data.totalCount;
         this.pageCounter.innerHTML = data.totalPages;
         this.currentScope.innerHTML =`${data.itemsFrom} - ${data.itemsTo}`
@@ -59,12 +58,18 @@ class Score {
     }
 
     async GetMainPage() {
+
         const path = `${this.host}/api/game/scores?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`;
-        const response = await fetch(path);
-        const data = await response.json();
-        this.ClearScores();
-        this.CreateNewTable(data.listScores);
-        this.SetNavigatorText(data);
+        try {
+            const response = await fetch(path);
+            const data = await response.json();
+            this.ClearScores();
+            this.CreateNewTable(data.listScores);
+            this.SetNavigatorText(data);
+        } catch (error) {
+            index.questionText.innerHTML = "Błąd podczas pobierania danych";
+        }
+
     }
     ClearScores() {
         this.scoreName.innerHTML = "";

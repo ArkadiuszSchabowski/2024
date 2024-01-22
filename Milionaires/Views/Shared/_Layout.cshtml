@@ -20,20 +20,14 @@
     </section>
     <footer></footer>
     @await RenderSectionAsync("Scripts", required: false)
-    <script>
-        window.addEventListener('beforeunload', function (e) {
-            var currentPage = window.location.pathname.toLowerCase();
 
-            if (currentPage === '/') {
-                var result = confirm("Changes you made may not be saved. Are you sure you want to leave?");
-                if (!result) {
-                    e.preventDefault();
-                    e.returnValue = '';
-                }
-            }
-        });
-    </script>
-
-
+    <script src="~/js/changePage.js"></script>
+    <script src="~/js/balance.js"></script>
+    <script src="~/js/buttons.js"></script>
+    <script src="~/js/randomNumberGenerator.js"></script>
+    <script src="~/js/lifelines.js"></script>
+    <script src="~/js/index.js"></script>
+    <script src="~/js/listener.js"></script>
+    <script src="~/js/userDecision.js"></script>
 </body>
 </html>

@@ -7,14 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\changePage.js" />
     <Content Remove="wwwroot\js\scores.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\changePage.js" />
     <_ContentIncludedByDefault Remove="wwwroot\js\scores.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\changePage.js" />
     <None Include="wwwroot\js\scores.js" />
   </ItemGroup>
 

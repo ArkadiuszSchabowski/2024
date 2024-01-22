@@ -5,8 +5,8 @@
     ResignOption() {
         buttons.btnResign.addEventListener("click", () => {
 
-            game.HideQuestion();
-            buttons.LockButtons();
+            index.HideQuestion();
+            buttons.LockIndexButtons();
 
             let div = document.createElement("div");
             div.classList.add("endGameDiv");
@@ -32,39 +32,39 @@
 
             div.append(label, buttonDiv);
 
-            game.questionWindow.appendChild(div);
+            index.questionWindow.appendChild(div);
 
             buttonYes.addEventListener("click", () => {
 
-                game.ShowQuestion();
-                game.questionWindow.removeChild(div);
-                game.questionText.style.backgroundColor = "transparent";
+                index.ShowQuestion();
+                index.questionWindow.removeChild(div);
+                index.questionText.style.backgroundColor = "transparent";
 
-                if (game.balance === 0) {
+                if (index.balance === 0) {
                     this.stateGameInformation = `\nJeszcze nie zaczeliśmy gry, a juz sie wycofałeś? Mimo wszystko dziekuję za udział w grze!`;
                 }
-                else if ((game.balance !== 0) && (game.balance !== 2000) && (game.balance !== 40000)) {
-                    game.stateGameInformation = `\nTo dobra decyzja, żeby sie wycofać. Gratulacje wygrywasz ${game.balance} zł!`;
+                else if ((index.balance !== 0) && (index.balance !== 2000) && (index.balance !== 40000)) {
+                    index.stateGameInformation = `\nTo dobra decyzja, żeby sie wycofać. Gratulacje wygrywasz ${index.balance} zł!`;
                 }
-                else if ((game.balance === 2000) || (game.balance === 40000)) {
-                    game.stateGameInformation = `\nZrezygnowałeś na progu gwarantowanym. Wygrywasz ${game.balance} zł!`;
+                else if ((index.balance === 2000) || (index.balance === 40000)) {
+                    index.stateGameInformation = `\nZrezygnowałeś na progu gwarantowanym. Wygrywasz ${index.balance} zł!`;
                 }
-                game.questionText.innerHTML = game.explainCorrectAnswer + game.stateGameInformation;
+                index.questionText.innerHTML = index.explainCorrectAnswer + index.stateGameInformation;
                 this.SaveScoreOption();
                 buttons.SetDefaultTextForButtons();
             });
 
             buttonNo.addEventListener("click", () => {
-                game.ShowQuestion();
-                game.questionWindow.removeChild(div);
-                buttons.UnlockButtons();
+                index.ShowQuestion();
+                index.questionWindow.removeChild(div);
+                buttons.UnlockIndexButtons();
             })
         })
     }
     SaveScoreOption() {
 
-        game.SetBackground();
-        if (game.balance === 0) {
+        index.SetBackground();
+        if (index.balance === 0) {
             return;
         }
 
@@ -86,13 +86,13 @@
 
         div.append(label, input, button);
 
-        game.questionWindow.appendChild(div);
+        index.questionWindow.appendChild(div);
 
         button.addEventListener("click", () => {
             let name = input.value;
             let object = {
                 Name: name,
-                Result: game.balance
+                Result: index.balance
             };
 
             const path = `${this.host}/api/game`;
@@ -112,9 +112,9 @@
 
     RestartGameOption(oldDiv) {
 
-        game.questionWindow.removeChild(oldDiv);
+        index.questionWindow.removeChild(oldDiv);
 
-        game.questionText.innerHTML = "Gratulacje wspaniałego wyniku!";
+        index.questionText.innerHTML = "Gratulacje wspaniałego wyniku!";
 
         let div = document.createElement("div");
         div.classList.add("endGameDiv");
@@ -140,15 +140,15 @@
             window.location.href = "/Home/Index";
         })
         buttonNo.addEventListener("click", () => {
-            game.questionText.innerHTML = "Dziękujemy za grę!";
-            game.EndGame();
+            index.questionText.innerHTML = "Dziękujemy za grę!";
+            index.EndGame();
             buttons.SetDefaultTextForButtons();
-            game.questionWindow.removeChild(div);
+            index.questionWindow.removeChild(div);
         })
 
         div.append(label, buttonDiv);
 
-        game.questionWindow.appendChild(div);
+        index.questionWindow.appendChild(div);
     }
 }
 let userDecision = new UserDecision();

@@ -1,4 +1,4 @@
-﻿class Game {
+﻿class Index {
 
     constructor() {
 
@@ -199,7 +199,7 @@
 
     AllCorrectAnswers() {
 
-        buttons.LockButtons();
+        buttons.LockIndexButtons();
         buttons.SetDefaultTextForButtons();
 
         this.balance = balance.SetCurrentBalance(1000000);
@@ -228,7 +228,7 @@
                 this.IncorrectAnswerCase6to10();
                 break;
         }
-        buttons.LockButtons();
+        buttons.LockIndexButtons();
         userDecision.SaveScoreOption();
         this.ShowCorrectAnswer();
         this.ShowIncorrectAnswer(button);
@@ -340,4 +340,4 @@
         this.questionText.innerHTML = this.explainCorrectAnswer + this.stateGameInformation;
     }
 }
-const game = new Game();
+const index = new Index();

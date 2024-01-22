@@ -21,7 +21,7 @@ class Buttons {
         this.btnC.innerHTML = "C";
         this.btnD.innerHTML = "D";
     }
-    LockButtons() {
+    LockIndexButtons() {
         this.btnA.disabled = true;
         this.btnB.disabled = true;
         this.btnC.disabled = true;
@@ -31,7 +31,7 @@ class Buttons {
         this.btnPhone.style.pointerEvents = "none";
         this.btnFiftyFifty.style.pointerEvents = "none";
     }
-    UnlockButtons() {
+    UnlockIndexButtons() {
         this.btnA.disabled = false;
         this.btnB.disabled = false;
         this.btnC.disabled = false;

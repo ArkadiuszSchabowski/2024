@@ -14,7 +14,7 @@ class Listener {
 
     }
     HandleIncorrectAnswer = (button) => {
-        game.EndGameWhenAnswerIsIncorrect(button);
+        index.EndGameWhenAnswerIsIncorrect(button);
     }
     SetListenersWhenTheCorrectAnswerIsA() {
         this.btnA.addEventListener("click", this.HandleCorrectAnswer);
@@ -66,4 +66,4 @@ class Listener {
         this.btnD.removeEventListener("click", this.HandleCorrectAnswer);
     }
 }
-var listener = new Listener(game);
+var listener = new Listener(index);

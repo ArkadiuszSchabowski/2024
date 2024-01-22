@@ -32,7 +32,7 @@
         }
     }
     MessageWhenDontHaveFiftyFifty() {
-        switch (game.correctIndex) {
+        switch (index.correctIndex) {
             case 0:
                 return `Przyjaciel: Zdecydowanie odpowiedź A`;
             case 1:
