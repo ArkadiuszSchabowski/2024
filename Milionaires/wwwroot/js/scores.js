@@ -21,16 +21,25 @@
         this.resultCounter = document.getElementById("resultCounter");
         this.pageCounter = document.getElementById("pageCounter");
         this.currentScope = document.getElementById("currentScope");
+        this.scoreTitle = document.getElementById("scoreTitle");
 
     }
     Init() {
         this.GetMainPage();
         this.SetListeners();
     }
-    SetNavigatorText(data) {
-        this.resultCounter.innerHTML = data.totalCount;
-        this.pageCounter.innerHTML = data.totalPages;
-        this.currentScope.innerHTML =`${data.itemsFrom} - ${data.itemsTo}`
+    async GetMainPage() {
+
+        const path = `${this.host}/api/game/scores?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`;
+        try {
+            const response = await fetch(path);
+            const data = await response.json();
+            this.ClearScores();
+            this.CreateNewTable(data);
+            this.SetNavigatorText(data);
+        } catch (error) {
+            this.scoreTitle.innerHTML = "Wystąpił błąd podczas pobierania danych.";
+        }
     }
     SetListeners() {
         this.pageSize5.addEventListener("click", () => this.SetPageSize5());
@@ -39,6 +48,11 @@
         this.pageSize50.addEventListener("click", () => this.SetPageSize50());
         this.pageNumberDecrement.addEventListener("click", () => this.PageNumberDecrement());
         this.pageNumberIncrement.addEventListener("click", () => this.PageNumberIncrement());
+    }
+    SetNavigatorText(data) {
+        this.resultCounter.innerHTML = data.totalCount;
+        this.pageCounter.innerHTML = data.totalPages;
+        this.currentScope.innerHTML = `${data.itemsFrom} - ${data.itemsTo}`
     }
     PageNumberDecrement() {
         if (this.pageNumber <= 1) {
@@ -55,21 +69,6 @@
         this.pageNumber++;
         this.pageCurrentNumber.innerText = this.pageNumber;
         this.GetMainPage();
-    }
-
-    async GetMainPage() {
-
-        const path = `${this.host}/api/game/scores?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`;
-        try {
-            const response = await fetch(path);
-            const data = await response.json();
-            this.ClearScores();
-            this.CreateNewTable(data.listScores);
-            this.SetNavigatorText(data);
-        } catch (error) {
-            index.questionText.innerHTML = "Błąd podczas pobierania danych";
-        }
-
     }
     ClearScores() {
         this.scoreName.innerHTML = "";
@@ -118,17 +117,17 @@
     }
 
     CreateNewTable(data) {
-
-        for (let i = 0; i < data.length; i++) {
-
+        let scores = data.listScores;
+        let scoreNumber = data.itemsFrom;
+        for (let i = 0; i < scores.length; i++) {
             let name = document.createElement("div");
             let result = document.createElement("div");
             let date = document.createElement("div");
 
-            name.innerHTML = data[i].name;
-            result.innerHTML = data[i].result;
+            name.innerHTML = `${scoreNumber+i}. ${scores[i].name}`;
+            result.innerHTML = scores[i].result;
 
-            let formattedDate = new Date(data[i].date).toLocaleString();
+            let formattedDate = new Date(scores[i].date).toLocaleString();
             date.innerHTML = formattedDate;
 
             this.scoreName.appendChild(name);
