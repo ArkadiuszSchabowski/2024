@@ -1,4 +1,7 @@
 ﻿class UserDecision {
+    constructor() {
+        this.host = "http://localhost:5050";
+    }
 
     ResignOption() {
         buttons.btnResign.addEventListener("click", () => {
@@ -7,22 +10,22 @@
             buttons.LockIndexButtons();
 
             let resignMainDiv = document.createElement("div");
-            resignMainDiv.classList.add("resignMainDiv");
+            resignMainDiv.classList.add("dynamicMainDiv");
 
             let label = document.createElement("label");
-            label.classList.add("resignLabel");
+            label.classList.add("dynamicLabel");
             label.innerText = "Definitywnie chcesz się wycofać?";
 
             let buttonResignContainer = document.createElement("div");
             buttonResignContainer.classList.add("buttonResignContainer");
 
             let buttonYes = document.createElement("button");
-            buttonYes.classList.add("btnResignYesNo");
+            buttonYes.classList.add("btnYesNo");
             buttonYes.id = "btnResignYes";
             buttonYes.innerText = "TAK";
 
             let buttonNo = document.createElement("button");
-            buttonNo.classList.add("btnResignYesNo");
+            buttonNo.classList.add("btnYesNo");
             buttonYes.id = "btnResignNo";
             buttonNo.innerText = "NIE";
 
@@ -59,6 +62,7 @@
             })
         })
     }
+    //TODO
     SaveScoreOption() {
 
         index.SetBackground();
@@ -67,18 +71,18 @@
         }
 
         let div = document.createElement("div");
-        div.classList.add("endGameDiv");
+        div.classList.add("dynamicMainDiv");
 
         let label = document.createElement("label");
-        label.classList.add("endGameLabel");
-        label.style.width = "100%";
-        label.innerText = "Podaj swoje imię";
+        label.classList.add("dynamicLabel");
+        label.id = "saveScoreLabel";
+        label.innerText = "Podaj swój nick";
 
         let input = document.createElement("input");
-        input.classList.add("endGameInput");
+        input.classList.add("dynamicInput");
 
         let button = document.createElement("button");
-        button.classList.add("endGameButton");
+        button.classList.add("btnYesNo");
         button.innerText = "OK";
 
 
@@ -102,51 +106,52 @@
                 body: JSON.stringify(object)
             }).then(response => {
                 if (response.ok) {
-                    this.RestartGameOption(div);
+                    index.questionWindow.innerHTML = "";
+                    this.RestartGameOption();
                 }
             });
         });
     }
-
-    RestartGameOption(oldDiv) {
-
-        index.questionWindow.removeChild(oldDiv);
-
-        index.questionText.innerHTML = "Gratulacje wspaniałego wyniku!";
+    //TODO
+    RestartGameOption() {
 
         let div = document.createElement("div");
-        div.classList.add("endGameDiv");
+        div.classList.add("dynamicMainDiv");
 
-        let label = document.createElement("label");
-        label.classList.add("endGameLabel");
-        label.innerText = "Czy chcesz zagrać jeszcze raz?";
+        let label1 = document.createElement("label");
+        label1.classList.add("dynamicLabel");
+        label1.innerText = "Gratulacje wspaniałego wyniku!";
 
-        let buttonDiv = document.createElement("buttonDiv");
+        let label2 = document.createElement("label");
+        label2.classList.add("dynamicLabel");
+        label2.innerText = "Czy chcesz zagrać jeszcze raz?";
+
+        let buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("buttonResignContainer");
 
         let buttonYes = document.createElement("button");
-        buttonYes.classList.add("endGameButton");
+        buttonYes.classList.add("btnYesNo");
         buttonYes.innerText = "TAK";
 
         let buttonNo = document.createElement("button");
-        buttonNo.id = "btnResignNo";
-        buttonNo.classList.add("endGameButton");
+        buttonNo.classList.add("btnYesNo");
         buttonNo.innerText = "NIE";
 
-        buttonDiv.append(buttonYes, buttonNo);
+        buttonContainer.append(buttonYes, buttonNo);
+
+        div.append(label1, label2, buttonContainer);
+
+        index.questionWindow.appendChild(div);
 
         buttonYes.addEventListener("click", () => {
             window.location.href = "/Home/Index";
         })
         buttonNo.addEventListener("click", () => {
-            index.questionText.innerHTML = "Dziękujemy za grę!";
+            //TODO
+            index.questionWindow.innerHTML = "Dziękujemy za udział w grze!";
             index.EndGame();
             buttons.SetDefaultTextForButtons();
-            index.questionWindow.removeChild(div);
         })
-
-        div.append(label, buttonDiv);
-
-        index.questionWindow.appendChild(div);
     }
 }
 let userDecision = new UserDecision();
