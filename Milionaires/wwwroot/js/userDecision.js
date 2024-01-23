@@ -147,8 +147,17 @@
             window.location.href = "/Home/Index";
         })
         buttonNo.addEventListener("click", () => {
-            //TODO
-            index.questionWindow.innerHTML = "Dziękujemy za udział w grze!";
+            index.questionWindow.innerHTML = "";
+            let div = document.createElement("div");
+            div.classList.add("dynamicMainDiv");
+
+            let label = document.createElement("label");
+            label.classList.add("dynamicLabel");
+            label.innerText = "Dziękujemy za udział w grze!";
+
+            div.appendChild(label);
+            index.questionWindow.appendChild(div);
+
             index.EndGame();
             buttons.SetDefaultTextForButtons();
         })
