@@ -1,47 +1,45 @@
 ﻿class UserDecision {
-    constructor() {
-        this.host = "http://localhost:5050";
-    }
+
     ResignOption() {
         buttons.btnResign.addEventListener("click", () => {
 
             index.HideQuestion();
             buttons.LockIndexButtons();
 
-            let div = document.createElement("div");
-            div.classList.add("endGameDiv");
+            let resignMainDiv = document.createElement("div");
+            resignMainDiv.classList.add("resignMainDiv");
 
             let label = document.createElement("label");
-            label.classList.add("endGameLabel");
+            label.classList.add("resignLabel");
             label.innerText = "Definitywnie chcesz się wycofać?";
 
-            let buttonDiv = document.createElement("buttonDiv");
-            buttonDiv.classList.add("buttonsRow");
+            let buttonResignContainer = document.createElement("div");
+            buttonResignContainer.classList.add("buttonResignContainer");
 
             let buttonYes = document.createElement("button");
-            buttonYes.classList.add("endGameButton");
+            buttonYes.classList.add("btnResignYesNo");
+            buttonYes.id = "btnResignYes";
             buttonYes.innerText = "TAK";
 
             let buttonNo = document.createElement("button");
-            buttonNo.id = "btnResignNo";
-            buttonNo.classList.add("endGameButton");
+            buttonNo.classList.add("btnResignYesNo");
+            buttonYes.id = "btnResignNo";
             buttonNo.innerText = "NIE";
 
-            buttonDiv.append(buttonYes, buttonNo);
 
+            buttonResignContainer.append(buttonYes, buttonNo);
 
-            div.append(label, buttonDiv);
+            resignMainDiv.append(label, buttonResignContainer);
 
-            index.questionWindow.appendChild(div);
+            index.questionWindow.appendChild(resignMainDiv);
 
             buttonYes.addEventListener("click", () => {
 
                 index.ShowQuestion();
-                index.questionWindow.removeChild(div);
-                index.questionText.style.backgroundColor = "transparent";
+                index.questionWindow.removeChild(resignMainDiv);
 
                 if (index.balance === 0) {
-                    this.stateGameInformation = `\nJeszcze nie zaczeliśmy gry, a juz sie wycofałeś? Mimo wszystko dziekuję za udział w grze!`;
+                    index.stateGameInformation = `\nJeszcze nie zaczeliśmy gry, a juz sie wycofałeś? Mimo wszystko dziekuję za udział w grze!`;
                 }
                 else if ((index.balance !== 0) && (index.balance !== 2000) && (index.balance !== 40000)) {
                     index.stateGameInformation = `\nTo dobra decyzja, żeby sie wycofać. Gratulacje wygrywasz ${index.balance} zł!`;
@@ -56,7 +54,7 @@
 
             buttonNo.addEventListener("click", () => {
                 index.ShowQuestion();
-                index.questionWindow.removeChild(div);
+                index.questionWindow.removeChild(resignMainDiv);
                 buttons.UnlockIndexButtons();
             })
         })

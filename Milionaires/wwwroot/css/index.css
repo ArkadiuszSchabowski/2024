@@ -4,7 +4,7 @@
     width: 100vw;
     height: 90vh;
     max-height: 90vh;
-    border: 2px solid black;
+    border: 2px solid #d4d4d4;
     margin: 0 auto;
 }
 
@@ -24,6 +24,7 @@
         grid-template-columns: 2fr 1fr;
         width: 90vw;
         height: 82vh;
+        border: 2px solid black;
     }
 }
 
@@ -33,5 +34,6 @@
         grid-template-columns: 3fr 1fr;
         width: 94vw;
         height: 84vh;
+        border: 2px solid black;
     }
 }

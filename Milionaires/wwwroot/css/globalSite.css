@@ -34,10 +34,12 @@ header {
     height: 100%;
 }
 #headerNewGame {
+    border-left: 2px solid #d4d4d4;
     border-right: 1px solid #d4d4d4;
 }
 #headerScores {
     border-left: 1px solid #d4d4d4;
+    border-right: 2px solid #d4d4d4;
 }
 section {
         width: 100vw;
