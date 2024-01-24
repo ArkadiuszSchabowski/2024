@@ -4,7 +4,6 @@
     width: 100vw;
     min-height: 84vh;
     padding-bottom: 20px;
-    margin-bottom: 20px;
     border: 2px solid #d4d4d4;
     color: white;
     background-size: cover;
@@ -37,12 +36,9 @@
         margin-bottom: 20px;
     }
 
-#navigatorResultsContainer div {
-    margin-right: 20px;
-}
-
 .navigatorContainer {
     display: flex;
+    align-items: center;
     flex-direction: row;
     padding: 10px;
 }
@@ -57,30 +53,51 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 30px;
+    width: 50px;
+    height: 50px;
 }
 
 .currentPage {
-    background-color: orangered;
+    background-color: rgb(255, 140, 0);
+    color: rebeccapurple;
+    font-size: 26px;
     font-weight: bold;
+    border-radius: 50px;
+}
+.leftArrow{
+    background-image: url(../images/leftArrow.png);
+}
+.rightArrow {
+    background-image: url(../images/rightArrow.png);
+}
+.leftArrow, .rightArrow {
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {
     #scoreContainer {
         display: grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 1.5fr 1fr;
         height: 82vh;
         margin: 0 auto;
-        border: 2px solid black;
+    }
+    #scoreContainerRight {
+        margin-left: 0;
     }
 }
 
 @media screen and (min-width: 1200px) {
     #scoreContainer {
         display: grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 1.5fr 1fr;
         height: 84vh;
         margin: 0 auto;
-        border: 2px solid black;
+    }
+    #scoreContainerRight {
+        margin-left: 0;
     }
 }
