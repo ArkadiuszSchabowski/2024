@@ -44,7 +44,7 @@
 .navigatorContainer {
     display: flex;
     flex-direction: row;
-    padding: 20px;
+    padding: 10px;
 }
 
 .navigatorText {
@@ -54,11 +54,10 @@
     width: 40%;
 }
 .navigatorResult {
+    display: flex;
     align-items: center;
     justify-content: center;
     height: 30px;
-    width: 30px;
-    display: flex;
 }
 
 .currentPage {
