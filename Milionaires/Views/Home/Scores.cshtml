@@ -1,43 +1,43 @@
 ﻿<div id="scoreContainer">
-    <div id="scoreContainerLeft" class="marginBottom">
+    <div id="scoreContainerLeft">
         <div id="scoreTitle" class="title">TABELA WYNIKÓW</div>
         <div id="scoreResult">
             <div id="scoreNameRow"></div>
-            <div id="scoreResultRow" class="marginLeftRightBig"></div>
+            <div id="scoreResultRow"></div>
             <div id="scoreDateRow"></div>
         </div>
     </div>
-    <div id="scoreContainerRight" class="marginBottom">
+    <div id="scoreContainerRight">
         <div id="navigatorTitle" class="title">NAWIGATOR TABELI</div>
 
-        <div id="pageNumberContainer" class="row align">
-            <div id="currentPageText">Aktualna strona:</div>
-            <div id="pageNumberDecrement" class="currentPage paddingAll">&lt</div>
-            <div id="pageCurrentNumber" class="marginLeftRight">1</div>
-            <div id="pageNumberIncrement" class="currentPage paddingAll">&gt</div>
+        <div id="navigatorPageContainer" class="navigatorContainer">
+            <div id="currentPageText" class="navigatorText">Aktualna strona:</div>
+            <div id="pageNumberDecrement" class="currentPage navigatorResult">&lt</div>
+            <div id="pageCurrentNumber" class="navigatorResult">1</div>
+            <div id="pageNumberIncrement" class="currentPage navigatorResult">&gt</div>
         </div>
 
-        <div id="pageResultsContainer" class="row paddingTopBottom">
-            <div id="resultCounterText">Zapisanych wyników:</div>
-            <div id="resultCounter"></div>
+        <div id="navigatorCountContainer" class="navigatorContainer">
+            <div id="resultCounterText" class="navigatorText">Zapisanych wyników:</div>
+            <div id="resultCounter" class="navigatorResult"></div>
         </div>
 
-        <div id="pageScopeContainer" class="row paddingTopBottom">
-            <div id="currentScopeText">Przeglądany zakres:</div>
-            <div id="currentScope"></div>
+        <div id="navigatorScopeContainer" class="navigatorContainer">
+            <div id="currentScopeText" class="navigatorText">Przeglądany zakres:</div>
+            <div id="currentScope" class="navigatorResult"></div>
         </div>
 
-        <div id="pageSidesContainer" class="row paddingTopBottom">
-            <div id="pageCounterText">Dostępnych stron:</div>
-            <div id="pageCounter"></div>
+        <div id="navigatorPagesContainer" class="navigatorContainer">
+            <div id="pageCounterText" class="navigatorText">Dostępnych stron:</div>
+            <div id="pageCounter" class="navigatorResult"></div>
         </div>
 
-        <div id="pageSizeContainer" class="row align">
-            <label id="pageSizeText">Wyników na stronie:</label>
-            <div id="pageSize5" class="marginAll paddingAll">5</div>
-            <div id="pageSize10" class="marginAll paddingAll currentPage">10</div>
-            <div id="pageSize25" class="marginAll paddingAll">25</div>
-            <div id="pageSize50" class="marginAll paddingAll">50</div>
+        <div id="navigatorResultsContainer" class="navigatorContainer">
+            <label id="pageSizeText" class="navigatorText">Wyników na stronie:</label>
+            <div id="pageSize5" class="navigatorResult">5</div>
+            <div id="pageSize10" class="currentPage navigatorResult">10</div>
+            <div id="pageSize25" class="navigatorResult">25</div>
+            <div id="pageSize50" class="navigatorResult">50</div>
         </div>
     </div>
 </div>

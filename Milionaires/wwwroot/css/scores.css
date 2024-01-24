@@ -3,8 +3,8 @@
     flex-direction: column;
     width: 100vw;
     min-height: 84vh;
-    margin: 0 auto;
-    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
     border: 2px solid #d4d4d4;
     color: white;
     background-size: cover;
@@ -13,190 +13,75 @@
     overflow-x: hidden;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-}
-
-.align {
-    align-items: center;
-}
-
-.marginBottom {
-    margin-bottom: 10px;
-}
-
-.title {
-    font-size: 30px;
-    margin: 2vh auto;
-}
-
-.marginRight {
-    margin-right: 2vw;
-}
-
-.marginTop {
-    margin-top: 3vh;
-}
-
-.marginLeftRight {
-    margin: 0 2vw;
-}
-
-.marginLeftRightBig {
-    margin: 0 5vw;
-}
-
-.marginLeft {
-    margin: 2vw;
-}
-
-.marginAll {
-    margin: 1% 1%;
-}
-
-.paddingAll {
-    padding: 2%;
-}
-
-.paddingTopBottom {
-    padding: 1% 0;
-}
-
-.currentPage {
-    font-weight: bold;
-    background-color: orangered;
-    border-radius: 50px;
-}
-
-#currentPageText {
-    margin-right: 9%;
-}
-
-#resultCounterText {
-    margin-right: 3%;
-}
-
-#pageCounterText {
-    margin-right: 7%;
-}
-
-#currentScopeText {
-    margin-right: 5%;
-    text-align: left;
-    justify-content: left;
-}
-
-#scoreNameRow div, #scoreResultRow div, #scoreDateRow div {
-    margin-bottom: 20px;
-}
-
-#scoreTitle {
-    margin-bottom: 5%;
-}
-
-#navigatorTitle {
-    display: flex;
-    margin-bottom: 5%;
-}
-
 #scoreContainerLeft, #scoreContainerRight {
     margin-left: 5vw;
 }
 
-#scoreResult, #scoreTitle, #navigatorTitle {
+#scoreTitle, #navigatorTitle {
     display: flex;
-    text-align: initial;
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#scoreResult {
+    display: flex;
+}
+
+#scoreResultRow, #pageCurrentNumber {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+    #scoreNameRow div, #scoreResultRow div, #scoreDateRow div {
+        margin-bottom: 20px;
+    }
+
+#navigatorResultsContainer div {
+    margin-right: 20px;
+}
+
+.navigatorContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+
+.navigatorText {
+    display: flex;
+    align-items: center;
+    margin-right: 3%;
+    width: 40%;
+}
+.navigatorResult {
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    display: flex;
+}
+
+.currentPage {
+    background-color: orangered;
+    font-weight: bold;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {
     #scoreContainer {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        width: 96vw;
-        min-height: 82vh;
-        border-radius: 10px;
-        margin-left: auto;
-        margin-right: auto;
+        grid-template-columns: 2fr 1fr;
+        height: 82vh;
+        margin: 0 auto;
         border: 2px solid black;
-    }
-
-    #scoreContainerLeft, #scoreContainerRight {
-        margin-left: 0;
-    }
-
-        #scoreContainerRight div {
-            margin-bottom: 5px;
-        }
-
-    #scoreResult {
-        justify-content: center;
-        margin-left: 0;
-    }
-
-    #scoreTitle, #navigatorTitle {
-        justify-content: center;
-    }
-
-    #currentPageText {
-        margin-right: 12%;
-    }
-
-    #resultCounterText {
-        margin-right: 2%;
-    }
-
-    #pageCounterText {
-        margin-right: 6%;
-    }
-
-    #currentScopeText {
-        margin-right: 4%;
     }
 }
 
 @media screen and (min-width: 1200px) {
     #scoreContainer {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        width: 94vw;
-        min-height: 84vh;
-        border-radius: 10px;
-        margin-left: auto;
-        margin-right: auto;
+        grid-template-columns: 2fr 1fr;
+        height: 84vh;
+        margin: 0 auto;
         border: 2px solid black;
-    }
-
-    #scoreContainerLeft, #scoreContainerRight {
-        margin-left: 0;
-    }
-
-    #currentScopeText {
-        margin-right: 4%;
-    }
-
-    #scoreResult {
-        justify-content: center;
-        margin-left: 0;
-    }
-
-    #scoreTitle, #navigatorTitle {
-        justify-content: center;
-    }
-
-    #currentPageText {
-        margin-right: 12%;
-    }
-
-    #resultCounterText {
-        margin-right: 2%;
-    }
-
-    #pageCounterText {
-        margin-right: 6%;
-    }
-
-    #scoreContainerRight div {
-        margin-bottom: 10px;
     }
 }
