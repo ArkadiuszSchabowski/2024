@@ -65,8 +65,8 @@
     display: flex;
     flex-direction: row;
 }
-.orangeFont{
-    color: orange;
+.orangeFont {
+    color: rgb(255, 140, 0);
 }
 .whiteFont{
     color: white;

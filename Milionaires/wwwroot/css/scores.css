@@ -23,9 +23,13 @@
     font-weight: bold;
 }
 
-#scoreResult {
-    display: flex;
+#scoreTitle{
+    padding-bottom: 20px;
 }
+
+    #scoreResult {
+        display: flex;
+    }
 
 #scoreResultRow, #pageCurrentNumber {
     margin-left: 3%;
@@ -44,13 +48,13 @@
 }
 
 .navigatorText {
-    display: flex;
+    display: none;
     align-items: center;
     margin-right: 3%;
     width: 40%;
 }
 .navigatorResult {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 50px;
@@ -60,7 +64,7 @@
 .currentPage {
     background-color: rgb(255, 140, 0);
     color: rebeccapurple;
-    font-size: 26px;
+    font-size: 22px;
     font-weight: bold;
     border-radius: 50px;
 }

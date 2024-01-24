@@ -124,11 +124,21 @@
             let result = document.createElement("div");
             let date = document.createElement("div");
 
-            name.innerHTML = `${scoreNumber+i}. ${scores[i].name}`;
+            name.innerHTML = `${scoreNumber + i}. ${scores[i].name}`;
             result.innerHTML = scores[i].result;
 
             let formattedDate = new Date(scores[i].date).toLocaleString();
             date.innerHTML = formattedDate;
+
+            const navigatorTextElements = document.querySelectorAll(".navigatorText");
+            navigatorTextElements.forEach(element => {
+                element.style.display = "flex";
+            });
+
+            const navigatorResultElements = document.querySelectorAll(".navigatorResult");
+            navigatorResultElements.forEach(element => {
+                element.style.display = "flex";
+            });
 
             this.scoreName.appendChild(name);
             this.scoreResult.appendChild(result);
