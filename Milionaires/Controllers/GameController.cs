@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR.Protocol;
-using Milionaires.Database;
 using Milionaires.Database.Entities;
 using Milionaires.Models;
 using Milionaires.Service;
-using System;
-using System.Xml;
 
 namespace Milionaires.Controllers
 {
@@ -38,7 +34,7 @@ namespace Milionaires.Controllers
 
             if(scores == null)
             {
-                return NotFound(new { message = "Nie udało połączyć się z bazą danych" });
+                return NotFound(new { message = "Nie udało połączyć się z bazą danych!" });
             }
             return Ok(scores);
         }
@@ -46,13 +42,19 @@ namespace Milionaires.Controllers
         [HttpPost]
         public IActionResult SaveScore([FromBody] Score score)
         {
-            Score record = _service.CreateRecord(score);
-
-            if (record == null)
+            try
             {
-                return BadRequest("Niepoprawne dane");
+                Score record = _service.CreateRecord(score);
+                return Ok("Wynik został zapisany!");
             }
-            return Ok("Wynik został zapisany");
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, new { error = "Wystąpił błąd serwera! Spróbuj ponownie później lub skontaktuj się z administratorem." });
+            }
         }
     }
 }

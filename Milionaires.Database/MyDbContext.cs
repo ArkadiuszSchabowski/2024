@@ -33,6 +33,7 @@ namespace Milionaires.Database
                 Result = 10000,
                 Date = new DateTime(2023, 1, 8)
             });
+            modelBuilder.Entity<Score>().Property(e => e.Name).HasMaxLength(25);
         }
     }
 }

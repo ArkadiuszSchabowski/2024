@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Milionaires.Database;
-using Milionaires.Database.Entities;
 using Milionaires.Models;
 using System.Diagnostics;
 
