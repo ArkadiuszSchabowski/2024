@@ -127,11 +127,17 @@
             name.innerHTML = `${scoreNumber + i}. ${scores[i].name}`;
             result.innerHTML = scores[i].result;
 
-            let formattedDate = new Date(scores[i].date).toLocaleString();
+            let options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+            let formattedDate = new Date(scores[i].date).toLocaleDateString(undefined, options);
             date.innerHTML = formattedDate;
 
             const navigatorTextElements = document.querySelectorAll(".navigatorText");
             navigatorTextElements.forEach(element => {
+                element.style.display = "flex";
+            });
+
+            const navigator50 = document.querySelectorAll(".navigator50");
+            navigator50.forEach(element => {
                 element.style.display = "flex";
             });
 
