@@ -12,8 +12,8 @@ using Milionaires.Database;
 namespace Milionaires.Database.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20240109192654_SeedDataScore")]
-    partial class SeedDataScore
+    [Migration("20240125161541_AddPropertyMaxLengthToEntityScore_Name")]
+    partial class AddPropertyMaxLengthToEntityScore_Name
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,7 +38,8 @@ namespace Milionaires.Database.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<int>("Result")
                         .HasColumnType("int");
@@ -46,29 +47,6 @@ namespace Milionaires.Database.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Scores");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Date = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Ania",
-                            Result = 500
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Maciek",
-                            Result = 2000
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Date = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Lena",
-                            Result = 10000
-                        });
                 });
 #pragma warning restore 612, 618
         }
