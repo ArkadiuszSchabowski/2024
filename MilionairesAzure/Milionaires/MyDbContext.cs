@@ -12,7 +12,7 @@ namespace Milionaires.Database
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<Score>().Property(e => e.Name).HasMaxLength(25);
         }
     }
 }

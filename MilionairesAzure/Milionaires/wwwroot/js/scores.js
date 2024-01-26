@@ -1,5 +1,6 @@
 ﻿class Score {
     constructor() {
+        this.host = "https://localhost:5050";
         this.scoreName = document.getElementById("scoreNameRow");
         this.scoreResult = document.getElementById("scoreResultRow");
         this.scoreDate = document.getElementById("scoreDateRow");
@@ -29,7 +30,7 @@
     }
     async GetMainPage() {
 
-        const path = `${game.host}/api/game/scores?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`;
+        const path = `${this.host}/api/game/scores?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`;
         try {
             const response = await fetch(path);
             const data = await response.json();

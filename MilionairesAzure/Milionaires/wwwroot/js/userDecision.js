@@ -1,10 +1,12 @@
 ﻿class UserDecision {
     constructor() {
+        this.host = "https://localhost:5050";
     }
 
     ResignOption() {
         buttons.btnResign.addEventListener("click", () => {
 
+            index.SetBackground();
             index.HideQuestion();
             buttons.LockIndexButtons();
 
@@ -41,7 +43,7 @@
                 index.questionWindow.removeChild(resignMainDiv);
 
                 if (index.balance === 0) {
-                    index.stateGameInformation = `\nJeszcze nie zaczeliśmy gry, a juz sie wycofałeś? Mimo wszystko dziekuję za udział w grze!`;
+                    index.stateGameInformation = ``;
                 }
                 else if ((index.balance !== 0) && (index.balance !== 2000) && (index.balance !== 40000)) {
                     index.stateGameInformation = `\nTo dobra decyzja, żeby sie wycofać. Gratulacje wygrywasz ${index.balance} zł!`;
@@ -55,22 +57,25 @@
             });
 
             buttonNo.addEventListener("click", () => {
+                index.questionWindow.style.backgroundImage = "url('../images/background.jpg')";
                 index.ShowQuestion();
                 index.questionWindow.removeChild(resignMainDiv);
                 buttons.UnlockIndexButtons();
             })
         })
     }
-    //TODO
     SaveScoreOption() {
 
         index.SetBackground();
         if (index.balance === 0) {
+            index.questionText = index.explainCorrectAnswer;
+            this.RestartGameOption();
             return;
         }
 
         let div = document.createElement("div");
         div.classList.add("dynamicMainDiv");
+
 
         let label = document.createElement("label");
         label.classList.add("dynamicLabel");
@@ -96,7 +101,7 @@
                 Result: index.balance
             };
 
-            const path = `${game.host}/api/game`;
+            const path = `${this.host}/api/game`;
             fetch(path, {
                 method: "POST",
                 headers: {
@@ -111,7 +116,6 @@
             });
         });
     }
-    //TODO
     RestartGameOption() {
 
         let div = document.createElement("div");
@@ -119,7 +123,13 @@
 
         let label1 = document.createElement("label");
         label1.classList.add("dynamicLabel");
-        label1.innerText = "Gratulacje wspaniałego wyniku!";
+
+        if (index.balance === 0) {
+            label1.innerText = "";
+        }
+        else {
+            label1.innerText = "Gratulacje wspaniałego wyniku!";
+        }
 
         let label2 = document.createElement("label");
         label2.classList.add("dynamicLabel");

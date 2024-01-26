@@ -2,7 +2,7 @@
 
     constructor() {
 
-        this.host = "https://localhost:7100"
+        this.host = "https://localhost:5050";
         this.balance = 0;
         this.questionNumber = 0;
         this.correctIndex;
@@ -193,7 +193,9 @@
 
         if (this.balance === 1000000) {
             this.questionWindow.style.backgroundImage = "url('../images/highestPrice.gif')";
-            this.questionText.style.backgroundColor = "transparent";
+        }
+        else {
+            this.questionWindow.style.backgroundImage = "url('../images/background2.jpg')";
         }
     }
 

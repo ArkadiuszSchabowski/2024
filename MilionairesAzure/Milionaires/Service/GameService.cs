@@ -16,14 +16,16 @@ namespace Milionaires.Service
     public class GameService : IGameService
     {
         private readonly MyDbContext _context;
-        private readonly List<Score> _scores;
         private readonly List<Question> _questions;
+        private readonly List<Score> _scores;
 
         public GameService(MyDbContext context)
         {
             _context = context;
-
-            _scores = new List<Score> {
+            if (!_context.Scores.Any())
+            {
+                _context.Scores.AddRange(new List<Score>
+            {
                 new Score { Id = 1, Name = "Ania", Result = 500, Date = new DateTime(2024, 1, 1) },
                 new Score { Id = 2, Name = "Maciek", Result = 500, Date = new DateTime(2024, 1, 9) },
                 new Score { Id = 3, Name = "Lena", Result = 500, Date = new DateTime(2024, 1, 8) },
@@ -54,7 +56,11 @@ namespace Milionaires.Service
                 new Score { Id = 28, Name = "Justyna", Result = 150000, Date = new DateTime(2024, 1, 10) },
                 new Score { Id = 29, Name = "Rafał", Result = 250000, Date = new DateTime(2024, 1, 14) },
                 new Score { Id = 30, Name = "Szymon", Result = 500000, Date = new DateTime(2024, 1, 25) },
-            };
+            });
+
+                _context.SaveChanges();
+            }
+
             _questions = new List<Question>
             {
                 new Question("Jak wygląda operator inkrementacji?", new[] { "A. ==", "B. ++", "C. --", "D. =" }, 1, "Operator inkrementacji '++' zwiększa wartość zmiennej o 1.", 1),
@@ -96,6 +102,7 @@ namespace Milionaires.Service
                 throw new InvalidOperationException("Wprowadzony wynik nie jest prawidłowy. Dozwolone wartości to: 500, 2000, 5000, 10000, 40000, 75000, 150000, 250000, 500000, 1000000.");
             }
             score.Date = DateTime.Now;
+
             _context.Scores.Add(score);
             _context.SaveChanges();
             return score;
@@ -110,9 +117,9 @@ namespace Milionaires.Service
         {
             int AvailableScores = 100;
 
-            List<Score> baseQuery = _scores.ToList();
+            List<Score> baseQuery = _context.Scores.ToList();
 
-            List<Score> scores = _scores
+            List<Score> scores = _context.Scores
                 .OrderByDescending(x => x.Result)
                 .Skip(scoreDto.PageSize * (scoreDto.PageNumber - 1))
                 .Take(scoreDto.PageSize)
