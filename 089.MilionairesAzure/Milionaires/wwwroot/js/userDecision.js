@@ -64,7 +64,6 @@
             })
         })
     }
-    //TODO
     SaveScoreOption() {
 
         index.SetBackground();
