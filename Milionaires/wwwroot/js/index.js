@@ -37,15 +37,11 @@
             document.getElementById("rowPrize9"),
             document.getElementById("rowPrize10")
         ];
-
-        this.lifelines = new Lifelines(this);
-
-        lifelines.AddLifelines();
-
         this.Init();
     }
 
     Init = () => {
+        lifelines.AddLifelines();
         document.addEventListener("DOMContentLoaded", () => {
             this.GetContent();
         })
