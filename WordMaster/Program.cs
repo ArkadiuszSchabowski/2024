@@ -14,18 +14,22 @@ namespace WordMaster
 
             builder.Services.AddScoped<IWordService, WordService>();
 
-            var app = builder.Build();
-
-            if (app.Environment.IsDevelopment())
-            {
-                builder.Services.AddDbContext<MyDbContext>(options => options.UseInMemoryDatabase("MyDb"));
-            }
-            else
+            if (builder.Environment.IsProduction())
             {
                 builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("WordMasterConnectionString")));
             }
-            app.UseExceptionHandler("/Home/Error");
-            app.UseHsts();
+            else
+            {
+                builder.Services.AddDbContext<MyDbContext>(options => options.UseInMemoryDatabase("MemoryDb"));
+            }
+
+            var app = builder.Build();
+
+            if (!app.Environment.IsDevelopment())
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
