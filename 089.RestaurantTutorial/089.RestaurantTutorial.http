@@ -1,0 +1,6 @@
+@_089.RestaurantTutorial_HostAddress = http://localhost:5251
+
+GET {{_089.RestaurantTutorial_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
