@@ -1,3 +1,5 @@
+using _089.RestaurantTutorial.Service;
+
 namespace _089.RestaurantTutorial
 {
     public class Program
@@ -6,13 +8,12 @@ namespace _089.RestaurantTutorial
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddTransient<IWeatherForecastService, WeatherForecastService>();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
 
             app.UseHttpsRedirection();
 

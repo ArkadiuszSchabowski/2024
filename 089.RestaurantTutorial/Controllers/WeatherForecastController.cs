@@ -1,4 +1,7 @@
+﻿using _089.RestaurantTutorial.Models;
+using _089.RestaurantTutorial.Service;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography.X509Certificates;
 
 namespace _089.RestaurantTutorial.Controllers
 {
@@ -6,28 +9,23 @@ namespace _089.RestaurantTutorial.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
+        private readonly IWeatherForecastService _service;
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IWeatherForecastService service)
         {
             _logger = logger;
+            _service = service;
         }
-
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpPost("generate")]
+        public ActionResult<IEnumerable<WeatherForecast>> Generate([FromQuery] int count, [FromBody] TemperatureDto request)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            if (count < 0 || request.Min > request.Max)
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                return BadRequest();
+            }
+            var result = _service.GetForecast(count, request.Min, request.Max);
+            return Ok(result);
         }
     }
 }
