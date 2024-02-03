@@ -2,6 +2,10 @@
 {
     public class Restaurant
     {
+        public Restaurant()
+        {
+            Dishes = new List<Dish>();
+        }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -9,6 +13,6 @@
         public string ContantPhone { get; set; }
         public int AddressId { get; set; }
         public virtual Address Address { get; set; }
-        public List<Dish> Dishes { get; set; }
+        public List<Dish> Dishes { get; set; } = new List<Dish>();
     }
 }

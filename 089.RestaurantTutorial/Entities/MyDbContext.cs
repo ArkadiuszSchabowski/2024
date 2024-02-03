@@ -23,6 +23,8 @@ namespace _089.RestaurantTutorial.Entities
 
             modelBuilder.Entity<Restaurant>().Property(r => r.Name).IsRequired().HasMaxLength(25);
             modelBuilder.Entity<Dish>().Property(d => d.Name).IsRequired().HasMaxLength(50);
+
+            modelBuilder.Entity<Address>().Property(a => a.PostalCode).HasMaxLength(10);
         }
     }
 }

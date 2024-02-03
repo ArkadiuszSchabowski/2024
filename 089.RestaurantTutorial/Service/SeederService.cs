@@ -25,7 +25,6 @@ namespace _089.RestaurantTutorial.Service
                         RestaurantId = 1,
                         Street = "Wolności 6",
                         City = "Chorzów",
-                        Name = "ToDelete",
                         PostalCode = "41-500",
                     },
                     Dishes = new List<Dish>()
@@ -44,7 +43,6 @@ namespace _089.RestaurantTutorial.Service
                         RestaurantId = 2,
                         Street = "Kochanowskiego 69",
                         City = "Świętochłowice",
-                        Name = "ToDelete",
                         PostalCode = "41-506",
                     },
                     Dishes = new List<Dish>()
@@ -52,39 +50,6 @@ namespace _089.RestaurantTutorial.Service
                 _context.Restaurants.AddRange(restaurant1, restaurant2);
                 _context.SaveChanges();
             }
-        }
-        public void AddDishesToWegetarianskaSwinka()
-        {
-            var dishes = new List<Dish>
-            {
-                new Dish
-                {
-                    Name = "Sałatka warzywna pomidor-burak",
-                    Description = "Pyszna i pożywna sałatka",
-                    RestaurantId = 2,
-                    Price = "10.49",
-                },
-                                new Dish
-                {
-                    Name = "Sałatka owocowa jabłko-banan",
-                    Description = "Sałatka poranna",
-                    RestaurantId = 2,
-                    Price = "7.99",
-                },
-            };
-            _context.Dishes.AddRange(dishes);
-            _context.SaveChanges();
-        }
-
-        public void DeleteWrongRecords()
-        {
-            var restaurant = _context.Restaurants.Where(r =>r.Id == 7 || r.Id == 8);
-            if(restaurant != null)
-            {
-                _context.Restaurants.RemoveRange(restaurant);
-                _context.SaveChanges();
-            }
-
         }
     }
 }
