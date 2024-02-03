@@ -17,7 +17,8 @@ namespace _089.RestaurantTutorial
 
             builder.Services.AddScoped<SeederService>();
             builder.Services.AddScoped<IRestaurantService, RestaurantService>();
-            builder.Services.AddScoped<Restaurant>();
+            builder.Services.AddAutoMapper(typeof(RestaurantMappingProfile).Assembly);
+
 
             var app = builder.Build();
             using (var scope = app.Services.CreateScope())
