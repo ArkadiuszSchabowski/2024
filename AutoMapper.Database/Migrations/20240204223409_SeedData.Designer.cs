@@ -3,6 +3,7 @@ using AutoMapper.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoMapper.Database.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240204223409_SeedData")]
+    partial class SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,35 +51,6 @@ namespace AutoMapper.Database.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Chorzów",
-                            Name = "Świnka",
-                            Phone = "7806969",
-                            isAdmin = true,
-                            isPremiumAccount = true
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "Chorzów",
-                            Name = "Paulina",
-                            Phone = "500100200",
-                            isAdmin = false,
-                            isPremiumAccount = true
-                        },
-                        new
-                        {
-                            Id = 3,
-                            City = "Chorzów",
-                            Name = "Dominika",
-                            Phone = "600200300",
-                            isAdmin = false,
-                            isPremiumAccount = true
-                        });
                 });
 #pragma warning restore 612, 618
         }
