@@ -3,7 +3,9 @@ using _089.RestaurantTutorial.Models;
 using _089.RestaurantTutorial.Service;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace _089.RestaurantTutorial.Controllers
 {
@@ -31,15 +33,36 @@ namespace _089.RestaurantTutorial.Controllers
             return Ok(dtoRestaurants);
         }
         [HttpGet("{id}")]
-        public ActionResult<Restaurant> Get([FromRoute] int id)
+        public ActionResult<RestaurantDto> Get([FromRoute] int id)
         {
-            var restaurant = _context.Restaurants.Find(id);
-            if(restaurant == null)
+            var restaurant = _context.Restaurants
+                .Include(r => r.Dishes)
+                .Include(r => r.Address)
+                .FirstOrDefault(r => r.Id == id);
+
+            if (restaurant == null)
             {
-                return NotFound("Nie znaleziono restauracji o podanym Id");
+                return NotFound(new { Message = "Nie znaleziono restauracji o podanym Id" });
             }
+
             var Dtorestaurant = _mapper.Map<RestaurantDto>(restaurant);
             return Ok(Dtorestaurant);
         }
+        [HttpPost]
+        public ActionResult CreateRestaurant([FromBody] RestaurantDto restaurantDto)
+        {
+            if (restaurantDto == null || !ModelState.IsValid)
+            {
+                return BadRequest("Something");
+            }
+
+            var restaurant = _mapper.Map<Restaurant>(restaurantDto);
+
+            _context.Restaurants.Add(restaurant);
+            _context.SaveChanges();
+
+            return Ok(restaurant);
+        }
+
     }
 }

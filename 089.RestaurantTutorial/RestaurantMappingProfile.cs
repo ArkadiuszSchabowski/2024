@@ -14,6 +14,14 @@ namespace _089.RestaurantTutorial
                 .ForMember(d => d.PostalCode, r => r.MapFrom(r => r.Address.PostalCode));
 
             CreateMap<Dish, DishDto>();
+
+            CreateMap<RestaurantDto, Restaurant>()
+                .ForMember(r => r.Address, d => d.MapFrom(dto => new Address
+                {
+                    City = dto.City,
+                    Street = dto.Street,
+                    PostalCode = dto.PostalCode
+                }));
         }
     }
 }

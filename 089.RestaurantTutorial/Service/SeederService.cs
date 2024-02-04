@@ -18,7 +18,7 @@ namespace _089.RestaurantTutorial.Service
                     Name = "Hong Viet",
                     Description = "Restauracja Orientalna",
                     HasDelivery = true,
-                    ContantPhone = "500-001-002",
+                    ContactPhone = "500-001-002",
                     AddressId = 1,
                     Address = new Address
                     {
@@ -35,7 +35,7 @@ namespace _089.RestaurantTutorial.Service
                     Name = "Wegeteriańska Świnka",
                     Description = "Dania wegetariańskie",
                     HasDelivery = true,
-                    ContantPhone = "550-551-552",
+                    ContactPhone = "550-551-552",
 
                     AddressId = 2,
                     Address = new Address

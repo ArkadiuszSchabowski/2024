@@ -10,7 +10,7 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public bool HasDelivery {  get; set; }
-        public string ContantPhone { get; set; }
+        public string ContactPhone { get; set; }
         public int AddressId { get; set; }
         public virtual Address Address { get; set; }
         public List<Dish> Dishes { get; set; } = new List<Dish>();
