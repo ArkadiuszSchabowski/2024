@@ -1,3 +1,7 @@
+using _088._AutoMapper.Service;
+using AutoMapper.Database;
+using Microsoft.EntityFrameworkCore;
+
 namespace _088._AutoMapper
 {
     public class Program
@@ -7,6 +11,8 @@ namespace _088._AutoMapper
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
+            builder.Services.AddDbContext<MyDbContext>(d => d.UseSqlServer(builder.Configuration.GetConnectionString("UserDbConnectionString")));
+            builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
 
