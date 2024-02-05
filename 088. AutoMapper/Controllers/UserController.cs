@@ -2,6 +2,7 @@
 using AutoMapper.Database.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq.Expressions;
 
 namespace _088._AutoMapper.Controllers
 {
@@ -15,10 +16,40 @@ namespace _088._AutoMapper.Controllers
             _service = service;
         }
         [HttpGet]
-        public IEnumerable<User> GetUsers()
+        public ActionResult<IEnumerable<User>> GetUsers()
         {
-            var users = _service.GetUsers();
-            return users;
+            try
+            {
+                var users = _service.GetUsers();
+
+                if (users.Any())
+                {
+                    return NotFound("Brak użytkowników w bazie danych!");
+                }
+
+                return Ok(users);
+            }
+            catch
+            {
+                return StatusCode(500, "Wystąpił błąd serwera!");
+            }
+        }
+        [HttpGet("{id}")]
+        public ActionResult<User> GetUser([FromRoute] int id)
+        {
+            try
+            {
+                var user = _service.GetUser(id);
+                if (user == null)
+                {
+                    return NotFound("Nie znaleziono użytkownika o podanym Id!");
+                }
+                return Ok(user);
+            }
+            catch
+            {
+                return StatusCode(500, "Wystąpił błąd serwera!");
+            }
         }
     }
 }
