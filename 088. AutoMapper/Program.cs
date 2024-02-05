@@ -18,11 +18,14 @@ namespace _088._AutoMapper
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            app.UseRouting();
 
             app.MapControllers();
 
-            app.UseRouting();
+
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "api/{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }
