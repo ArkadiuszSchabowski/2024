@@ -1,8 +1,8 @@
-﻿using _088._AutoMapper.Service;
+﻿using _088._AutoMapper.Models;
+using _088._AutoMapper.Service;
+using AutoMapper;
 using AutoMapper.Database.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq.Expressions;
 
 namespace _088._AutoMapper.Controllers
 {
@@ -11,9 +11,12 @@ namespace _088._AutoMapper.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _service;
-        public UserController(IUserService service)
+        private readonly IMapper _mapper;
+
+        public UserController(IUserService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
         [HttpGet]
         public ActionResult<IEnumerable<User>> GetUsers()
@@ -22,12 +25,13 @@ namespace _088._AutoMapper.Controllers
             {
                 var users = _service.GetUsers();
 
-                if (users.Any())
+                if (!users.Any())
                 {
                     return NotFound("Brak użytkowników w bazie danych!");
                 }
+                var usersDto = _mapper.Map<IEnumerable<UserDto>>(users);
 
-                return Ok(users);
+                return Ok(usersDto);
             }
             catch
             {
@@ -44,9 +48,28 @@ namespace _088._AutoMapper.Controllers
                 {
                     return NotFound("Nie znaleziono użytkownika o podanym Id!");
                 }
-                return Ok(user);
+                var userDto = _mapper.Map<UserDto>(user);
+                return Ok(userDto);
             }
             catch
+            {
+                return StatusCode(500, "Wystąpił błąd serwera!");
+            }
+        }
+        [HttpPost]
+        public ActionResult CreateUser([FromBody] UserDto userDto)
+        {
+            try
+            {
+            if(userDto == null)
+            {
+                return BadRequest("Proszę wpisać poprawne dane");
+            }
+            UserDto? user = _service.CreateUser(userDto);
+
+            return Ok("Użytkownik utworzony pomyślnie");
+            }
+            catch 
             {
                 return StatusCode(500, "Wystąpił błąd serwera!");
             }
