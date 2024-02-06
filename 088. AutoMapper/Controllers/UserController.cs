@@ -2,6 +2,7 @@
 using _088._AutoMapper.Service;
 using AutoMapper;
 using AutoMapper.Database.Entities;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace _088._AutoMapper.Controllers
@@ -57,22 +58,23 @@ namespace _088._AutoMapper.Controllers
             }
         }
         [HttpPost]
-        public ActionResult CreateUser([FromBody] UserDto userDto)
+        public ActionResult CreateUser([FromBody] CreateUserDto userDto)
         {
             try
             {
-            if(userDto == null)
-            {
-                return BadRequest("Proszę wpisać poprawne dane");
-            }
-            UserDto? user = _service.CreateUser(userDto);
+                if(userDto == null)
+                {
+                    return BadRequest("Wprowadzono niepoprawne dane!");
+                }
+                User user = _service.CreateUser(userDto);
 
-            return Ok("Użytkownik utworzony pomyślnie");
+                return Ok();
             }
-            catch 
+            catch
             {
-                return StatusCode(500, "Wystąpił błąd serwera!");
+                return StatusCode(500, "Hej");
             }
         }
     }
 }
+

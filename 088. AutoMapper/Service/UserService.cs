@@ -2,12 +2,13 @@
 using AutoMapper;
 using AutoMapper.Database;
 using AutoMapper.Database.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace _088._AutoMapper.Service
 {
     public interface IUserService
     {
-        UserDto? CreateUser(UserDto userDto);
+        User CreateUser(CreateUserDto userDto);
         User? GetUser(int id);
         IEnumerable<User> GetUsers();
     }
@@ -15,20 +16,31 @@ namespace _088._AutoMapper.Service
     public class UserService : IUserService
     {
         private readonly MyDbContext _context;
-        public UserService(MyDbContext context)
+        private readonly IMapper _mapper;
+
+        public UserService(MyDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
-        public UserDto? CreateUser(UserDto userDto)
+        public User CreateUser(CreateUserDto userDto)
         {
-            var user = new UserDto
+            CreateUserDto? user = new CreateUserDto()
             {
                 Name = userDto.Name,
                 City = userDto.City,
-                Phone = userDto.Phone
+                Phone = userDto.Phone,
             };
-            return user;
+
+            User newUser = _mapper.Map<User>(user);
+
+            newUser.isPremiumAccount = false;
+            newUser.isAdmin = false;
+
+            _context.Users.Add(newUser);
+            _context.SaveChanges();
+            return newUser;
         }
 
         public User? GetUser(int id)

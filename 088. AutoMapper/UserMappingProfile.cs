@@ -9,6 +9,8 @@ namespace _088._AutoMapper
         public UserMappingProfile()
         {
             CreateMap<User, UserDto>();
+
+            CreateMap<UserDto, User>();
         }
     }
 }
