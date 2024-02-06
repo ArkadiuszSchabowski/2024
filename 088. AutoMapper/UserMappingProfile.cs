@@ -10,7 +10,7 @@ namespace _088._AutoMapper
         {
             CreateMap<User, UserDto>();
 
-            CreateMap<UserDto, User>();
+            CreateMap<CreateUserDto, User>();
         }
     }
 }

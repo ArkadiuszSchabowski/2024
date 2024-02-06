@@ -62,17 +62,17 @@ namespace _088._AutoMapper.Controllers
         {
             try
             {
-                if(userDto == null)
+                if (userDto == null)
                 {
                     return BadRequest("Wprowadzono niepoprawne dane!");
                 }
                 User user = _service.CreateUser(userDto);
 
-                return Ok();
+                return Created($"api/User/{user.Id}", null);
             }
             catch
             {
-                return StatusCode(500, "Hej");
+                return StatusCode(500, "Wystąpił błąd serwera");
             }
         }
     }
