@@ -39,6 +39,9 @@ namespace AutoMapper.Database
                 isAdmin = false,
                 isPremiumAccount = true
             });
+            modelBuilder.Entity<User>().Property(u => u.Name)
+                .IsRequired()
+                .HasMaxLength(25);
         }
     }
 }

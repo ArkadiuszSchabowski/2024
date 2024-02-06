@@ -11,6 +11,7 @@ namespace _088._AutoMapper.Service
         User CreateUser(CreateUserDto userDto);
         User? GetUser(int id);
         IEnumerable<User> GetUsers();
+        UserDto MapUserToDto(User user);
     }
 
     public class UserService : IUserService
@@ -53,6 +54,12 @@ namespace _088._AutoMapper.Service
         {
             return _context.Users.ToList();
 
+        }
+
+        public UserDto MapUserToDto(User user)
+        {
+            UserDto userDto = _mapper.Map<UserDto>(user);
+            return userDto;
         }
     }
 }

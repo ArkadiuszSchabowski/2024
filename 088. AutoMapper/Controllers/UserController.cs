@@ -49,7 +49,7 @@ namespace _088._AutoMapper.Controllers
                 {
                     return NotFound("Nie znaleziono użytkownika o podanym Id!");
                 }
-                var userDto = _mapper.Map<UserDto>(user);
+                UserDto userDto = _service.MapUserToDto(user);
                 return Ok(userDto);
             }
             catch
@@ -62,9 +62,9 @@ namespace _088._AutoMapper.Controllers
         {
             try
             {
-                if (userDto == null)
+                if (!ModelState.IsValid)
                 {
-                    return BadRequest("Wprowadzono niepoprawne dane!");
+                    return BadRequest(ModelState);
                 }
                 User user = _service.CreateUser(userDto);
 
