@@ -12,6 +12,8 @@ namespace _088._AutoMapper.Service
         User? GetUser(int id);
         IEnumerable<User> GetUsers();
         UserDto MapUserToDto(User user);
+        User? RemoveUser(int id);
+        User? UpdateUser(int id, UpdateUserDto dto);
     }
 
     public class UserService : IUserService
@@ -60,6 +62,30 @@ namespace _088._AutoMapper.Service
         {
             UserDto userDto = _mapper.Map<UserDto>(user);
             return userDto;
+        }
+
+        public User? RemoveUser(int id)
+        {
+            User? user = _context.Users.FirstOrDefault(u => u.Id == id);
+            if(user != null)
+            {
+            _context.Users.Remove(user);
+            _context.SaveChanges();
+            }
+            return user;
+        }
+
+        public User? UpdateUser(int id, UpdateUserDto dto)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.Id == id);
+
+            if(user!= null)
+            {
+                var updatedUser = _mapper.Map(dto, user);
+                _context.SaveChanges();
+                return updatedUser;
+            }
+            return null;
         }
     }
 }

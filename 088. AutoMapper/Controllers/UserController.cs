@@ -75,6 +75,26 @@ namespace _088._AutoMapper.Controllers
                 return StatusCode(500, "Wystąpił błąd serwera");
             }
         }
+        [HttpDelete("{id}")]
+        public ActionResult RemoveUser([FromRoute] int id)
+        {
+            User? user = _service.RemoveUser(id);
+            if(user == null)
+            {
+                return NotFound("Nie znaleziono użytkownika o podanym Id");
+            }
+            return Ok($"Użytkownik o id: {id} pomyślnie usunięty");
+        }
+        [HttpPut("{id}")]
+        public ActionResult UpdateUser([FromRoute] int id, [FromBody] UpdateUserDto dto)
+        {
+            var user = _service.UpdateUser(id, dto);
+            if(user == null)
+            {
+                return NotFound("Nie znaleziono użytkownika o podanym Id");
+            }
+            return Ok("Dane użytkownika pomyślnie zmodyfikowane");
+        }
     }
 }
 

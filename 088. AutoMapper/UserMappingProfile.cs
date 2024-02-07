@@ -11,6 +11,7 @@ namespace _088._AutoMapper
             CreateMap<User, UserDto>();
 
             CreateMap<CreateUserDto, User>();
+            CreateMap<UpdateUserDto, User>();
         }
     }
 }
