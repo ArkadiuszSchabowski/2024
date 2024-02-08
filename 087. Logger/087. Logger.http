@@ -1,0 +1,6 @@
+@_087._Logger_HostAddress = http://localhost:5254
+
+GET {{_087._Logger_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

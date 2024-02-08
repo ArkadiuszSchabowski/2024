@@ -2,6 +2,8 @@ using _088._AutoMapper.Service;
 using AutoMapper;
 using AutoMapper.Database;
 using Microsoft.EntityFrameworkCore;
+using NLog.Extensions.Logging;
+using NLog.Web;
 
 namespace _088._AutoMapper
 {

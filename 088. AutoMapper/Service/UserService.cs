@@ -20,11 +20,13 @@ namespace _088._AutoMapper.Service
     {
         private readonly MyDbContext _context;
         private readonly IMapper _mapper;
+        private readonly ILogger<UserService> _logger;
 
-        public UserService(MyDbContext context, IMapper mapper)
+        public UserService(MyDbContext context, IMapper mapper, ILogger<UserService> logger)
         {
             _context = context;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public User CreateUser(CreateUserDto userDto)
@@ -48,12 +50,16 @@ namespace _088._AutoMapper.Service
 
         public User? GetUser(int id)
         {
+            _logger.LogWarning($"GetUser {id} has been invoked");
+
             User? user = _context.Users.Find(id);
             return user;
         }
 
         public IEnumerable<User> GetUsers()
         {
+
+
             return _context.Users.ToList();
 
         }
@@ -66,6 +72,8 @@ namespace _088._AutoMapper.Service
 
         public User? RemoveUser(int id)
         {
+            _logger.LogWarning($"RemoveUser {id} has been invoked");
+
             User? user = _context.Users.FirstOrDefault(u => u.Id == id);
             if(user != null)
             {
