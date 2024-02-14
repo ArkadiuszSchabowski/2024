@@ -35,27 +35,13 @@ namespace _089.RestaurantTutorial.Controllers
         [HttpGet("{id}")]
         public ActionResult<RestaurantDto> Get([FromRoute] int id)
         {
-            var restaurant = _context.Restaurants
-                .Include(r => r.Dishes)
-                .Include(r => r.Address)
-                .FirstOrDefault(r => r.Id == id);
+            RestaurantDto restaurant = _service.GetRestaurant(id);
 
-            if (restaurant == null)
-            {
-                return NotFound(new { Message = "Nie znaleziono restauracji o podanym Id" });
-            }
-
-            var Dtorestaurant = _mapper.Map<RestaurantDto>(restaurant);
-            return Ok(Dtorestaurant);
+            return Ok(restaurant);
         }
-        [HttpPost]
+        [HttpPost] 
         public ActionResult CreateRestaurant([FromBody] RestaurantDto restaurantDto)
         {
-            if (restaurantDto == null || !ModelState.IsValid)
-            {
-                return BadRequest("Something");
-            }
-
             var restaurant = _mapper.Map<Restaurant>(restaurantDto);
 
             _context.Restaurants.Add(restaurant);
