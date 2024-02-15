@@ -1,4 +1,5 @@
 ﻿using _089.RestaurantTutorial.Entities;
+using _089.RestaurantTutorial.Middleware;
 using _089.RestaurantTutorial.Service;
 using Microsoft.EntityFrameworkCore;
 using NLog.Extensions.Logging;
@@ -21,8 +22,8 @@ namespace _089.RestaurantTutorial
             builder.Services.AddScoped<SeederService>();
             builder.Services.AddScoped<IRestaurantService, RestaurantService>();
             builder.Services.AddAutoMapper(typeof(RestaurantMappingProfile).Assembly);
-            builder.Logging.AddNLog();
             builder.Services.AddScoped<ErrorHandlingMiddleware>();
+            builder.Logging.AddNLog();
 
             var app = builder.Build();
 
