@@ -39,7 +39,7 @@ namespace _089.RestaurantTutorial.Controllers
 
             return Ok(restaurant);
         }
-        [HttpPost] 
+        [HttpPost]
         public ActionResult CreateRestaurant([FromBody] RestaurantDto restaurantDto)
         {
             var restaurant = _mapper.Map<Restaurant>(restaurantDto);

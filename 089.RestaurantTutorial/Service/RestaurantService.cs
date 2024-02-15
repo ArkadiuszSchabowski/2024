@@ -1,4 +1,5 @@
 ﻿using _089.RestaurantTutorial.Entities;
+using _089.RestaurantTutorial.Exceptions;
 using _089.RestaurantTutorial.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +9,7 @@ namespace _089.RestaurantTutorial.Service
     public interface IRestaurantService
     {
         IEnumerable<Restaurant> GetAll();
-        Restaurant GetRestaurant(int id);
+        RestaurantDto GetRestaurant(int id);
     }
 
     public class RestaurantService : IRestaurantService
@@ -29,7 +30,7 @@ namespace _089.RestaurantTutorial.Service
                 .ToList();
         }
 
-        public Restaurant GetRestaurant(int id)
+        public RestaurantDto GetRestaurant(int id)
         {
             var restaurant = _context.Restaurants
                 .Include(r => r.Dishes)
@@ -38,10 +39,11 @@ namespace _089.RestaurantTutorial.Service
 
             if (restaurant == null)
             {
-                throw NotFoundException("Nie znaleziono restauracji o podanym Id!");
+                throw new NotFoundException("Nie znaleziono restauracji o podanym Id!");
             }
 
-            var Dtorestaurant = _mapper.Map<RestaurantDto>(restaurant);
+            var restaurantDto = _mapper.Map<RestaurantDto>(restaurant);
+            return restaurantDto;
         }
     }
 }
