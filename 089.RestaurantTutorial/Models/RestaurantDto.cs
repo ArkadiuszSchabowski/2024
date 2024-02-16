@@ -1,10 +1,12 @@
 ﻿using _089.RestaurantTutorial.Entities;
+using System.Text.Json.Serialization;
 
 namespace _089.RestaurantTutorial.Models
 {
 
     public class RestaurantDto
     {
+        [JsonIgnore]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

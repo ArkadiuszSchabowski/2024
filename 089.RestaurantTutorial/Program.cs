@@ -23,6 +23,7 @@ namespace _089.RestaurantTutorial
             builder.Services.AddScoped<IRestaurantService, RestaurantService>();
             builder.Services.AddAutoMapper(typeof(RestaurantMappingProfile).Assembly);
             builder.Services.AddScoped<ErrorHandlingMiddleware>();
+            builder.Services.AddSwaggerGen();
             builder.Logging.AddNLog();
 
             var app = builder.Build();
@@ -30,6 +31,8 @@ namespace _089.RestaurantTutorial
             app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseHttpsRedirection();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Restaurant Api"));
             app.UseAuthorization();
 
             app.MapControllers();

@@ -1,6 +1,5 @@
-﻿using _086.ThrowTraining.Service;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿using _086.ThrowTraining.Exceptions;
+using _086.ThrowTraining.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace _086.ThrowTraining.Controllers
@@ -19,11 +18,6 @@ namespace _086.ThrowTraining.Controllers
         public ActionResult<List<Animal>> GetAll()
         {
             List<Animal> animals = _service.GetAnimals();
-
-            if (!animals.Any())
-            {
-                return NotFound("Nie znaleziono żadnego zwierzęcia w bazie danych");
-            }
 
             return Ok(animals);
         }

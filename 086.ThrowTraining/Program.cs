@@ -1,3 +1,4 @@
+using _086.ThrowTraining.Middleware;
 using _086.ThrowTraining.Service;
 
 namespace _086.ThrowTraining
@@ -10,9 +11,11 @@ namespace _086.ThrowTraining
 
             builder.Services.AddControllers();
             builder.Services.AddScoped<IAnimalService, AnimalService>();
+            builder.Services.AddScoped<ErrorHandlingMiddleware>();
 
             var app = builder.Build();
 
+            app.UseMiddleware<ErrorHandlingMiddleware>();
             app.UseHttpsRedirection();
 
             app.UseAuthorization();

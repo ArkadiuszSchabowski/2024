@@ -10,18 +10,18 @@
         {
             List<Animal> animals = new List<Animal>()
             {
-                //new Animal
-                //{
-                //    Name = "Guinea Pig",
-                //    IsPredator = false,
-                //    MaxWeight = 1
-                //},
-                //new Animal
-                //{
-                //    Name = "Cat",
-                //    IsPredator = true,
-                //    MaxWeight = 12
-                //}
+                new Animal
+                {
+                    Name = "Guinea Pig",
+                    IsPredator = false,
+                    MaxWeight = 1
+                },
+                new Animal
+                {
+                    Name = "Cat",
+                    IsPredator = true,
+                    MaxWeight = 12
+                }
             };
             return animals;
         }
