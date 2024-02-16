@@ -23,12 +23,14 @@ namespace _089.RestaurantTutorial
             builder.Services.AddScoped<IRestaurantService, RestaurantService>();
             builder.Services.AddAutoMapper(typeof(RestaurantMappingProfile).Assembly);
             builder.Services.AddScoped<ErrorHandlingMiddleware>();
+            builder.Services.AddScoped<TimeHandlingMiddleware>();
             builder.Services.AddSwaggerGen();
             builder.Logging.AddNLog();
 
             var app = builder.Build();
 
             app.UseMiddleware<ErrorHandlingMiddleware>();
+            app.UseMiddleware<TimeHandlingMiddleware>();
 
             app.UseHttpsRedirection();
             app.UseSwagger();
