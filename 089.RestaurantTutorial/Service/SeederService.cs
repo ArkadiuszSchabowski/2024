@@ -9,6 +9,24 @@ namespace _089.RestaurantTutorial.Service
         {
             _context = context;
         }
+        public void SeedRoles()
+        {
+            if (!_context.Roles.Any())
+            {
+                _context.Roles.AddRange(new Role
+                {
+                    Name = "User"
+                },
+                new Role
+                {
+                    Name = "Manager"
+                },
+                new Role
+                {
+                    Name = "Admin"
+                });
+            }
+        }
         public void SeedRestaurantAndAdress()
         {
             if (!_context.Restaurants.Any())

@@ -21,6 +21,7 @@ namespace _089.RestaurantTutorial
 
             builder.Services.AddScoped<SeederService>();
             builder.Services.AddScoped<IRestaurantService, RestaurantService>();
+            builder.Services.AddScoped<IDishService, DishService>();
             builder.Services.AddAutoMapper(typeof(RestaurantMappingProfile).Assembly);
             builder.Services.AddScoped<ErrorHandlingMiddleware>();
             builder.Services.AddScoped<TimeHandlingMiddleware>();

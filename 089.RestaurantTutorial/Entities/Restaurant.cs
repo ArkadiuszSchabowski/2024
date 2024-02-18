@@ -9,6 +9,6 @@
         public string ContactPhone { get; set; }
         public int AddressId { get; set; }
         public virtual Address Address { get; set; }
-        public List<Dish> Dishes { get; set; } = new List<Dish>();
+        public List<Dish> Dishes { get; set; }
     }
 }

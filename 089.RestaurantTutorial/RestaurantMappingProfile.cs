@@ -22,6 +22,8 @@ namespace _089.RestaurantTutorial
                     Street = dto.Street,
                     PostalCode = dto.PostalCode
                 }));
+
+            CreateMap<CreateDishDto, Dish>();
         }
     }
 }

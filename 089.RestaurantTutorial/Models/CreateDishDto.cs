@@ -1,12 +1,13 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace _089.RestaurantTutorial.Models
 {
-    public class DishDto
+    public class CreateDishDto
     {
-        public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
         public string Description { get; set; }
         public string Price { get; set; }
+        public int RestaurantId { get; set; }
     }
 }
