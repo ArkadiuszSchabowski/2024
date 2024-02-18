@@ -1,4 +1,6 @@
-﻿namespace _089.RestaurantTutorial.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace _089.RestaurantTutorial.Entities
 {
     public class Role
     {

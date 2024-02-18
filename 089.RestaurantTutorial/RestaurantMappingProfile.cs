@@ -24,6 +24,7 @@ namespace _089.RestaurantTutorial
                 }));
 
             CreateMap<CreateDishDto, Dish>();
+            CreateMap<RegisterUserDto, User>();
         }
     }
 }

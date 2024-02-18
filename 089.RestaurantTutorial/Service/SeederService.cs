@@ -13,18 +13,21 @@ namespace _089.RestaurantTutorial.Service
         {
             if (!_context.Roles.Any())
             {
-                _context.Roles.AddRange(new Role
+                var role1 = new Role
                 {
                     Name = "User"
-                },
-                new Role
+                };
+                var role2 = new Role
                 {
                     Name = "Manager"
-                },
-                new Role
+                };
+                var role3 = new Role
                 {
                     Name = "Admin"
-                });
+                };
+                _context.Roles.AddRange(role1, role2, role3);
+                _context.SaveChanges();
+
             }
         }
         public void SeedRestaurantAndAdress()

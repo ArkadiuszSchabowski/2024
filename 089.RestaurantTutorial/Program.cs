@@ -1,6 +1,7 @@
 ﻿using _089.RestaurantTutorial.Entities;
 using _089.RestaurantTutorial.Middleware;
 using _089.RestaurantTutorial.Service;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NLog.Extensions.Logging;
 
@@ -21,14 +22,23 @@ namespace _089.RestaurantTutorial
 
             builder.Services.AddScoped<SeederService>();
             builder.Services.AddScoped<IRestaurantService, RestaurantService>();
+            builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<IDishService, DishService>();
             builder.Services.AddAutoMapper(typeof(RestaurantMappingProfile).Assembly);
             builder.Services.AddScoped<ErrorHandlingMiddleware>();
             builder.Services.AddScoped<TimeHandlingMiddleware>();
+            builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             builder.Services.AddSwaggerGen();
             builder.Logging.AddNLog();
 
             var app = builder.Build();
+            using (var scope = app.Services.CreateScope())
+            {
+                var serviceProvider = scope.ServiceProvider;
+
+                var seederService = serviceProvider.GetRequiredService<SeederService>();
+                seederService.SeedRoles();
+            }
 
             app.UseMiddleware<ErrorHandlingMiddleware>();
             app.UseMiddleware<TimeHandlingMiddleware>();
