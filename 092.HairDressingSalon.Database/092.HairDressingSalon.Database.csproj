@@ -1,23 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <RootNamespace>_092.HairDressingSalon.Database</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>_092.HairDressingSalon</RootNamespace>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Remove="wwwroot\js\priceList.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="wwwroot\js\priceList.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\js\priceList.js" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
@@ -26,10 +14,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\092.HairDressingSalon.Database\092.HairDressingSalon.Database.csproj" />
   </ItemGroup>
 
 </Project>
