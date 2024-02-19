@@ -7,6 +7,19 @@ namespace _092.HairDressingSalon.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-
+        [HttpPost("login")]
+        public ActionResult RegisterUser()
+        {
+            //All
+            _service.RegisterUser();
+            return Ok();
+        }
+        [HttpPost("registration")]
+        public ActionResult LoginUser()
+        {
+            //All
+            _service.LoginUser();
+            return Ok();
+        }
     }
 }
