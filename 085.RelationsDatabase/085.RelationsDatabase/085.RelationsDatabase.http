@@ -1,0 +1,6 @@
+@_085.RelationsDatabase_HostAddress = http://localhost:5238
+
+GET {{_085.RelationsDatabase_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
