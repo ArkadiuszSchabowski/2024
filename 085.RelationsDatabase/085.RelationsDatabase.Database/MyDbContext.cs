@@ -7,6 +7,8 @@ namespace _085.RelationsDatabase.Database
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<AllegroUser> AllegroUsers { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
 
@@ -47,6 +49,10 @@ namespace _085.RelationsDatabase.Database
                 Country = "Polska",
                 UserId = 2
             });
+            modelBuilder.Entity<AllegroUser>()
+                .HasMany(a => a.Comments)
+                .WithOne(c => c.User)
+                .HasForeignKey(c => c.UserId);
         }
     }
 }
