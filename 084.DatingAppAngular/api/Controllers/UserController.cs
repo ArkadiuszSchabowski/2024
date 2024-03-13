@@ -1,6 +1,5 @@
 ﻿using api.Entities;
 using api.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -15,11 +14,13 @@ namespace api.Controllers
         {
             _service = service;
         }
+        [HttpGet]
         public ActionResult<List<AppUser>> GetAll()
         {
             var users = _service.GetAll();
             return Ok(users);
         }
+        [HttpGet("{id}")]
         public ActionResult<AppUser> GetUser(int id)
         {
             var user = _service.GetUser(id);
