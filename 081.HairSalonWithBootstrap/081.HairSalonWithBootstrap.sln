@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "081.HairDressingSalonWithBootstrap", "081.HairDressingSalonWithBootstrap.csproj", "{1B12E391-D362-47E2-9E26-ED12FC0FDD74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "081.HairSalonWithBootstrap", "081.HairSalonWithBootstrap.csproj", "{1C7CC5A4-365C-42F0-912E-989B9E553B9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1B12E391-D362-47E2-9E26-ED12FC0FDD74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B12E391-D362-47E2-9E26-ED12FC0FDD74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B12E391-D362-47E2-9E26-ED12FC0FDD74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B12E391-D362-47E2-9E26-ED12FC0FDD74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C7CC5A4-365C-42F0-912E-989B9E553B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C7CC5A4-365C-42F0-912E-989B9E553B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C7CC5A4-365C-42F0-912E-989B9E553B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C7CC5A4-365C-42F0-912E-989B9E553B9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {1D67D766-8614-4CE9-A02D-EA7793E0581F}
+		SolutionGuid = {F8C3CE65-87F8-4BCE-82CC-AA10E0877B63}
 	EndGlobalSection
 EndGlobal

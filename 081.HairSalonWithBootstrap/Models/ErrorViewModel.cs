@@ -1,4 +1,4 @@
-namespace _081.HairDressingSalonWithBootstrap.Models
+namespace _081.HairSalonWithBootstrap.Models
 {
     public class ErrorViewModel
     {

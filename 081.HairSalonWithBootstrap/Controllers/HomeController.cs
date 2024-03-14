@@ -1,8 +1,8 @@
-using _081.HairDressingSalonWithBootstrap.Models;
+using _081.HairSalonWithBootstrap.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace _081.HairDressingSalonWithBootstrap.Controllers
+namespace _081.HairSalonWithBootstrap.Controllers
 {
     public class HomeController : Controller
     {
