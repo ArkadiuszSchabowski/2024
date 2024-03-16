@@ -17,7 +17,7 @@ namespace api.Validators
         }
         public void Validation(RegisterUserDto dto)
         {
-            
+            var user = _context.Users
         }
     }
 
