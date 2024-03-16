@@ -1,4 +1,5 @@
 using api;
+using api.Middleware;
 using api.Services;
 using api.Validators;
 using Microsoft.AspNetCore.Identity;
@@ -14,6 +15,7 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IAccountValidation, AccountValdation>();
+builder.Services.AddScoped<ExceptionMiddleware>();
 builder.Services.AddCors();
 
 var app = builder.Build();
@@ -26,7 +28,12 @@ app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "DatingApp");
 });
 
-app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+app.UseCors(builder => builder.AllowAnyHeader()
+.AllowAnyMethod()
+.WithOrigins("https://localhost:4200"));
+
+app.UseMiddleware<ExceptionMiddleware>();
+
 app.UseAuthorization();
 
 app.MapControllers();

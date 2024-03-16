@@ -1,4 +1,5 @@
-﻿using api.Models;
+﻿using api.Exceptions;
+using api.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace api.Validators
@@ -17,7 +18,20 @@ namespace api.Validators
         }
         public void Validation(RegisterUserDto dto)
         {
-            var user = _context.Users
+            var checkUser = _context.Users.FirstOrDefault(x => x.UserName == dto.UserName);
+            if (checkUser != null)
+            {
+                throw new ConflictException("Istnieje już użytkownik o takiej nazwie");
+            }
+
+            if (dto.UserName.Length < 4)
+            {
+                throw new BadRequestException("Nazwa użytkownika powinna skladac sie z conajmniej czterech znaków");
+            }
+            if(dto.Password.Length < 4)
+            {
+                throw new BadRequestException("Haslo użytkownika powinno skladac sie z conajmniej 4 znaków");
+            }
         }
     }
 

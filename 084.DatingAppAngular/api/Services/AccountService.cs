@@ -28,12 +28,6 @@ namespace api.Services
         }
         public async Task<RegisterUserDto> RegisterUser(RegisterUserDto dto)
         {
-
-            var checkUser = _context.Users.FirstOrDefault(x => x.UserName == dto.UserName);
-            if (checkUser != null)
-            {
-                throw new ConflictException("Istnieje już użytkownik o takiej nazwie");
-            }
             _validation.Validation(dto);
 
             using var hmac = new HMACSHA512();
