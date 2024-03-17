@@ -66,6 +66,8 @@ namespace api.Services
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
+            //CreateToken
+
             var userDto = _mapper.Map<RegisterUserDto>(user);
 
             return userDto;

@@ -16,9 +16,9 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IAccountValidation, AccountValdation>();
 builder.Services.AddScoped<ExceptionMiddleware>();
 builder.Services.AddCors();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
-
 
 app.UseHttpsRedirection();
 app.UseSwagger();
