@@ -2,7 +2,6 @@ using api;
 using api.Middleware;
 using api.Services;
 using api.Validators;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

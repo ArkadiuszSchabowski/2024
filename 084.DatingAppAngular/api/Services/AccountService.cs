@@ -12,6 +12,7 @@ namespace api.Services
 {
     public interface IAccountService
     {
+        void Login(LoginDto dto);
         Task<RegisterUserDto> RegisterUser(RegisterUserDto dto);
     }
     public class AccountService : IAccountService
@@ -26,6 +27,29 @@ namespace api.Services
             _mapper = mapper;
             _validation = validation;
         }
+
+        public void Login(LoginDto dto)
+        {
+            var user = _context.Users.SingleOrDefault(x =>x.UserName == dto.UserName);
+
+            if (user == null)
+            {
+                throw new NotFoundException("Błędne dane logowania");
+            }
+            using var hmac = new HMACSHA512(user.PasswordSalt);
+
+            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(dto.Password));
+
+            for(int i=0; i<computedHash.Length; i++)
+            {
+                if (computedHash[i] != user.PasswordHash[i])
+                {
+                    throw new NotFoundException("Błędne dane logowania");
+                }
+            }
+        }
+
+
         public async Task<RegisterUserDto> RegisterUser(RegisterUserDto dto)
         {
             _validation.Validation(dto);

@@ -26,6 +26,13 @@ namespace api.Controllers
             await _service.RegisterUser(dto);
             return Ok(dto);
         }
+        [HttpPost("login")]
+        public ActionResult Login(LoginDto dto)
+        {
+            _service.Login(dto);
+
+            return Ok();
+        }
 
     }
 }
