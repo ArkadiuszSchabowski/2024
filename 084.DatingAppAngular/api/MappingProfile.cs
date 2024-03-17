@@ -10,6 +10,7 @@ namespace api
         {
             CreateMap<RegisterUserDto, AppUser>();
             CreateMap<AppUser, RegisterUserDto>();
+            CreateMap<AppUser, UserDto>();
         }
     }
 }

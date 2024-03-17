@@ -1,4 +1,5 @@
 ﻿using api.Entities;
+using api.Models;
 using api.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +16,7 @@ namespace api.Controllers
             _service = service;
         }
         [HttpGet]
-        public ActionResult<List<AppUser>> GetAll()
+        public ActionResult<List<UserDto>> GetAll()
         {
             var users = _service.GetAll();
             return Ok(users);

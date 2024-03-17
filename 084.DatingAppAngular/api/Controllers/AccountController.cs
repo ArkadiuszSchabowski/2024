@@ -24,7 +24,7 @@ namespace api.Controllers
         public async Task<ActionResult<RegisterUserDto>> Register(RegisterUserDto dto)
         {
             await _service.RegisterUser(dto);
-            return Ok(dto);
+            return Ok("Zarejestrowano pomyślnie");
         }
         [HttpPost("login")]
         public ActionResult Login(LoginDto dto)
