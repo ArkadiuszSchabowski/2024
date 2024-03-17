@@ -1,4 +1,5 @@
 ﻿using api.Entities;
+using api.Exceptions;
 using api.Models;
 using AutoMapper;
 
@@ -22,6 +23,10 @@ namespace api.Services
         public List<UserDto> GetAll()
         {
             var users = _context.Users.ToList();
+            if(users == null)
+            {
+                throw new NotFoundException("Lista użytkowników jest pusta");
+            }
             var usersDto = _mapper.Map<List<UserDto>>(users);
 
             return usersDto;
@@ -30,6 +35,10 @@ namespace api.Services
         {
             AppUser user = _context.Users.Find(id);
 
+            if (user == null)
+            {
+                throw new NotFoundException("Nie znaleziono użytkownika o podanym Id");
+            }
             var userDto = _mapper.Map<UserDto>(user);
 
             return userDto;

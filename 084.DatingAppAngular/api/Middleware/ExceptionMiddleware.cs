@@ -16,7 +16,12 @@ namespace api.Middleware
                 context.Response.StatusCode = 400;
                 await context.Response.WriteAsync(e.Message);
             }
-            catch(NotFoundException e)
+            catch (UnathorizedException e)
+            {
+                context.Response.StatusCode = 401;
+                await context.Response.WriteAsync(e.Message);
+            }
+            catch (NotFoundException e)
             {
                 context.Response.StatusCode = 404;
                 await context.Response.WriteAsync(e.Message);

@@ -34,7 +34,7 @@ namespace api.Services
 
             if (user == null)
             {
-                throw new NotFoundException("Błędne dane logowania");
+                throw new UnathorizedException("Błędne dane logowania");
             }
             using var hmac = new HMACSHA512(user.PasswordSalt);
 
@@ -44,7 +44,7 @@ namespace api.Services
             {
                 if (computedHash[i] != user.PasswordHash[i])
                 {
-                    throw new NotFoundException("Błędne dane logowania");
+                    throw new UnathorizedException("Błędne dane logowania");
                 }
             }
         }
