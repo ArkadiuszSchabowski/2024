@@ -1,12 +1,6 @@
-﻿using api.Entities;
-using api.Exceptions;
-using api.Models;
+﻿using api.Models;
 using api.Services;
-using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace api.Controllers
 {
@@ -21,18 +15,18 @@ namespace api.Controllers
             _service = service;
         }
         [HttpPost("register")]
-        public async Task<ActionResult<RegisterUserDto>> Register(RegisterUserDto dto)
+        public ActionResult RegisterUser([FromBody] RegisterUserDto dto)
         {
-            await _service.RegisterUser(dto);
+            _service.RegisterUser(dto);
             return Ok("Zarejestrowano pomyślnie");
         }
-        [HttpPost("login")]
-        public ActionResult Login(LoginDto dto)
-        {
-            _service.Login(dto);
+        //[HttpPost("login")]
+        //public ActionResult<string> Login(LoginDto dto)
+        //{
+        //    string token = _service.Login(dto);
 
-            return Ok();
-        }
+        //    return Ok(token);
+        //}
 
     }
 }

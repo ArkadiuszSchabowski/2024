@@ -8,9 +8,9 @@ namespace api
     {
         public MappingProfile()
         {
-            CreateMap<RegisterUserDto, AppUser>();
-            CreateMap<AppUser, RegisterUserDto>();
-            CreateMap<AppUser, UserDto>();
+            CreateMap<RegisterUserDto, User>();
+            CreateMap<User, RegisterUserDto>();
+            CreateMap<User, UserDto>();
         }
     }
 }

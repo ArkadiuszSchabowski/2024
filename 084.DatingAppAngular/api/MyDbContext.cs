@@ -6,28 +6,28 @@ namespace api
 {
     public class MyDbContext : DbContext
     {
-        public DbSet<AppUser> Users { get; set; }
+        public DbSet<User> Users { get; set; }
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AppUser>().HasData(
-                new AppUser
+            modelBuilder.Entity<User>().HasData(
+                new User
                 {
                     Id = 1,
-                    UserName = "Świnka"
+                    Name = "Świnka"
                 },
-                new AppUser
+                new User
                 {
                     Id = 2,
-                    UserName = "Owca"
+                    Name = "Owca"
                 },
-                new AppUser
+                new User
                 {
                     Id = 3,
-                    UserName = "Krowa"
+                    Name = "Krowa"
                 });
         }
     }

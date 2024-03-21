@@ -18,7 +18,7 @@ namespace api.Validators
         }
         public void Validation(RegisterUserDto dto)
         {
-            var checkUser = _context.Users.FirstOrDefault(x => x.UserName == dto.UserName);
+            var checkUser = _context.Users.FirstOrDefault(x => x.Name == dto.UserName);
             if (checkUser != null)
             {
                 throw new ConflictException("Istnieje już użytkownik o takiej nazwie");
@@ -30,7 +30,11 @@ namespace api.Validators
             }
             if(dto.Password.Length < 4)
             {
-                throw new BadRequestException("Haslo użytkownika powinno skladac sie z conajmniej 4 znaków");
+                throw new BadRequestException("Haslo użytkownika powinno skladac sie z conajmniej czterech znaków");
+            }
+            if(dto.Password != dto.RepeatPassword)
+            {
+                throw new BadRequestException("Hasła nie są zgodne");
             }
         }
     }
