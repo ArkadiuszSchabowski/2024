@@ -7,19 +7,19 @@
 namespace api.Migrations
 {
     /// <inheritdoc />
-    public partial class SeedUsers : Migration
+    public partial class addUsers : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "UserName" },
+                columns: new[] { "Id", "Name", "Password", "RoleId" },
                 values: new object[,]
                 {
-                    { 1, "Świnka" },
-                    { 2, "Owca" },
-                    { 3, "Krowa" }
+                    { 1, "Świnka", null, 1 },
+                    { 2, "Owca", null, 1 },
+                    { 3, "Krowa", null, 1 }
                 });
         }
 

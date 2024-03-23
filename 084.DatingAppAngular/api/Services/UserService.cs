@@ -33,7 +33,7 @@ namespace api.Services
         }
         public UserDto GetUser(int id)
         {
-            AppUser user = _context.Users.Find(id);
+            User user = _context.Users.Find(id);
 
             if (user == null)
             {

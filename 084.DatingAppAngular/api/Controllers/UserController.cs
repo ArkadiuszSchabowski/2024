@@ -22,7 +22,7 @@ namespace api.Controllers
             return Ok(users);
         }
         [HttpGet("{id}")]
-        public ActionResult<AppUser> GetUser(int id)
+        public ActionResult<User> GetUser(int id)
         {
             var user = _service.GetUser(id);
             return Ok(user);

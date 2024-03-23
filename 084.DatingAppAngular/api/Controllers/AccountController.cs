@@ -20,13 +20,12 @@ namespace api.Controllers
             _service.RegisterUser(dto);
             return Ok("Zarejestrowano pomyślnie");
         }
-        //[HttpPost("login")]
-        //public ActionResult<string> Login(LoginDto dto)
-        //{
-        //    string token = _service.Login(dto);
+        [HttpPost("login")]
+        public ActionResult<string> Login(LoginDto dto)
+        {
+            string token = _service.Login(dto);
 
-        //    return Ok(token);
-        //}
-
+            return Ok(token);
+        }
     }
 }
