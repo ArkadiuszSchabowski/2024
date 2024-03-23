@@ -26,9 +26,7 @@ export class NavComponent implements OnInit {
     this.accountService.login(loginData).subscribe({
       next: (response: any) => { // Zadeklarowano typ 'response' jako 'any'
         console.log('Odpowiedź z serwera:', response);
-        
-        // Tutaj token jest traktowany jako czysty tekst
-        // Możesz wykonać na nim odpowiednie operacje w zależności od Twoich potrzeb
+      
         const token = response;
         
         // Tutaj możesz wykonać operacje na tokenie, np. przechowywać go w lokalnej pamięci
