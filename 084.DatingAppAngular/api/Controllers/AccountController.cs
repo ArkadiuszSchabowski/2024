@@ -21,11 +21,11 @@ namespace api.Controllers
             return Ok("Zarejestrowano pomyślnie");
         }
         [HttpPost("login")]
-        public ActionResult<string> Login(LoginDto dto)
+        public ActionResult Login(LoginDto dto)
         {
             string token = _service.Login(dto);
 
-            return Ok(token);
+            return Ok(new { token });
         }
     }
 }
