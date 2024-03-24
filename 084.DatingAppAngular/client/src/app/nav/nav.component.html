@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container">
     <a class="navbar-brand" href="#">Dating App</a>
-    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+    <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="loggedIn">
       <li class="nav-item">
         <a class="nav-link" href="#">Matches</a>
       </li>
@@ -9,22 +9,40 @@
         <a class="nav-link" href="#">Lists</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" aria-disabled="true">Messages</a>
+        <a class="nav-link">Messages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">Logout</a>
       </li>
     </ul>
-    <form #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
+
+    <div class="btn-group" dropdown *ngIf="loggedIn">
+      <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">Welcome User<span class="caret"></span>
+      </button>
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+          role="menu" aria-labelledby="button-basic">
+        <li role="menuitem"><a class="dropdown-item">Edit Profile</a></li>
+        <li role="menuitem"><a class="dropdown-item" (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
+
+    <form *ngIf="!loggedIn" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()"autocomplete="off"
+    >
       <input
         name="name"
         [(ngModel)]="model.name"
-        class="form-control me-2" 
+        class="form-control me-2"
         type="text"
-        placeholder="UserName">
-      <input 
+        placeholder="UserName"
+      />
+      <input
         name="password"
         [(ngModel)]="model.password"
         class="form-control me-2"
         type="password"
-        placeholder="Password">
+        placeholder="Password"
+        autocomplete="off"
+      />
       <button class="btn btn-outline-success" type="submit">Login</button>
     </form>
   </div>
