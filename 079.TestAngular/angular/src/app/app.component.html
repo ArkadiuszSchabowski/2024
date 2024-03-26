@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+  <span>My App</span>
+  <ul>
+    <li>Main Page</li>
+    <li>Booking</li>
+  </ul>
+  <span class="example-spacer"></span>
+
+  <div *ngIf="!isLogin" class="containerToolbarInputs">
+    <mat-label>Login</mat-label>
+    <input matInput type="text" placeholder="Enter your login"/>
+    
+    <mat-label>Password</mat-label>
+    <input type="password" placeholder="Enter your password"/>
+  </div>
+
+  <button *ngIf="isLogin"
+  mat-icon-button
+  class="example-icon"
+  aria-label="Example icon-button with menu icon"
+>
+  <mat-icon>menu</mat-icon>
+</button>
+
+</mat-toolbar>
+
+<ul>
+  <li *ngFor="let massage of massages">
+    {{ massage.id }} - {{ massage.serviceName }}
+  </li>
+</ul>

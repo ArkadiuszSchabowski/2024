@@ -5,6 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AccontServiceService {
-
   constructor(private http: HttpClient) { }
+  login(){
+
+  }
+  logout(){
+
+  }
 }

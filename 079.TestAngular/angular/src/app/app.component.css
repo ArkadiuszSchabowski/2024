@@ -1,0 +1,17 @@
+.example-icon {
+    padding: 0 14px;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  mat-toolbar ul{
+    display: flex;
+    flex-direction: row;
+}
+mat-toolbar ul li{
+    list-style: none;
+    margin: 0 5px;
+}
+input{
+    margin: 0 5px;
+}
