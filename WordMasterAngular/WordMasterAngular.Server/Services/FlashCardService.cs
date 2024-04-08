@@ -57,8 +57,14 @@ namespace WordMaster.Server.Services
 
         public void AddWord(FlashCardDto dto)
         {
-            var polishFlashCard = _context.FlashCards.FirstOrDefault(x => x.PolishWord == dto.PolishWord);
-            var englishFlashCard = _context.FlashCards.FirstOrDefault(x => x.PolishWord == dto.EnglishWord);
+            var newWordDto = new FlashCard()
+            {
+                PolishWord = dto.PolishWord.ToUpper(),
+                EnglishWord = dto.EnglishWord.ToUpper()
+            };
+
+            var polishFlashCard = _context.FlashCards.FirstOrDefault(x => x.PolishWord == newWordDto.PolishWord);
+            var englishFlashCard = _context.FlashCards.FirstOrDefault(x => x.EnglishWord == newWordDto.EnglishWord);
             if(polishFlashCard != null)
             {
                 throw new ConflictException("W słowniku istnieje już takie polskie słowo");
@@ -67,8 +73,9 @@ namespace WordMaster.Server.Services
             {
                 throw new ConflictException("W słowniku istnieje już takie angielskie słowo");
             }
-            var newWord = _mapper.Map<FlashCard>(dto);
+            var newWord = _mapper.Map<FlashCard>(newWordDto);
             _context.FlashCards.Add(newWord);
+            _context.SaveChanges();
         }
     }
 
