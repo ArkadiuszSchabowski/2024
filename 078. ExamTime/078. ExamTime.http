@@ -1,0 +1,6 @@
+@_078._ExamTime_HostAddress = http://localhost:5179
+
+GET {{_078._ExamTime_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,6 @@
+@WordMasterAngular.Server_HostAddress = http://localhost:5155
+
+GET {{WordMasterAngular.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordMaster.Server", "WordMasterAngular.Server\WordMaster.Server.csproj", "{D765F2A0-1F5A-4E00-B8F1-551B481AAA29}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "WordMaster.Client", "wordmasterangular.client\WordMaster.Client.esproj", "{6A5DCBCF-D169-4D75-90A3-5B9D9C842730}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordMaster.ServerDatabase", "WordMaster.ServerDatabase\WordMaster.ServerDatabase.csproj", "{174D21A2-1EED-445B-9FB8-7051BD5D5106}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D765F2A0-1F5A-4E00-B8F1-551B481AAA29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D765F2A0-1F5A-4E00-B8F1-551B481AAA29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D765F2A0-1F5A-4E00-B8F1-551B481AAA29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D765F2A0-1F5A-4E00-B8F1-551B481AAA29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A5DCBCF-D169-4D75-90A3-5B9D9C842730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A5DCBCF-D169-4D75-90A3-5B9D9C842730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A5DCBCF-D169-4D75-90A3-5B9D9C842730}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6A5DCBCF-D169-4D75-90A3-5B9D9C842730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A5DCBCF-D169-4D75-90A3-5B9D9C842730}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A5DCBCF-D169-4D75-90A3-5B9D9C842730}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{174D21A2-1EED-445B-9FB8-7051BD5D5106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{174D21A2-1EED-445B-9FB8-7051BD5D5106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{174D21A2-1EED-445B-9FB8-7051BD5D5106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{174D21A2-1EED-445B-9FB8-7051BD5D5106}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F82DE711-E541-4FF9-A8D2-0B31F9EA7E63}
+	EndGlobalSection
+EndGlobal
