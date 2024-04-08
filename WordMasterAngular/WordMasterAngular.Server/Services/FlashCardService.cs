@@ -8,10 +8,9 @@ namespace WordMaster.Server.Services
 {
     public interface IFlashCardService
     {
-        List<FlashCardDto> GetFlashCards();
-        FlashCardDto GetPolishFlashCard(string word);
-        FlashCardDto GetEnglishFlashCard(string word);
-        FlashCardDto GetFlashCard(FlashCard flashCard);
+        List<FlashCard> GetFlashCards();
+        FlashCard GetPolishFlashCard(string word);
+        FlashCard GetEnglishFlashCard(string word);
         void AddWord(FlashCardDto dto);
     }
     public class FlashCardService : IFlashCardService
@@ -24,35 +23,32 @@ namespace WordMaster.Server.Services
             _context = context;
             _mapper = mapper;
         }
-        public List<FlashCardDto> GetFlashCards()
+        public List<FlashCard> GetFlashCards()
         {
-            var flashcards = _context.FlashCards.ToList();
-
-            var flashcardsDto = _mapper.Map<List<FlashCardDto>>(flashcards);
-
-            return flashcardsDto;
+            return _context.FlashCards.ToList();
         }
 
-        public FlashCardDto GetPolishFlashCard(string word)
+        public FlashCard GetPolishFlashCard(string word)
         {
-            var flashcard = _context.FlashCards.FirstOrDefault(x => x.PolishWord == word);
-            var flashCardDto = GetFlashCard(flashcard);
-            return flashCardDto;
-        }
-        public FlashCardDto GetEnglishFlashCard(string word)
-        {
-            var flashcard = _context.FlashCards.FirstOrDefault(x => x.EnglishWord == word);
-            var flashCardDto = GetFlashCard(flashcard);
-            return flashCardDto;
-        }
-        public FlashCardDto GetFlashCard(FlashCard? flashcard)
-        {
-            if (flashcard == null)
+            var flashCard = _context.FlashCards.FirstOrDefault(x => x.PolishWord == word);
+
+            if (flashCard == null)
             {
-                throw new NotFoundException("Nie znalezionio takiego słowa");
+                throw new NotFoundException("Nie znaleziono takiego polskiego słowa");
             }
-            var flashcardDto = _mapper.Map<FlashCardDto>(flashcard);
-            return flashcardDto;
+
+            return flashCard;
+        }
+        public FlashCard GetEnglishFlashCard(string word)
+        {
+            var flashCard = _context.FlashCards.FirstOrDefault(x => x.EnglishWord == word);
+
+            if (flashCard == null)
+            {
+                throw new NotFoundException("Nie znaleziono takiego angielskiego słowa");
+            }
+
+            return flashCard;
         }
 
         public void AddWord(FlashCardDto dto)
@@ -65,7 +61,8 @@ namespace WordMaster.Server.Services
 
             var polishFlashCard = _context.FlashCards.FirstOrDefault(x => x.PolishWord == newWordDto.PolishWord);
             var englishFlashCard = _context.FlashCards.FirstOrDefault(x => x.EnglishWord == newWordDto.EnglishWord);
-            if(polishFlashCard != null)
+
+            if (polishFlashCard != null)
             {
                 throw new ConflictException("W słowniku istnieje już takie polskie słowo");
             }

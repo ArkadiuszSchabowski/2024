@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WordMaster.Server;
+using WordMaster.Server.Middleware;
 using WordMaster.Server.Seeders;
 using WordMaster.Server.Services;
 using WordMaster.ServerDatabase;
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(build
 builder.Services.AddScoped<IFlashCardService, FlashCardService>();
 builder.Services.AddScoped<IFlashCardSeeder, FlashCardSeeder>();
 
+builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddAutoMapper(typeof(FlashCardMappingProfile).Assembly);
 
 var app = builder.Build();
@@ -26,6 +28,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

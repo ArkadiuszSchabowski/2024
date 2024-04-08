@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WordMaster.Server.Models;
 using WordMaster.Server.Services;
+using WordMaster.ServerDatabase.Entities;
 
 namespace WordMaster.Server.Controllers
 {
@@ -15,21 +16,21 @@ namespace WordMaster.Server.Controllers
             _service = service;
         }
         [HttpGet]
-        public ActionResult<List<FlashCardDto>> GetFlashCards()
+        public ActionResult<List<FlashCard>> GetFlashCards()
         {
             var flashcards = _service.GetFlashCards();
             return Ok(flashcards);
         }
         [HttpGet("polish")]
-        public ActionResult<FlashCardDto> GetPolishFlashCard([FromBody] string word) 
+        public ActionResult<FlashCard> GetPolishFlashCard([FromQuery] string word) 
         {
-            FlashCardDto flashcard = _service.GetPolishFlashCard(word);
+            FlashCard flashcard = _service.GetPolishFlashCard(word);
             return Ok(flashcard);
         }
         [HttpGet("english")]
-        public ActionResult<FlashCardDto> GetEnglishFlashCard([FromBody] string word)
+        public ActionResult<FlashCard> GetEnglishFlashCard([FromQuery] string word)
         {
-            FlashCardDto flashcard = _service.GetEnglishFlashCard(word);
+            FlashCard flashcard = _service.GetEnglishFlashCard(word);
             return Ok(flashcard);
         }
         [HttpPost]
