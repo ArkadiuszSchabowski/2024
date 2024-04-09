@@ -21,10 +21,10 @@ namespace WordMaster.Server.Controllers
             var flashcards = _service.GetFlashCards();
             return Ok(flashcards);
         }
-        [HttpGet]
-        public ActionResult<FlashCard> GetFlashCard(int id)
+        [HttpGet("{id}")]
+        public ActionResult<FlashCard> GetFlashCard([FromRoute] int id)
         {
-            FlashCard flashCard = _service.GetFlashCards(id);
+            FlashCard flashCard = _service.GetFlashCard(id);
 
             return Ok(flashCard);
         }
