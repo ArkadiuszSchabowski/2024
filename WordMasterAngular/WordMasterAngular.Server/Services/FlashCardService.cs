@@ -9,9 +9,12 @@ namespace WordMaster.Server.Services
     public interface IFlashCardService
     {
         List<FlashCard> GetFlashCards();
+        FlashCard GetFlashCards(int id);
         FlashCard GetPolishFlashCard(string word);
         FlashCard GetEnglishFlashCard(string word);
         void AddWord(FlashCardDto dto);
+        void UpdateWord(int id, FlashCardDto dto);
+        void RemoveWord(int id);
     }
     public class FlashCardService : IFlashCardService
     {
@@ -27,7 +30,15 @@ namespace WordMaster.Server.Services
         {
             return _context.FlashCards.ToList();
         }
-
+        public FlashCard GetFlashCards(int id)
+        {
+            var flashCard = _context.FlashCards.Find(id);
+            if(flashCard == null)
+            {
+                throw new NotFoundException("Nie znaleziono słowo o podanym id");
+            }
+            return flashCard;
+        }
         public FlashCard GetPolishFlashCard(string word)
         {
             var flashCard = _context.FlashCards.FirstOrDefault(x => x.PolishWord == word);
@@ -72,6 +83,31 @@ namespace WordMaster.Server.Services
             }
             var newWord = _mapper.Map<FlashCard>(newWordDto);
             _context.FlashCards.Add(newWord);
+            _context.SaveChanges();
+        }
+
+        public void UpdateWord(int id, FlashCardDto dto)
+        {
+            var word = _context.FlashCards.Find(id);
+
+            if(word == null)
+            {
+                throw new NotFoundException("Nie znaleziono słowa o podanym id");
+            }
+
+            _mapper.Map(dto, word);
+            _context.SaveChanges();
+        }
+
+        public void RemoveWord(int id)
+        {
+            var word = _context.FlashCards.Find(id);
+
+            if (word == null)
+            {
+                throw new NotFoundException("Nie znaleziono słowa o podanym id");
+            }
+            _context.FlashCards.Remove(word);
             _context.SaveChanges();
         }
     }

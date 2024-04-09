@@ -21,8 +21,15 @@ namespace WordMaster.Server.Controllers
             var flashcards = _service.GetFlashCards();
             return Ok(flashcards);
         }
+        [HttpGet]
+        public ActionResult<FlashCard> GetFlashCard(int id)
+        {
+            FlashCard flashCard = _service.GetFlashCards(id);
+
+            return Ok(flashCard);
+        }
         [HttpGet("polish")]
-        public ActionResult<FlashCard> GetPolishFlashCard([FromQuery] string word) 
+        public ActionResult<FlashCard> GetPolishFlashCard([FromQuery] string word)
         {
             FlashCard flashcard = _service.GetPolishFlashCard(word);
             return Ok(flashcard);
@@ -38,6 +45,18 @@ namespace WordMaster.Server.Controllers
         {
             _service.AddWord(dto);
             return Ok("Słowo dodane pomyślnie");
+        }
+        [HttpPut("{id}")]
+        public ActionResult UpdateWord([FromRoute] int id, [FromBody] FlashCardDto dto)
+        {
+            _service.UpdateWord(id, dto);
+            return Ok("Słowo zaaktualizowane pomyślnie");
+        }
+        [HttpDelete("{id}")]
+        public ActionResult RemoveWord([FromRoute] int id)
+        {
+            _service.RemoveWord(id);
+            return NoContent();
         }
     }
 }
