@@ -47,6 +47,10 @@ namespace WordMaster.Server.Services
         }
         public FlashCard GetPolishFlashCard(string word)
         {
+            if(word.Length < 2 || word.Length > 25)
+            {
+                throw new BadRequestException("Szukane słowo musi mieścić się w przedziale od 2 do 25 znaków");
+            }
             var flashCard = _context.FlashCards.FirstOrDefault(x => x.PolishWord == word);
 
             if (flashCard == null)
@@ -58,13 +62,16 @@ namespace WordMaster.Server.Services
         }
         public FlashCard GetEnglishFlashCard(string word)
         {
+            if (word.Length < 2 || word.Length > 25)
+            {
+                throw new BadRequestException("Szukane słowo musi mieścić się w przedziale od 2 do 25 znaków");
+            }
             var flashCard = _context.FlashCards.FirstOrDefault(x => x.EnglishWord == word);
 
             if (flashCard == null)
             {
                 throw new NotFoundException("Nie znaleziono takiego angielskiego słowa");
             }
-
             return flashCard;
         }
 

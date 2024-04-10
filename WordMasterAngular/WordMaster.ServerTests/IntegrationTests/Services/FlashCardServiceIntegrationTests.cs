@@ -18,12 +18,6 @@ namespace WordMaster.ServerTests.IntegrationTests.Services
         [SetUp]
         public void Setup()
         {
-            var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.Tests.json", optional: true, reloadOnChange: true);
-            _configuration = builder.Build();
-
-            var connectionString = _configuration.GetValue<string>("Tests_WordMasterAngularConnectionString");
-
             var options = new DbContextOptionsBuilder<MyDbContext>()
                 .UseInMemoryDatabase("myDb").Options;
 
