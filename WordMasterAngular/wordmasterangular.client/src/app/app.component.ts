@@ -10,10 +10,17 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    let baseUrl = "https://localhost:7113/api/"
+  baseUrl: string = "https://localhost:7113/api/"
+  flashcards: any;
 
-    let url = this.http.get(baseUrl + "flashcard").subscribe();
-    console.log(url);
+  ngOnInit() {
+
+      this.http.get(this.baseUrl + "flashcard").subscribe({
+      next: response => {
+      this.flashcards = response,
+      console.log(this.flashcards)},
+      error: error =>  console.error(error),
+      complete: () => console.log("request has completed")
+    });
   }
 }

@@ -9,7 +9,7 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "WordMaster.Client", "wordma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordMaster.ServerDatabase", "WordMaster.ServerDatabase\WordMaster.ServerDatabase.csproj", "{174D21A2-1EED-445B-9FB8-7051BD5D5106}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordMaster.ServerTests", "WordMaster.ServerTests\WordMaster.ServerTests.csproj", "{7296E259-3B0E-4F16-B886-1D9ADE6E33B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordMaster.ServerTests", "WordMaster.ServerTests\WordMaster.ServerTests.csproj", "{7296E259-3B0E-4F16-B886-1D9ADE6E33B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,8 +22,6 @@ Global
 		{D765F2A0-1F5A-4E00-B8F1-551B481AAA29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D765F2A0-1F5A-4E00-B8F1-551B481AAA29}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A5DCBCF-D169-4D75-90A3-5B9D9C842730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A5DCBCF-D169-4D75-90A3-5B9D9C842730}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A5DCBCF-D169-4D75-90A3-5B9D9C842730}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{6A5DCBCF-D169-4D75-90A3-5B9D9C842730}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A5DCBCF-D169-4D75-90A3-5B9D9C842730}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A5DCBCF-D169-4D75-90A3-5B9D9C842730}.Release|Any CPU.Deploy.0 = Release|Any CPU

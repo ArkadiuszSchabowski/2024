@@ -17,6 +17,7 @@ builder.Services.AddScoped<IFlashCardSeeder, FlashCardSeeder>();
 
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddAutoMapper(typeof(FlashCardMappingProfile).Assembly);
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -32,6 +33,8 @@ app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors(x => x.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader());
 
 app.MapControllers();
 
