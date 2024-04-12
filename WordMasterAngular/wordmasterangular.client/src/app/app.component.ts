@@ -11,5 +11,9 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
+    let baseUrl = "https://localhost:7113/api/"
+
+    let url = this.http.get(baseUrl + "flashcard").subscribe();
+    console.log(url);
   }
 }
