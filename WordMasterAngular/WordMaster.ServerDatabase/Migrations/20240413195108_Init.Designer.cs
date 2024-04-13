@@ -12,8 +12,8 @@ using WordMaster.ServerDatabase;
 namespace WordMaster.ServerDatabase.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20240413132158_addUsersTableToDatabase")]
-    partial class addUsersTableToDatabase
+    [Migration("20240413195108_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,6 +46,40 @@ namespace WordMaster.ServerDatabase.Migrations
                     b.ToTable("FlashCards");
                 });
 
+            modelBuilder.Entity("WordMaster.ServerDatabase.Entities.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "User"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Manager"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Admin"
+                        });
+                });
+
             modelBuilder.Entity("WordMaster.ServerDatabase.Entities.User", b =>
                 {
                     b.Property<int>("Id")
@@ -76,9 +110,30 @@ namespace WordMaster.ServerDatabase.Migrations
                     b.Property<int?>("Phone")
                         .HasColumnType("int");
 
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("RoleId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("WordMaster.ServerDatabase.Entities.User", b =>
+                {
+                    b.HasOne("WordMaster.ServerDatabase.Entities.Role", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("WordMaster.ServerDatabase.Entities.Role", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

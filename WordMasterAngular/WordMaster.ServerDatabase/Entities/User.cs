@@ -1,4 +1,6 @@
-﻿namespace WordMaster.ServerDatabase.Entities
+﻿using System.Security.Principal;
+
+namespace WordMaster.ServerDatabase.Entities
 {
     public class User
     {
@@ -9,5 +11,7 @@
         public int? Phone { get; set; }
         public string? City { get; set; }
         public string Country { get; set; }
+        public int RoleId { get; set; }
+        public virtual Role Role { get; set; }
     }
 }
