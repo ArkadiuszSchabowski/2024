@@ -11,7 +11,7 @@ namespace WordMaster.ServerDatabase.Entities
         public int? Phone { get; set; }
         public string? City { get; set; }
         public string Country { get; set; }
-        public int RoleId { get; set; }
+        public int RoleId { get; set; } = 1;
         public virtual Role Role { get; set; }
     }
 }
