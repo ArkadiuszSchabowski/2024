@@ -1,3 +1,7 @@
 ﻿<mat-toolbar>
     <span>Witaj w aplikacji Word Master!</span>
 </mat-toolbar>
+
+<ul *ngFor="let flashcard of flashcards">
+    <li>{{flashcard.id}} - {{flashcard.polishWord}} - {{flashcard.englishWord}}</li>
+</ul>
