@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class ToolbarComponent {
 title = "Wellness Center"
-isLogin: boolean = false;
+isLogin: boolean = true;
 }

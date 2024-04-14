@@ -1,1 +1,51 @@
-<p>navbar works!</p>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>{{tittle}}</span>
+      <div class="container" *ngIf="isLogin">
+      <ul>
+        <li class="nav-item">
+          <a class="nav-link">Ćwiczenia</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Postępy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Wiadomości</a>
+        </li>
+      </ul>
+      </div>
+      <span class="example-spacer"></span>
+
+      <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+      <mat-form-field 
+      class="input" id="login" *ngIf="!isLogin">
+        <mat-label>Login</mat-label>
+        <input
+        name="login"
+        [(ngModel)]="model.login"
+        matInput type="text" 
+        placeholder="Login"/>
+      </mat-form-field>
+
+      <mat-form-field class="input" id="password" *ngIf="!isLogin">
+        <mat-label>Hasło</mat-label>
+        <input
+        name="password"
+        [(ngModel)]="model.password"
+        matInput type="password" 
+        placeholder="Hasło" />
+      </mat-form-field>
+      
+      <button *ngIf="!isLogin" mat-raised-button color="primary" class="btnNavbar" type="submit">Login</button>
+      <button *ngIf="isLogin" mat-raised-button color="primary" class="btnLogout" (click)="logout()">Logout</button>
+    </form>
+
+      <button *ngIf="!isLogin"
+        mat-icon-button
+        id="btnLogin"
+        class="example-icon"
+        aria-label="Example icon-button with menu icon">
+        <mat-icon *ngIf="isLogin">menu</mat-icon>
+      </button>
+      </mat-toolbar-row>
+</mat-toolbar>
