@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 using WordMaster.Server.Models;
 using WordMaster.Server.Services;
 
@@ -25,7 +26,8 @@ namespace WordMaster.Server.Controllers
         public ActionResult<string> Login([FromBody] LoginDto dto)
         {
             string token = _service.Login(dto);
-            return Ok(token);
+            var serializedToken = JsonSerializer.Serialize(token);
+            return Ok(serializedToken);
         }
     }
 }
