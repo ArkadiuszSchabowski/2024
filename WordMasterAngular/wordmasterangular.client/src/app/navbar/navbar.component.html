@@ -37,8 +37,15 @@
       </mat-form-field>
       
       <button *ngIf="!isLogin" mat-raised-button color="primary" class="btnNavbar" type="submit">Login</button>
-      <button *ngIf="isLogin" mat-raised-button color="primary" class="btnLogout" (click)="logout()">Logout</button>
     </form>
+
+    <div id="menuContainer" *ngIf="isLogin">
+      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Edytuj profil</button>
+    <button mat-menu-item (click)="logout()">Wyloguj</button>
+  </mat-menu>
+    </div>
 
       <button *ngIf="!isLogin"
         mat-icon-button

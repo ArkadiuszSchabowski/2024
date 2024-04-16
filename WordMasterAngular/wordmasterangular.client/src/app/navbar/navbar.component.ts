@@ -16,6 +16,14 @@ export class NavbarComponent {
 
   }
 
+getCurrentUser(){
+  this.accountService.currentUser$.subscribe({
+    next: user => this.isLogin = !!user,
+    error: error => console.log(error)
+    
+  })
+}
+
   login(){
     console.log(this.model)
     this.accountService.login(this.model).subscribe({
@@ -27,6 +35,7 @@ export class NavbarComponent {
     })
   }
   logout(){
+    this.accountService.logout();
     this.isLogin = false;
   }
 }
