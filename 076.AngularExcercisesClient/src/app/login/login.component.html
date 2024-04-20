@@ -1,26 +1,35 @@
-<mat-card>
-    <mat-card-header>
-      <mat-card-title>Formularz logowania</mat-card-title>
-    </mat-card-header>
-    
+<mat-card *ngIf="!accountService.isLogin">  
     <mat-card-content>
-      <mat-form-field>
+      <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+      <mat-form-field class="input-field" class="input-login">
         <mat-label>Login</mat-label>
-        <input matInput>
+        <input matInput
+        name="login"
+        [(ngModel)]="model.login">
       </mat-form-field>
+
       <div class="example-container">
-        <mat-form-field>
+        <mat-form-field class="input-field">
           <mat-label>Hasło</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <input id="input-value" 
+          name="password"
+          [(ngModel)]="model.password"
+          matInput [type]="hide ? 'password' : 'text'">
+          <button 
+          mat-icon-button matSuffix 
+          (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"
+          type="submit"
+          >
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
       </div>
+      <mat-label class="reset-password" (click)="resetPassword()">Nie pamiętasz hasła?</mat-label>            
+    </form>
     </mat-card-content>
   
     <mat-card-actions align="end">
-      <button mat-flat-button color="primary">OK</button>
+      <button class="button-submit" mat-flat-button color="primary" (click)="login()">OK</button>
     </mat-card-actions>
   </mat-card>
   

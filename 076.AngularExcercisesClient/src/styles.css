@@ -7,3 +7,6 @@ app-root{
     height: 100vh;
     width: 100vw;
 }
+body{
+    background-color: hsl(0, 0%, 95%); /* Biały z 95% jasnością */
+}

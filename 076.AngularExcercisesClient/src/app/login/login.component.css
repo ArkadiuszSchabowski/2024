@@ -1,8 +1,25 @@
 mat-card{
     display: flex;
-    width: 50%;
-    height: 50%;
+    flex-direction: column;
+    width: 400px;
+    height: 60%;
     justify-content: center;
     align-items: center;
     margin-top: 10%;
+}
+.input-field{
+    width: 100%;
+}
+.input-login{
+    margin-top: 10px;
+    width: 100%;
+}
+.reset-password{
+    display: flex;
+    justify-content: center;
+    color: blue;
+    cursor: pointer;
+}
+.button-submit{
+    margin: 10px;
 }

@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
+
 <app-login></app-login>
 
-<ul *ngFor="let flashcard of flashcards">
-  <li>{{flashcard.id}} - {{flashcard.polishWord}} - {{flashcard.englishWord}}</li>
+<ul *ngIf="accountService.isLogin">
+  <li  *ngFor="let flashcard of flashcards">{{flashcard.id}} - {{flashcard.polishWord}} - {{flashcard.englishWord}}</li>
 </ul>

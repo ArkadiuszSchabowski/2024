@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class AccountService {
 
   title: string = 'Angular Excercises';
+  isLogin: boolean = false;
   
   constructor() { }
 }

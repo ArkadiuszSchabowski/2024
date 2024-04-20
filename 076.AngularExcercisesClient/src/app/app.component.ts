@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from './_service/account.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit{
   flashcards: any;
   isLogin: boolean = false;
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient, public accountService: AccountService){
 
   }
 
