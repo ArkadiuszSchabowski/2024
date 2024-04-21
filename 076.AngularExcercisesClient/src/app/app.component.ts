@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from './_service/account.service';
+import { User } from './_models/User';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.GetFlashCards()
+    this.setCurrentUser();
   }
 
   GetFlashCards() {
@@ -26,5 +28,11 @@ export class AppComponent implements OnInit{
       next: response => this.flashcards = response,
       error: error => console.log(error)
     })
+  }
+  setCurrentUser(){
+    const userString = localStorage.getItem('user');
+    if (!userString) return;
+    const user: User = JSON.parse(userString);
+    this.accountService.setCurrentUser(user);
   }
 }

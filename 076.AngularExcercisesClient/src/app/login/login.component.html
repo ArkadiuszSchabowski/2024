@@ -1,4 +1,4 @@
-<mat-card *ngIf="!accountService.isLogin">  
+<mat-card *ngIf="!this.isLogin">  
     <mat-card-content>
       <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
       <mat-form-field class="input-field" class="input-login">

@@ -2,6 +2,6 @@
 
 <app-login></app-login>
 
-<ul *ngIf="accountService.isLogin">
+<ul *ngIf="this.isLogin">
   <li  *ngFor="let flashcard of flashcards">{{flashcard.id}} - {{flashcard.polishWord}} - {{flashcard.englishWord}}</li>
 </ul>

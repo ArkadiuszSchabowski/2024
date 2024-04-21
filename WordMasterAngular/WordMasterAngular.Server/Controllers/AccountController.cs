@@ -23,11 +23,17 @@ namespace WordMaster.Server.Controllers
             return Ok();
         }
         [HttpPost("login")]
-        public ActionResult<string> Login([FromBody] LoginDto dto)
+        public ActionResult<LogUserDto> Login([FromBody] LoginDto dto)
         {
             string token = _service.Login(dto);
-            var serializedToken = JsonSerializer.Serialize(token);
-            return Ok(serializedToken);
+
+            var logUserDto = new LogUserDto()
+            {
+                UserName = dto.Login,
+                Token = token
+            };
+
+            return Ok(logUserDto);
         }
     }
 }

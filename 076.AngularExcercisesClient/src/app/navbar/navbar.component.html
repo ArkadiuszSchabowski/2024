@@ -1,6 +1,6 @@
 <mat-toolbar mat-flat-button color="primary">
     <mat-label>{{accountService.title}}</mat-label>
-    <div id="menuContainer" *ngIf="accountService.isLogin">
+    <div id="menuContainer" *ngIf="!!this.isLogin">
         <button mat-button [matMenuTriggerFor]="menu">Menu</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>Edytuj profil</button>
