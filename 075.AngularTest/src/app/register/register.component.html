@@ -1,0 +1,33 @@
+<form #formRegister="ngForm" (ngSubmit)="registerUser()">
+  <mat-card>
+    <mat-card-content>
+        <mat-form-field>
+            <mat-label>Login</mat-label>
+            <input matInput
+            name="login"
+            [(ngModel)]="model.login"
+            >
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input 
+                name="password"
+                [(ngModel)]="model.password"
+                matInput type="password">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Repeat password</mat-label>
+                <input 
+                name="repeatPassword"
+                [(ngModel)]="model.repeatPassword"
+                matInput type="password">
+              </mat-form-field>
+              <div id="buttonContainer">
+                  <button mat-flat-button color="primary" type="submit">Register</button>
+                  <button mat-flat-button color="primary" (click)="cancel()">Cancel</button>
+              </div>
+    </mat-card-content>
+  </mat-card>
+</form>

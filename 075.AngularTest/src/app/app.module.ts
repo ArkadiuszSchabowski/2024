@@ -12,12 +12,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';
+import { HomePageComponent } from './home-page/home-page.component';
+import { RegisterComponent } from './register/register.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    HomePageComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatIconModule,
     MatButtonModule,
     FormsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
