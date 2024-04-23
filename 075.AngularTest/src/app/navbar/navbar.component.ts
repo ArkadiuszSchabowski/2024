@@ -7,28 +7,35 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+
   title: string = "Angular Training";
   hide = true;
   model: any = {};
   isLogin = false;
-  menu: any;
 
-  constructor(private accountService: AccountService){
-
+  constructor(public accountService: AccountService){
+    this.setCurrentUser();
   }
 
+setCurrentUser(){
+  const user = localStorage.getItem('token');
+  if(user){
+    this.isLogin = true;
+  }
+}
+
   login(){
-    console.log(this.model);
     this.accountService.login(this.model).subscribe({
       next: response => {
         console.log(response)
         this.isLogin = true;
-        console.log(this.isLogin);
       },
       error: error => console.log(error)
     });
   }
   logout(){
+    this.accountService.logout();
     this.isLogin = false;
   }
+
 }
