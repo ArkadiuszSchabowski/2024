@@ -1,12 +1,16 @@
-<div id="container" *ngIf="!isRegistrationPage">
+<div id="container" *ngIf="!isRegistrationPage && !isQuestionnairePage">
     <h1>Witaj na stronie głównej</h1>
     <h2>Wybierz co chcesz zrobić</h2>
     <div id="containerContent">
         <button mat-flat-button color="primary" id="btnRegister" (click)="goToRegistration()">Zarejestruj</button>
-        <button mat-flat-button color="accent" id="btnLearn">Co to za aplikacja?</button>
+        <button mat-flat-button color="accent" id="btnQuestionnaire" (click)="goToQuestionnaire()">Ankieta</button>
     </div>
 </div>
 
 <div id="registerContent" *ngIf="isRegistrationPage">
-    <app-register></app-register>
+    <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+</div>
+
+<div id="questionNaireContext" *ngIf="isQuestionnairePage">
+    <app-questionnaire [massagesFromHomeComponent]="massages"></app-questionnaire>
 </div>

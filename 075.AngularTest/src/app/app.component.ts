@@ -9,10 +9,7 @@ import { AccountService } from './_services/account.service';
 })
 export class AppComponent implements OnInit{
 
-  baseUrl = "https://localhost:7004/api/"
-  massages: any;
-
-  constructor(public httpClient: HttpClient, public accountService: AccountService){
+  constructor(public accountService: AccountService){
 
   }
   ngOnInit(): void {

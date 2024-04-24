@@ -15,6 +15,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterComponent } from './register/register.component';
 import {MatCardModule} from '@angular/material/card';
+import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {MatCardModule} from '@angular/material/card';
     NavbarComponent,
     HomePageComponent,
     RegisterComponent,
+    QuestionnaireComponent,
   ],
   imports: [
     BrowserModule,

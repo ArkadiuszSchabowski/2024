@@ -11,6 +11,7 @@ mat-card-content{
     display: flex;
     flex-direction: column;
     width: 30%;
+    margin-bottom: 250px;
 }
 button{
     margin: 10px;

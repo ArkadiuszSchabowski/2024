@@ -38,4 +38,7 @@ export class AccountService {
     localStorage.removeItem('token');
     this.currentUserSource.next(null);
   }
+  getMassages(){
+    return this.httpClient.get(this.baseUrl + "massage")
+  }
 }

@@ -1,0 +1,9 @@
+<div id="content">
+    <label>Jaki jest Twój ulubiony masaż?</label>
+    <select>
+        <option value="" disabled selected>Wybierz</option>
+        <option *ngFor="let massage of massagesFromHomeComponent" [value]="massage.serviceName">
+            {{massage.serviceName}}
+        </option>
+    </select>
+</div>
