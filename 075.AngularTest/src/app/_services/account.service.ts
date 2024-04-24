@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
+import { registerUserDto } from '../_models/registerUserDto';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class AccountService {
       )
     )
   }
+registerUser(model: registerUserDto){
+  return this.httpClient.post<registerUserDto>(this.baseUrl + "account/register", model);
+}
+
   setCurrentUser(token: string){
     this.currentUserSource.next(token);
   }
