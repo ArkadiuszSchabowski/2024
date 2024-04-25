@@ -16,6 +16,11 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterComponent } from './register/register.component';
 import {MatCardModule} from '@angular/material/card';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { ListsComponent } from './lists/lists.component';
+import { MessagesComponent } from './messages/messages.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -25,6 +30,10 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     HomePageComponent,
     RegisterComponent,
     QuestionnaireComponent,
+    MemberListComponent,
+    MemberDetailComponent,
+    ListsComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +46,8 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     MatButtonModule,
     FormsModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

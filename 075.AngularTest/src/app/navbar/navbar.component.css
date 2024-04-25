@@ -1,6 +1,9 @@
 .ml-20{
     margin-left: 10px;
 }
+.ml-50{
+    margin-left: 50px;
+}
 .ml-700{
     margin-left: 700px;
 }
@@ -15,6 +18,9 @@
 }
 .primary{
     color: #055394;
+}
+.active{
+    color: red;
 }
 #menu-container{
     margin-left: 1200px;
