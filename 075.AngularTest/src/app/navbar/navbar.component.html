@@ -1,9 +1,9 @@
 <mat-toolbar class="mt-10">
   <span class="primary">{{ title }}</span>
-  <span class="primary ml-50" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home Page</span>
-  <span class="primary ml-20" routerLink="/members" routerLinkActive="active">Matches</span>
-  <span class="primary ml-20" routerLink="/lists" routerLinkActive="active">Lists</span>
-  <span class="primary ml-20" routerLink="/messages" routerLinkActive="active">Messages</span>
+  <span *ngIf="isLogin" class="primary ml-50" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home Page</span>
+  <span *ngIf="isLogin" class="primary ml-20" routerLink="/members" routerLinkActive="active">Matches</span>
+  <span *ngIf="isLogin" class="primary ml-20" routerLink="/lists" routerLinkActive="active">Lists</span>
+  <span *ngIf="isLogin" class="primary ml-20" routerLink="/messages" routerLinkActive="active">Messages</span>
 
   <form
     #loginForm="ngForm"

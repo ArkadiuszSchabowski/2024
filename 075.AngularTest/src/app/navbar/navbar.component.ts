@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AccountService } from '../_services/account.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +15,7 @@ export class NavbarComponent {
   model: any = {};
   isLogin = false;
 
-  constructor(public accountService: AccountService){
+  constructor(public accountService: AccountService, private router: Router, private toastr: ToastrService){
     this.setCurrentUser();
   }
 
@@ -26,14 +28,19 @@ setCurrentUser(){
 
   login(){
     this.accountService.login(this.model).subscribe({
-      next: response => {
-        console.log(response)
+      next: () => {
+
+        this.router.navigateByUrl("/members");
+
         this.isLogin = true;
       },
-      error: error => console.log(error)
+      error: error => {
+        this.toastr.error(error.error);
+      }
     });
   }
   logout(){
+    this.router.navigateByUrl("/");
     this.accountService.logout();
     this.isLogin = false;
   }
