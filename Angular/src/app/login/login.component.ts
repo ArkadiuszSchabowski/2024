@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  hide = true;
+  model: any = {};
 
+  login(){
+    console.log(this.model);
+  }
 }

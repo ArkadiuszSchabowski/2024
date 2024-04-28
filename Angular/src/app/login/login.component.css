@@ -1,0 +1,26 @@
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 70%;
+  height: 100%;
+}
+#form-login{
+    margin-top: 20px;
+    width: 100%;
+}
+#form-password{
+    width: 100%;
+}
+#btn-hide-password{
+border: none;
+}
+
+#btn-container {
+  display: flex;
+  justify-content: center;
+}
+#btn-ok {
+  width: 20%;
+}

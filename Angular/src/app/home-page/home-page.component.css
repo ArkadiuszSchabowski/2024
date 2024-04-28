@@ -15,22 +15,11 @@ mat-card{
 }
 mat-tab-group{
     margin-top: 20px;
-    margin-bottom: 40px;
 }
-mat-form-field{
-    margin: 0;
-    padding: 0;
-}
-#lblResetPassword{
-    text-align: right;
-    padding-right: 10px;
-}
-#btnContainer{
+app-login{
     display: flex;
     justify-content: center;
-}
-#btnOk{
-    width: 20%;
+    align-items: center;
 }
 
 @media only screen and (min-width: 1025px) {

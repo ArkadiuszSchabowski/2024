@@ -1,1 +1,30 @@
-<p>login works!</p>
+<form #ngForm="ngForm" (ngSubmit)="login(); ngForm.reset()" autoComplete="off">
+  <mat-form-field id="form-login">
+    <mat-label>Login</mat-label>
+    <input name="login" [(ngModel)]="model.login" matInput />
+  </mat-form-field>
+
+  <mat-form-field id="form-password">
+    <mat-label>Hasło</mat-label>
+    <input
+      name="password"
+      [(ngModel)]="model.password"
+      (keydown.enter)="$event.preventDefault()"
+      matInput
+      [type]="hide ? 'password' : 'text'"
+    />
+    <button
+      type="button"
+      id="btn-hide-password"
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+  </mat-form-field>
+  <div id="btn-container">
+    <button mat-flat-button color="primary" type="submit" id="btn-ok">Ok</button>
+  </div>
+</form>
