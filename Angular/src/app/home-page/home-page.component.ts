@@ -1,20 +1,36 @@
 import { Component } from '@angular/core';
+import { AccountService } from '../_service/account.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent {
-isLoginPage: boolean = true;
-isRegisterPage: boolean = false;
+  constructor(public accountService: AccountService) {}
 
-goToLoginPage(){
-  this.isRegisterPage = false;
-  this.isLoginPage = true;
-}
-goToRegisterPage(){
-  this.isRegisterPage = true;
-  this.isLoginPage = false;
-}
+  isLoginPage = new BehaviorSubject<boolean>(true);
+  isLoginPage$ = this.isLoginPage.asObservable();
+
+  isRegisterPage = new BehaviorSubject<boolean>(false);
+  isRegisterPage$ = this.isRegisterPage.asObservable();
+
+  goToLoginPage() {
+    this.isRegisterPage.next(false);
+    this.isLoginPage.next(true);
+    console.log("goToLogin - function");
+  }
+  goToRegisterPage() {
+    this.isLoginPage.next(false);
+    this.isRegisterPage.next(true);
+    console.log("goToRegistration - function");
+  }
+  tabChanged(index: number) {
+    if (index === 0) {
+      this.goToLoginPage();
+    } else if (index === 1) {
+      this.goToRegisterPage();
+    }
+  }
 }

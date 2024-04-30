@@ -1,4 +1,4 @@
 <mat-toolbar color="primary">
     <span>Wellness Center</span>
-    <span *ngIf="isLogin" id="logout" (click)="logout()">Wyloguj</span>
+    <span *ngIf="accountService.currentUser$ | async" id="logout" (click)="logout()">Wyloguj</span>
 </mat-toolbar>

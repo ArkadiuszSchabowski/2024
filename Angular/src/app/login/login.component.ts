@@ -10,7 +10,7 @@ export class LoginComponent {
   hide = true;
   model: any = {};
 
-  constructor(private accountService: AccountService){
+  constructor(public accountService: AccountService){
     
   }
 

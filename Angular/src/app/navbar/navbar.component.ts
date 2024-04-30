@@ -8,20 +8,11 @@ import { AccountService } from '../_service/account.service';
 })
 export class NavbarComponent {
 
-  constructor(private accountService: AccountService) {
-    this.getCurrentUser();
+  constructor(public accountService: AccountService) {
   }
 
-  isLogin: boolean = false;
 
-  getCurrentUser() {
-    this.accountService.currentUser$.subscribe({
-      next: token => this.isLogin = !!token,
-      error: error => console.log(error)
-    })
-  }
   logout(){
-    this.isLogin = false;
     this.accountService.logout();
   }
 }
