@@ -1,4 +1,4 @@
-export class LoginDto{
-    login: (string | null)= "";
-    password : (string | null) = "";
+export class LoginDto {
+    login!: string;
+    password!: string;
 }
