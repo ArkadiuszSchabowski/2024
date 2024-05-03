@@ -3,3 +3,9 @@
     margin-right: 10px;
     margin-left: auto;
 }
+mat-toolbar{
+    justify-content: center;
+}
+span{
+    margin: 0 20px;
+}

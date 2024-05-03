@@ -1,1 +1,62 @@
-<p>register works!</p>
+<div class="container" *ngIf="!(accountService.currentUser$ | async)">
+  <form
+    #ngForm="ngForm"
+    (ngSubmit)="register(); ngForm.reset()"
+    autoComplete="off"
+  >
+    <label>Rejestracja</label>
+    <mat-form-field id="form-register">
+      <mat-label>Login</mat-label>
+      <input name="login" 
+      [(ngModel)]="model.login" matInput />
+    </mat-form-field>
+
+    <mat-form-field id="form-password">
+        <mat-label>Hasło</mat-label>
+        <input
+          name="password"
+          [(ngModel)]="model.password"
+          (keydown.enter)="$event.preventDefault()"
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+        />
+        <button
+          type="button"
+          id="btn-hide-password"
+          matSuffix
+          (click)="hidePassword = !hidePassword"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hidePassword"
+        >
+          <mat-icon>{{ hidePassword ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field id="form-repeat-password">
+        <mat-label>Powtórz Hasło</mat-label>
+        <input
+          name="repeatPassword"
+          [(ngModel)]="model.repeatPassword"
+          (keydown.enter)="$event.preventDefault()"
+          matInput
+          [type]="hideRepeatPassword ? 'password' : 'text'"
+        />
+        <button
+          type="button"
+          id="btn-hide-repeat-password"
+          matSuffix
+          (click)="hideRepeatPassword = !hideRepeatPassword"
+          [attr.aria-label]="'Hide repeat password'"
+          [attr.aria-pressed]="hideRepeatPassword"
+        >
+          <mat-icon>{{ hideRepeatPassword ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+    <div id="btn-container">
+      <button mat-flat-button color="primary" type="submit" id="btn-ok">
+        Ok
+      </button>
+    </div>
+  </form>
+</div>

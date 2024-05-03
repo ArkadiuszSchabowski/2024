@@ -1,4 +1,12 @@
 <mat-toolbar color="primary">
-    <span>Wellness Center</span>
+    <span (click)="homePage()">WELLNESS CENTER</span>
+    <span>-</span>
+    <span (click)="offer()">OFERTA</span>
+    <span>-</span>
+    <span (click)="booking()">ZAREZERWUJ MASAŻ</span>
+    <span>-</span>
+    <span (click)="login()">PANEL KLIENTA</span>
+    <span>-</span>
+    <span (click)="contact()">KONTAKT</span>
     <span *ngIf="accountService.currentUser$ | async" id="logout" (click)="logout()">Wyloguj</span>
 </mat-toolbar>

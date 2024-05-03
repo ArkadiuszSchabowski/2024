@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AccountService } from '../_service/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginComponent {
   hide = true;
   model: any = {};
 
-  constructor(public accountService: AccountService){
+  constructor(public accountService: AccountService, private router: Router){
     
   }
 
@@ -22,6 +23,6 @@ export class LoginComponent {
     })
   }
   register(){
-
+    this.router.navigateByUrl("/register");
   }
 }

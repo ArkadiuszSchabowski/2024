@@ -17,7 +17,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { NavbarNavigationComponent } from './navbar-navigation/navbar-navigation.component';
+import { BookingComponent } from './booking/booking.component';
+import { ContactComponent } from './contact/contact.component';
+import { OfferComponent } from './offer/offer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { NavbarNavigationComponent } from './navbar-navigation/navbar-navigation
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    NavbarNavigationComponent
+    BookingComponent,
+    ContactComponent,
+    OfferComponent,
   ],
   imports: [
     BrowserModule,

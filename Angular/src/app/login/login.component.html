@@ -4,9 +4,9 @@
     (ngSubmit)="login(); ngForm.reset()"
     autoComplete="off"
   >
-  <label>Logowanie</label>
+    <label>Logowanie</label>
     <mat-form-field id="form-login">
-      <mat-label>Login</mat-label>
+      <mat-label>E-Mail</mat-label>
       <input name="login" [(ngModel)]="model.login" matInput />
     </mat-form-field>
 
@@ -33,6 +33,10 @@
     <div id="btn-container">
       <button mat-flat-button color="primary" type="submit" id="btn-ok">
         Ok
+      </button>
+      <button mat-button color="primary" id="btn-register" (click)="register()">
+        <p>Nie masz jeszcze konta?</p>
+         <p>Zarejestruj się!</p>
       </button>
     </div>
   </form>
