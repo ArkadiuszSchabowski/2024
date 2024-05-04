@@ -1,12 +1,35 @@
 <mat-toolbar color="primary">
-    <span (click)="homePage()">WELLNESS CENTER</span>
-    <span>-</span>
-    <span (click)="offer()">OFERTA</span>
-    <span>-</span>
-    <span (click)="booking()">ZAREZERWUJ MASAŻ</span>
-    <span>-</span>
-    <span (click)="login()">PANEL KLIENTA</span>
-    <span>-</span>
-    <span (click)="contact()">KONTAKT</span>
-    <span *ngIf="accountService.currentUser$ | async" id="logout" (click)="logout()">Wyloguj</span>
+  <span routerLink="/" [ngClass]="{'active': isHomePage()}">WELLNESS CENTER</span>
+  <span>-</span>
+  <span routerLink="/massages" routerLinkActive="active">OFERTA</span>
+  <span>-</span>
+  <span routerLink="/booking" routerLinkActive="active">ZAREZERWUJ MASAŻ</span>
+  <span *ngIf="!(accountService.currentUser$ | async)">-</span>
+  <span *ngIf="!(accountService.currentUser$ | async)" routerLink="/login" routerLinkActive="active">
+    LOGOWANIE</span
+  >
+  <span *ngIf="!(accountService.currentUser$ | async)">-</span>
+  <span *ngIf="!(accountService.currentUser$ | async)" routerLink="/register" routerLinkActive="active">
+    REJESTRACJA</span
+  >
+  <span>-</span>
+  <span routerLink="/contact" routerLinkActive="active">KONTAKT</span>
+  <span *ngIf="accountService.currentUser$ | async">-</span>
+  <span *ngIf="accountService.currentUser$ | async">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>dialpad</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <span routerLink="/client-panel">MOJE KONTO</span>
+        </button>
+      <button mat-menu-item>
+        <span (click)="logout()">WYLOGUJ</span>
+      </button>
+    </mat-menu>
+  </span>
 </mat-toolbar>

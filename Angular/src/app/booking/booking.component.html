@@ -1,7 +1,63 @@
 <div class="container">
-    <h1>System rezerwacji</h1>
+  <div class="options" *ngIf="isSelectedOptionVisible">
+    <p>System rezerwacji</p>
     <div class="buttons">
-        <button mat-flat-button color="primary" (click)="login()">Zaloguj się</button>
-        <button mat-flat-button color="primary">Kontynuuj bez logowania</button>
+      <button
+        mat-button
+        color="textDarkMode"
+        class="btnSelect"
+        (click)="login()"
+      >
+        Zaloguj się
+      </button>
+      <button
+        mat-button
+        color="textDarkMode"
+        class="btnSelect"
+        (click)="bookingWithoutLogin()"
+      >
+        Kontynuuj bez logowania
+      </button>
     </div>
+  </div>
+  <div id="newBooking" *ngIf="!isSelectedOptionVisible">
+    <p>Edytuj Dane</p>
+    <form
+      #ngForm="ngForm"
+      (ngSubmit)="addNewBooking()"
+      *ngIf="accountService.currentUser$"
+    >
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Imię</mat-label>
+          <input name="name" [(ngModel)]="model.name" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Nazwisko</mat-label>
+          <input name="surname" [(ngModel)]="model.surname" matInput />
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <mat-label>E-Mail</mat-label>
+        <input name="eMail" [(ngModel)]="model.eMail" matInput />
+      </mat-form-field>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Numer telefonu</mat-label>
+          <input name="phoneNumber" [(ngModel)]="model.phoneNumber" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Miasto</mat-label>
+          <input name="city" [(ngModel)]="model.city" matInput />
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <mat-label>Data Urodzenia - MM/DD/YYYY</mat-label>
+        <input name="dateOfBirth" [(ngModel)]="model.dateOfBirth" matInput />
+      </mat-form-field>
+      <button id="btnSubmit" mat-flat-button color="primary" type="submit">
+        Primary
+      </button>
+    </form>
+  </div>
 </div>

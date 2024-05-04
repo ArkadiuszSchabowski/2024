@@ -22,7 +22,7 @@
         />
         <button
           type="button"
-          id="btn-hide-password"
+          class="btn-hide-password"
           matSuffix
           (click)="hidePassword = !hidePassword"
           [attr.aria-label]="'Hide password'"
@@ -43,7 +43,7 @@
         />
         <button
           type="button"
-          id="btn-hide-repeat-password"
+          class="btn-hide-password"
           matSuffix
           (click)="hideRepeatPassword = !hideRepeatPassword"
           [attr.aria-label]="'Hide repeat password'"
@@ -56,6 +56,10 @@
     <div id="btn-container">
       <button mat-flat-button color="primary" type="submit" id="btn-ok">
         Ok
+      </button>
+      <button mat-button color="primary" id="btn-register" (click)="login()">
+        <p>Masz już konto?</p>
+         <p>Zaloguj się!</p>
       </button>
     </div>
   </form>

@@ -5,7 +5,14 @@
 }
 mat-toolbar{
     justify-content: center;
+    cursor: pointer;
 }
 span{
     margin: 0 20px;
+}
+.active{
+    padding: 10px 20px;
+    color: rgb(244, 135, 2);
+    background-color: white;
+    border-radius: 10px;
 }

@@ -20,6 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BookingComponent } from './booking/booking.component';
 import { ContactComponent } from './contact/contact.component';
 import { OfferComponent } from './offer/offer.component';
+import { ClientPanelComponent } from './client-panel/client-panel.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +35,7 @@ import { OfferComponent } from './offer/offer.component';
     BookingComponent,
     ContactComponent,
     OfferComponent,
+    ClientPanelComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,9 @@ import { OfferComponent } from './offer/offer.component';
     MatToolbarModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule,
+    ToastrModule.forRoot({ positionClass: 'toast-bottom-right' })
   ],
   providers: [],
   bootstrap: [AppComponent]

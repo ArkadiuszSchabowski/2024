@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
+import { RegisterUserDto } from '../_models/registerUserDto';
 
 @Injectable({
   providedIn: 'root',
@@ -37,5 +38,8 @@ setCurrentUser(){
   logout(){
     localStorage.removeItem('token');
     this.currentUserSource.next(null);
+  }
+  register(model: RegisterUserDto){
+    return this.httpClient.post(this.baseUrl + 'account/register', model);
   }
 }

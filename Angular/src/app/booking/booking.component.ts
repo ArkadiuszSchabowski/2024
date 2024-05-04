@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AccountService } from '../_service/account.service';
 
 @Component({
   selector: 'app-booking',
@@ -8,11 +9,20 @@ import { Router } from '@angular/router';
 })
 export class BookingComponent {
 
-  constructor(private router: Router){
+  isSelectedOptionVisible = true;
+  model: any = {};
+
+  constructor(private router: Router, public accountService: AccountService){
 
   }
 
   login(){
     this.router.navigateByUrl("/login");
+  }
+  bookingWithoutLogin(){
+    this.isSelectedOptionVisible = false;
+  }
+  addNewBooking(){
+    console.log(this.model);
   }
 }

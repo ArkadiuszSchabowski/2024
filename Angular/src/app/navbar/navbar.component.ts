@@ -11,6 +11,9 @@ export class NavbarComponent {
 
   constructor(public accountService: AccountService, private router: Router) {
   }
+  isHomePage(): boolean {
+    return this.router.url === '/';
+  }
   homePage(){
     this.router.navigateByUrl("/");
   }
@@ -19,6 +22,9 @@ export class NavbarComponent {
   }
   login(){
     this.router.navigateByUrl("/login");
+  }
+  register(){
+    this.router.navigateByUrl("/register");
   }
   massages(){
     this.router.navigateByUrl("/");
@@ -29,8 +35,10 @@ export class NavbarComponent {
   contact(){
     this.router.navigateByUrl("/contact");
   }
-
   logout(){
     this.accountService.logout();
+  }
+  clientPanel(){
+    this.router.navigateByUrl("/client-panel")
   }
 }

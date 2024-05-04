@@ -6,6 +6,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { BookingComponent } from './booking/booking.component';
 import { OfferComponent } from './offer/offer.component';
 import { ContactComponent } from './contact/contact.component';
+import { ClientPanelComponent } from './client-panel/client-panel.component';
 
 const routes: Routes = [
   {path: "", component: HomePageComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: "booking", component: BookingComponent},
   {path: "massages", component: OfferComponent},
   {path: "contact", component: ContactComponent},
+  {path: "client-panel", component: ClientPanelComponent},
   {path: "**", component: HomePageComponent}
 ];
 
