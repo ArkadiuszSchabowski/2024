@@ -36,6 +36,7 @@ export class NavbarComponent {
     this.router.navigateByUrl("/contact");
   }
   logout(){
+    this.router.navigateByUrl("/");
     this.accountService.logout();
   }
   clientPanel(){

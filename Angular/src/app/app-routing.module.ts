@@ -7,15 +7,17 @@ import { BookingComponent } from './booking/booking.component';
 import { OfferComponent } from './offer/offer.component';
 import { ContactComponent } from './contact/contact.component';
 import { ClientPanelComponent } from './client-panel/client-panel.component';
+import { authGuard } from './_guards/auth.guard';
+import { withoutAuthGuard } from './_guards/without-auth.guard';
 
 const routes: Routes = [
   {path: "", component: HomePageComponent},
-  {path: "login", component: LoginComponent},
-  {path: "register", component: RegisterComponent},
+  {path: "login", component: LoginComponent, canActivate: [withoutAuthGuard]},
+  {path: "register", component: RegisterComponent, canActivate: [withoutAuthGuard]},
   {path: "booking", component: BookingComponent},
   {path: "massages", component: OfferComponent},
   {path: "contact", component: ContactComponent},
-  {path: "client-panel", component: ClientPanelComponent},
+  {path: "client-panel", component: ClientPanelComponent, canActivate: [authGuard]},
   {path: "**", component: HomePageComponent}
 ];
 

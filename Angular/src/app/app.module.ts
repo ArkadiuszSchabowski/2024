@@ -23,6 +23,7 @@ import { OfferComponent } from './offer/offer.component';
 import { ClientPanelComponent } from './client-panel/client-panel.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { ToastrModule } from 'ngx-toastr';
+import { authGuard } from './_guards/auth.guard';
 
 
 @NgModule({
