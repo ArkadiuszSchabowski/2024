@@ -19,13 +19,20 @@ export class LoginComponent {
 
   login(){
     this.accountService.login(this.model).subscribe({
-      next: response => {
-        console.log(response),
+      next: () => {
         this.router.navigateByUrl("/");
       },
       error: error => {
+        if(error.error.title){
+          this.toastr.error("Pola e-mail i hasło są wymagane!");
+        }
+        else if(error.status === 0){
+          this.toastr.error("Błąd serwera, spróbuj ponownie później lub skontaktuj się z administratorem.");
+        }
+        else{
+          this.toastr.error(error.error + "!");
+        }
         console.log(error);
-        this.toastr.error(error.error);
       }
     })
   }

@@ -4,13 +4,14 @@
     (ngSubmit)="register(); ngForm.reset()"
     autoComplete="off"
   >
-    <label>Rejestracja</label>
+    <label id="labelTitle">Rejestracja</label>
+    <label>Minimalna długość loginu to pięć znaków</label>
     <mat-form-field id="form-register">
       <mat-label>Login</mat-label>
       <input name="login" 
       [(ngModel)]="model.login" matInput />
     </mat-form-field>
-
+    <label>Minimalna długość hasła to pięć znaków</label>
     <mat-form-field id="form-password">
         <mat-label>Hasło</mat-label>
         <input

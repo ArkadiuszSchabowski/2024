@@ -16,17 +16,22 @@
     justify-content: center;
     align-items: center;
     width: 40%;
-    height: 70%;
+    min-width: 450px;
+    height: 80%;
     background-color: #EDEDED;
     border: 2px solid black;
   }
   #form-login, #form-password{
     width: 70%;
   }
-  label{
+  #labelTitle{
     font-size: 30px;
     color: gray;
     margin-bottom: 20px;
+  }
+  label{
+    margin-bottom: 5px;
+    color: gray;
   }
   #btn-container{
     display: flex;

@@ -23,8 +23,18 @@ export class RegisterComponent {
   }
   register() {
     this.accountService.register(this.model).subscribe({
-      next: (response) => console.log(response),
-      error: (error) => this.toastr.error(error.error),
+      next: () => this.toastr.success('Zarejestrowano pomyślnie!'),
+      error: (error) => {
+        if (error.error.title) {
+          this.toastr.error('Niepoprawne dane rejestracji!');
+        } else if (error.status === 409) {
+          this.toastr.error('Wybrana nazwa użytkownika jest już zajęta!');
+        } else if (error.status === 400) {
+          this.toastr.error('Wprowadzone hasła są różne!');
+        } else {
+          this.toastr.error('Błąd serwera!');
+        }
+      },
     });
   }
 }

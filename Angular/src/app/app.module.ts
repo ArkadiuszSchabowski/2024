@@ -23,7 +23,10 @@ import { OfferComponent } from './offer/offer.component';
 import { ClientPanelComponent } from './client-panel/client-panel.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { ToastrModule } from 'ngx-toastr';
-import { authGuard } from './_guards/auth.guard';
+import { BookingWithoutLoginComponent } from './booking-without-login/booking-without-login.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -37,6 +40,7 @@ import { authGuard } from './_guards/auth.guard';
     ContactComponent,
     OfferComponent,
     ClientPanelComponent,
+    BookingWithoutLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +56,9 @@ import { authGuard } from './_guards/auth.guard';
     BrowserAnimationsModule,
     HttpClientModule,
     MatMenuModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ToastrModule.forRoot({ positionClass: 'toast-bottom-right' })
   ],
   providers: [],

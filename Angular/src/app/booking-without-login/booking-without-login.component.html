@@ -1,0 +1,73 @@
+<div class="container">
+  <div id="selectMassageContainer" *ngIf="!isMassageSelected">
+    <p>Wybierz rodzaj masażu</p>
+    <form #ngForm="ngForm" (ngSubmit)="showDateContainer()">
+      <mat-form-field>
+        <mat-label>Wybierz rodzaj usługi:</mat-label>
+        <mat-select [(value)]="serviceName">
+          <mat-option value="Classic Massag"
+            >Zabieg + masaż czekoladą</mat-option
+          >
+          <mat-option value="Honey Massage">Zabieg + masaż miodem</mat-option>
+          <mat-option value="Chocolate Massage">Masaż klasyczny</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" type="submit">Primary</button>
+    </form>
+  </div>
+
+    <form #ngForm="ngForm" id="selectTermContainer" *ngIf="isMassageSelected && !isDateSelected" (ngSubmit)="showNewBookingContainer()">
+      <div id="selectDateContainer">
+        <p>Wybierz dostępną datę:</p>
+        <mat-card class="demo-inline-calendar-card">
+          <mat-calendar [(selected)]="selected"></mat-calendar>
+        </mat-card>
+      </div>
+
+      <div id="selectHourContainer">
+        <p>Wybierz dostępną godzinę:</p>
+        <div id="selectHourText" *ngFor="let hour of hours">
+          {{ hour }}
+        </div>
+      </div>
+      <button mat-flat-button color="primary" type="submit">Primary</button>
+    </form>
+
+  <div id="newBookingContainer" *ngIf="isMassageSelected && isDateSelected">
+    <p>Prosimy wypełnić formularz:</p>
+    <form #ngForm="ngForm" (ngSubmit)="addNewBooking()">
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Imię</mat-label>
+          <input name="name" [(ngModel)]="model.name" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Nazwisko</mat-label>
+          <input name="surname" [(ngModel)]="model.surname" matInput />
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <mat-label>E-Mail</mat-label>
+        <input name="eMail" [(ngModel)]="model.eMail" matInput />
+      </mat-form-field>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Numer telefonu</mat-label>
+          <input name="phoneNumber" [(ngModel)]="model.phoneNumber" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Miasto</mat-label>
+          <input name="city" [(ngModel)]="model.city" matInput />
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <mat-label>Data Urodzenia - MM/DD/YYYY</mat-label>
+        <input name="dateOfBirth" [(ngModel)]="model.dateOfBirth" matInput />
+      </mat-form-field>
+      <button id="btnSubmit" mat-flat-button color="primary" type="submit">
+        Primary
+      </button>
+    </form>
+  </div>
+</div>
