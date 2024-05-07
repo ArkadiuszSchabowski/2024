@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AccountService } from '../_service/account.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-booking-without-login',
@@ -8,32 +9,56 @@ import { AccountService } from '../_service/account.service';
 })
 
 export class BookingWithoutLoginComponent {
-  constructor(public accountService: AccountService){
+  constructor(public accountService: AccountService, private httpClient: HttpClient){
 
   }
-  model: any = {};
+  model: any ={};
+
+  baseUrl: string = "https://localhost:7004/api/"
+
+  bookingWithoutLogin: any = {};
 
   isMassageSelected: boolean = false;
   isDateSelected: boolean = false;
   isFormFilled: boolean = false;
 
-  serviceName = null;
+  massageName: (string | null) = null;
   selected: Date | null = null;
 
   value: string ="";
   viewValue: string ="";
 
   hours: string[] = ['13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'];
+  
 
+  setServiceName(){
+    this.bookingWithoutLogin.massageName = this.massageName;
 
-  showDateContainer(){
     this.isMassageSelected = true;
   }
-  showNewBookingContainer(){
+  setDateMassage(){
+    this.bookingWithoutLogin.date = this.selected?.toLocaleDateString();
+
     this.isDateSelected = true;
   }
 
-  addNewBooking(){
-    console.log(this.model);
+  setGuestInformation(){
+        
+        this.bookingWithoutLogin.name = this.model.name;
+        this.bookingWithoutLogin.surname = this.model.surname;
+        this.bookingWithoutLogin.email = this.model.eMail;
+        this.bookingWithoutLogin.phonenumber = this.model.phoneNumber;
+        this.bookingWithoutLogin.city = this.model.city;
+        
+        this.bookingNewMassage();
+}
+
+  bookingNewMassage(){
+    console.log("I'm here");
+    this.httpClient.post(this.baseUrl + "booking", this.bookingWithoutLogin).subscribe({
+      next: response => console.log(response),
+      error: error => console.log(error)
+    });
   }
+
 }

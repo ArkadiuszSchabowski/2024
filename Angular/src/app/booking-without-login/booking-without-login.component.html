@@ -1,11 +1,11 @@
 <div class="container">
   <div id="selectMassageContainer" *ngIf="!isMassageSelected">
     <p>Wybierz rodzaj masażu</p>
-    <form #ngForm="ngForm" (ngSubmit)="showDateContainer()">
+    <form #ngForm="ngForm" (ngSubmit)="setServiceName()">
       <mat-form-field>
         <mat-label>Wybierz rodzaj usługi:</mat-label>
-        <mat-select [(value)]="serviceName">
-          <mat-option value="Classic Massag"
+        <mat-select [(value)]="massageName">
+          <mat-option value="Classic Massage"
             >Zabieg + masaż czekoladą</mat-option
           >
           <mat-option value="Honey Massage">Zabieg + masaż miodem</mat-option>
@@ -17,11 +17,12 @@
     </form>
   </div>
 
-    <form #ngForm="ngForm" id="selectTermContainer" *ngIf="isMassageSelected && !isDateSelected" (ngSubmit)="showNewBookingContainer()">
+    <form #ngForm="ngForm" id="selectTermContainer" *ngIf="isMassageSelected && !isDateSelected" (ngSubmit)="setDateMassage()">
       <div id="selectDateContainer">
         <p>Wybierz dostępną datę:</p>
         <mat-card class="demo-inline-calendar-card">
           <mat-calendar [(selected)]="selected"></mat-calendar>
+          
         </mat-card>
       </div>
 
@@ -36,7 +37,7 @@
 
   <div id="newBookingContainer" *ngIf="isMassageSelected && isDateSelected">
     <p>Prosimy wypełnić formularz:</p>
-    <form #ngForm="ngForm" (ngSubmit)="addNewBooking()">
+    <form #ngForm="ngForm" (ngSubmit)="setGuestInformation()">
       <div class="row">
         <mat-form-field>
           <mat-label>Imię</mat-label>
@@ -56,15 +57,7 @@
           <mat-label>Numer telefonu</mat-label>
           <input name="phoneNumber" [(ngModel)]="model.phoneNumber" matInput />
         </mat-form-field>
-        <mat-form-field>
-          <mat-label>Miasto</mat-label>
-          <input name="city" [(ngModel)]="model.city" matInput />
-        </mat-form-field>
       </div>
-      <mat-form-field>
-        <mat-label>Data Urodzenia - MM/DD/YYYY</mat-label>
-        <input name="dateOfBirth" [(ngModel)]="model.dateOfBirth" matInput />
-      </mat-form-field>
       <button id="btnSubmit" mat-flat-button color="primary" type="submit">
         Primary
       </button>
