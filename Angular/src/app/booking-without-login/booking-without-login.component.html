@@ -17,23 +17,29 @@
     </form>
   </div>
 
-    <form #ngForm="ngForm" id="selectTermContainer" *ngIf="isMassageSelected && !isDateSelected" (ngSubmit)="setDateMassage()">
-      <div id="selectDateContainer">
-        <p>Wybierz dostępną datę:</p>
-        <mat-card class="demo-inline-calendar-card">
-          <mat-calendar [(selected)]="selected"></mat-calendar>
-          
-        </mat-card>
-      </div>
+  <form
+    #ngForm="ngForm"
+    id="selectTermContainer"
+    *ngIf="isMassageSelected && !isDateSelected"
+    (ngSubmit)="setDateMassage()"
+  >
+    <div id="selectDateContainer">
+      <p>Wybierz dostępną datę:</p>
+      <mat-card class="demo-inline-calendar-card">
+        <mat-calendar [(selected)]="selected"></mat-calendar>
+      </mat-card>
+    </div>
 
-      <div id="selectHourContainer">
-        <p>Wybierz dostępną godzinę:</p>
-        <div id="selectHourText" *ngFor="let hour of hours">
-          {{ hour }}
-        </div>
+    <div id="selectHourContainer">
+      <p>Wybierz dostępną godzinę:</p>
+      <div id="selectHourText">
+
+        <button *ngFor="let hour of hours" mat-flat-button color="primary" type="button">{{ hour }}</button>
+
       </div>
-      <button mat-flat-button color="primary" type="submit">Primary</button>
-    </form>
+    </div>
+    <button mat-flat-button color="primary" type="submit">Primary</button>
+  </form>
 
   <div id="newBookingContainer" *ngIf="isMassageSelected && isDateSelected">
     <p>Prosimy wypełnić formularz:</p>
