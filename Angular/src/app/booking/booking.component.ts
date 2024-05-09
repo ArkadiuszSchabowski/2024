@@ -16,6 +16,6 @@ export class BookingComponent {
     this.router.navigateByUrl("/login");
   }
   bookingWithoutLogin(){
-    this.router.navigateByUrl("/booking/without-login")
+    this.router.navigateByUrl("/booking/guest/without-login")
   }
 }

@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './booking-without-login.component.html',
   styleUrls: ['./booking-without-login.component.css'],
 })
+
 export class BookingWithoutLoginComponent {
   constructor(
     public accountService: AccountService,
@@ -15,6 +16,14 @@ export class BookingWithoutLoginComponent {
     private toastR: ToastrService
   ) {}
   model: any = {};
+
+
+  availableColors: any[] = [
+    { name: 'None', color: undefined },
+    { name: 'Primary', color: 'primary' },
+    { name: 'Accent', color: 'accent' },
+    { name: 'Warn', color: 'warn' }
+  ];
 
   baseUrl: string = 'https://localhost:7004/api/';
 

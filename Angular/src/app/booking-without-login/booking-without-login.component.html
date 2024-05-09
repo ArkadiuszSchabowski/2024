@@ -1,6 +1,6 @@
 <div class="container">
   <div id="selectMassageContainer" *ngIf="!isMassageSelected">
-    <p>Wybierz rodzaj masażu</p>
+    <p>Wybierz rodzaj masażu:</p>
     <form #ngForm="ngForm" (ngSubmit)="setServiceName()">
       <mat-form-field>
         <mat-label>Wybierz rodzaj usługi:</mat-label>
@@ -13,7 +13,7 @@
         </mat-select>
       </mat-form-field>
 
-      <button mat-flat-button color="primary" type="submit">Primary</button>
+      <button mat-flat-button color="primary" type="submit">Ok</button>
     </form>
   </div>
 
@@ -33,13 +33,18 @@
     <div id="selectHourContainer">
       <p>Wybierz dostępną godzinę:</p>
       <div id="selectHourText">
-
-        <button *ngFor="let hour of hours" mat-flat-button color="primary" type="button">{{ hour }}</button>
+        <button *ngFor="let hour of hours" mat-flat-button color="primary" type="button"> {{ hour }} </button>
+      </div>
+      <p>Potwierdź datę:</p>
+      <button mat-flat-button color="primary" type="submit" class="btnAcceptDate">Ok</button>
+      <p>Testowe chipsy:</p>
+      <div>
 
       </div>
     </div>
-    <button mat-flat-button color="primary" type="submit">Primary</button>
   </form>
+
+  <!-- container -->
 
   <div id="newBookingContainer" *ngIf="isMassageSelected && isDateSelected">
     <p>Prosimy wypełnić formularz:</p>
@@ -65,7 +70,7 @@
         </mat-form-field>
       </div>
       <button id="btnSubmit" mat-flat-button color="primary" type="submit">
-        Primary
+        Zarezerwuj
       </button>
     </form>
   </div>

@@ -14,7 +14,7 @@ export const withoutAuthGuard: CanActivateFn = (route, state) => {
     map((user) => {
       if (user) {
         router.navigateByUrl("/");
-        toastr.error('Wyloguj się, by przejść do rejestracji lub logowania!');
+        toastr.error('Wyloguj się, by przejść do tej ścieżki!');
         return false;
       }
       else return true;

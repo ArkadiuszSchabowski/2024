@@ -2,8 +2,8 @@
   <span routerLink="/" [ngClass]="{'active': isHomePage()}">WELLNESS CENTER</span>
   <span>-</span>
   <span routerLink="/massages" routerLinkActive="active">OFERTA</span>
-  <span>-</span>
-  <span routerLink="/booking" routerLinkActive="active">ZAREZERWUJ MASAŻ</span>
+  <span *ngIf="!(accountService.currentUser$ | async)">-</span>
+  <span routerLink="/booking/guest" routerLinkActive="active" *ngIf="!(accountService.currentUser$ | async)">ZAREZERWUJ MASAŻ</span>
   <span *ngIf="!(accountService.currentUser$ | async)">-</span>
   <span *ngIf="!(accountService.currentUser$ | async)" routerLink="/login" routerLinkActive="active">
     LOGOWANIE</span
