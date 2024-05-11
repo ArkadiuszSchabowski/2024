@@ -15,7 +15,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 100%;
     min-width: 450px;
     height: 80%;
     background-color: #EDEDED;
@@ -44,4 +44,15 @@
   #btn-register{
     margin-top: 20px;
     padding: 30px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    form{
+      width: 55%;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) {
+    form{
+      width: 40%;
+    }
   }
