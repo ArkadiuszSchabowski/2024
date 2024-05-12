@@ -1,22 +1,23 @@
-<mat-toolbar color="primary">
-  <span routerLink="/" [ngClass]="{'active': isHomePage()}" class="menu-item">WELLNESS CENTER</span>
-  <span routerLink="/massages" routerLinkActive="active" class="menu-item">OFERTA</span>
-  <span routerLink="/booking/guest" routerLinkActive="active" *ngIf="!(accountService.currentUser$ | async)" class="menu-item">ZAREZERWUJ MASAŻ</span>
-  <span *ngIf="!(accountService.currentUser$ | async)" routerLink="/login" routerLinkActive="active" class="menu-item">
-    LOGOWANIE</span
-  >
-  <span *ngIf="!(accountService.currentUser$ | async)" routerLink="/register" routerLinkActive="active" class="menu-item">
-    REJESTRACJA</span
-  >
-  <span routerLink="/contact" routerLinkActive="active" class="menu-item">KONTAKT</span>
+<mat-toolbar color="primary" id="menu-toolbar">
+  <mat-icon id="menu-icon" (click)="changeVisibleSideNavbar()">menu</mat-icon>
+  <span id="menu-title">WELNESS CENTER</span>
+  <button mat-button color="secondary" routerLink="/" [ngClass]="{'active': isHomePage()}" class="menu-item">HOME</button>
+  <button mat-button color="secondary" routerLink="/massages" routerLinkActive="active" class="menu-item">OFERTA</button>
+  <button mat-button color="secondary" routerLink="/booking/guest" routerLinkActive="active" *ngIf="!(accountService.currentUser$ | async)" class="menu-item">ZAREZERWUJ MASAŻ</button>
+  <button mat-button color="secondary" *ngIf="!(accountService.currentUser$ | async)" routerLink="/login" routerLinkActive="active" class="menu-item">
+    LOGOWANIE</button>
+  <button mat-button color="secondary" *ngIf="!(accountService.currentUser$ | async)" routerLink="/register" routerLinkActive="active" class="menu-item">
+    REJESTRACJA</button>
+  <button mat-button color="secondary" routerLink="/contact" routerLinkActive="active" class="menu-item">KONTAKT</button>
   <span *ngIf="accountService.currentUser$ | async">
+
     <button
       mat-icon-button
       [matMenuTriggerFor]="menu"
-      aria-label="Example icon-button with a menu"
     >
-      <mat-icon  class="menu-button">dialpad</mat-icon>
+      <mat-icon  class="mat-button">dialpad</mat-icon>
     </button>
+
     <mat-menu #menu="matMenu">
         <button mat-menu-item>
           <span routerLink="/client-panel">MOJE KONTO</span>

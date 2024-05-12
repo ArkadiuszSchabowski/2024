@@ -10,7 +10,7 @@
 @include mat.core();
 
 
-$Angular-primary: mat.define-palette(mat.$orange-palette, 900, 100, 100);
+$Angular-primary: mat.define-palette(mat.$deep-orange-palette, 700, 100, 100);
 $textDarkMode: #FFFFFF;
 $Angular-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 $Angular-warn: mat.define-palette(mat.$red-palette);

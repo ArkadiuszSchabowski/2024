@@ -8,11 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  title = 'Angular';
+  isNavbar = false;
+
   constructor(public accountService: AccountService, public router: Router){
     
   }
-  title = 'Angular';
   isHomePage(): boolean {
     return this.router.url === '/';
+  }
+  hideSideNav(){
+    this.isNavbar = false;
   }
 }

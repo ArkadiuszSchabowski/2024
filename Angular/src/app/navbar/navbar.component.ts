@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AccountService } from '../_service/account.service';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,11 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
-  constructor(public accountService: AccountService, private router: Router) {
+  constructor(public accountService: AccountService, private router: Router, public appComponent: AppComponent) {
+  }
+  changeVisibleSideNavbar(){
+    this.appComponent.isNavbar = !this.appComponent.isNavbar
+    console.log(this.appComponent.isNavbar);
   }
   isHomePage(): boolean {
     return this.router.url === '/';
