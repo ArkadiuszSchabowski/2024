@@ -1,27 +1,21 @@
 <mat-toolbar color="primary">
-  <span routerLink="/" [ngClass]="{'active': isHomePage()}">WELLNESS CENTER</span>
-  <span>-</span>
-  <span routerLink="/massages" routerLinkActive="active">OFERTA</span>
-  <span *ngIf="!(accountService.currentUser$ | async)">-</span>
-  <span routerLink="/booking/guest" routerLinkActive="active" *ngIf="!(accountService.currentUser$ | async)">ZAREZERWUJ MASAŻ</span>
-  <span *ngIf="!(accountService.currentUser$ | async)">-</span>
-  <span *ngIf="!(accountService.currentUser$ | async)" routerLink="/login" routerLinkActive="active">
+  <span routerLink="/" [ngClass]="{'active': isHomePage()}" class="menu-item">WELLNESS CENTER</span>
+  <span routerLink="/massages" routerLinkActive="active" class="menu-item">OFERTA</span>
+  <span routerLink="/booking/guest" routerLinkActive="active" *ngIf="!(accountService.currentUser$ | async)" class="menu-item">ZAREZERWUJ MASAŻ</span>
+  <span *ngIf="!(accountService.currentUser$ | async)" routerLink="/login" routerLinkActive="active" class="menu-item">
     LOGOWANIE</span
   >
-  <span *ngIf="!(accountService.currentUser$ | async)">-</span>
-  <span *ngIf="!(accountService.currentUser$ | async)" routerLink="/register" routerLinkActive="active">
+  <span *ngIf="!(accountService.currentUser$ | async)" routerLink="/register" routerLinkActive="active" class="menu-item">
     REJESTRACJA</span
   >
-  <span>-</span>
-  <span routerLink="/contact" routerLinkActive="active">KONTAKT</span>
-  <span *ngIf="accountService.currentUser$ | async">-</span>
+  <span routerLink="/contact" routerLinkActive="active" class="menu-item">KONTAKT</span>
   <span *ngIf="accountService.currentUser$ | async">
     <button
       mat-icon-button
       [matMenuTriggerFor]="menu"
       aria-label="Example icon-button with a menu"
     >
-      <mat-icon>dialpad</mat-icon>
+      <mat-icon  class="menu-button">dialpad</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
         <button mat-menu-item>

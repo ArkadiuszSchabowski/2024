@@ -1,8 +1,36 @@
 <div class="container">
-<app-navbar></app-navbar>
+  <app-navbar></app-navbar>
 
-<div class="line"></div>
+  <mat-sidenav-container class="mat-sidenav-container">
+    <mat-sidenav mode="side" opened class="color-primary" class="mat-sidenav">
 
-<router-outlet></router-outlet>
+      <div class="sidenav-item">
+        <span routerLink="/" [ngClass]="{ active: isHomePage() }">WELLNESS CENTER</span>
+      </div>
 
+      <div class="sidenav-item">
+        <span routerLink="/massages" routerLinkActive="active">OFERTA</span>
+      </div>
+
+      <div class="sidenav-item">
+        <span routerLink="/booking/guest" routerLinkActive="active" *ngIf="!(accountService.currentUser$ | async)" >ZAREZERWUJ MASAŻ</span>
+      </div>
+
+      <div class="sidenav-item">
+        <span *ngIf="!(accountService.currentUser$ | async)" routerLink="/login" routerLinkActive="active">LOGOWANIE</span>
+      </div>
+
+      <div class="sidenav-item">
+        <span *ngIf="!(accountService.currentUser$ | async)" routerLink="/register" routerLinkActive="active">REJESTRACJA</span>
+      </div>
+
+      <div class="sidenav-item">
+        <span routerLink="/contact" routerLinkActive="active">KONTAKT</span>
+      </div>
+
+    </mat-sidenav>
+    <mat-sidenav-content>Main content</mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <router-outlet></router-outlet>
 </div>
