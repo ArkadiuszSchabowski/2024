@@ -1,26 +1,31 @@
-mat-form-field {
-  margin: 10px;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-}
-
 .container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 100%;
+  height: calc(100vh -50px);
   justify-content: center;
   align-items: center;
   color: white;
   background-image: url(../../assets/images/background4.jpg);
 }
+.select-service-item{
+  display: flex;
+  width: 100%;
+}
+#select-service-title{
+text-align: center;
+padding: 50px 5px 30px 5px;
+font-size: 36px;
+font-weight: 200;
+color: white;
+}
 
 #selectMassageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 80%;
-  height: 20%;
+  height: calc(100vh - 50px);
 }
 
 #selectTermContainer {
@@ -47,11 +52,6 @@ form {
   width: 20%;
   color: orange;
 }
-p {
-  color: white;
-  font-size: 36px;
-  font-weight: 200;
-}
 .row {
   display: flex;
   flex-direction: row;
@@ -65,7 +65,13 @@ button {
   margin: 0 5px;
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
+  .select-service-item{
+    width: 60%;
+  }
 }
 
 @media screen and (min-width: 1200px) {
+  .select-service-item{
+    width: 40%;
+  }
 }

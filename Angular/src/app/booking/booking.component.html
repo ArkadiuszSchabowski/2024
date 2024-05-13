@@ -1,21 +1,11 @@
 <div class="container">
   <div class="options">
-    <p>System rezerwacji</p>
+    <div id="tittle">System rezerwacji</div>
     <div class="buttons">
-      <button
-        mat-button
-        color="textDarkMode"
-        class="btnSelect"
-        (click)="login()"
-      >
+      <button mat-button (click)="login()">
         Zaloguj się
       </button>
-      <button
-        mat-button
-        color="textDarkMode"
-        class="btnSelect"
-        (click)="bookingWithoutLogin()"
-      >
+      <button mat-button (click)="bookingWithoutLogin()">
         Kontynuuj bez logowania
       </button>
     </div>

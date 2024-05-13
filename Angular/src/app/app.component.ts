@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AccountService } from './_service/account.service';
 import { Router } from '@angular/router';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-root',

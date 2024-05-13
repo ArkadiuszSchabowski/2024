@@ -1,21 +1,24 @@
 <div class="container">
-  <div id="selectMassageContainer" *ngIf="!isMassageSelected">
-    <p>Wybierz rodzaj masażu:</p>
-    <form #ngForm="ngForm" (ngSubmit)="setServiceName()">
-      <mat-form-field>
-        <mat-label>Wybierz rodzaj usługi:</mat-label>
-        <mat-select [(value)]="massageName">
-          <mat-option value="Classic Massage"
-            >Zabieg + masaż czekoladą</mat-option
-          >
-          <mat-option value="Honey Massage">Zabieg + masaż miodem</mat-option>
-          <mat-option value="Chocolate Massage">Masaż klasyczny</mat-option>
-        </mat-select>
-      </mat-form-field>
+  <form
+    #ngForm="ngForm"
+    (ngSubmit)="setServiceName()"
+    id="selectMassageContainer"
+    *ngIf="!isMassageSelected"
+  >
+    <div id="select-service-title">Wybierz rodzaj masażu:</div>
+    <mat-form-field class="select-service-item">
+      <mat-label>Wybierz rodzaj usługi:</mat-label>
+      <mat-select [(value)]="massageName">
+        <mat-option value="Classic Massage"
+          >Zabieg + masaż czekoladą</mat-option
+        >
+        <mat-option value="Honey Massage">Zabieg + masaż miodem</mat-option>
+        <mat-option value="Chocolate Massage">Masaż klasyczny</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-      <button mat-flat-button color="primary" type="submit">Ok</button>
-    </form>
-  </div>
+    <button mat-flat-button color="primary" type="submit" class="select-service-item">Ok</button>
+  </form>
 
   <form
     #ngForm="ngForm"
@@ -33,14 +36,26 @@
     <div id="selectHourContainer">
       <p>Wybierz dostępną godzinę:</p>
       <div id="selectHourText">
-        <button *ngFor="let hour of hours" mat-flat-button color="primary" type="button"> {{ hour }} </button>
+        <button
+          *ngFor="let hour of hours"
+          mat-flat-button
+          color="primary"
+          type="button"
+        >
+          {{ hour }}
+        </button>
       </div>
       <p>Potwierdź datę:</p>
-      <button mat-flat-button color="primary" type="submit" class="btnAcceptDate">Ok</button>
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        class="btnAcceptDate"
+      >
+        Ok
+      </button>
       <p>Testowe chipsy:</p>
-      <div>
-
-      </div>
+      <div></div>
     </div>
   </form>
 
