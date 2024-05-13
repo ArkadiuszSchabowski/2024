@@ -4,6 +4,7 @@
   width: 100%;
   height: calc(100vh - 50px);
   min-height: 100%;
+  margin-top: 50px;
   justify-content: center;
   align-items: center;
   color: white;
@@ -36,9 +37,9 @@
 }
 
 button {
-  font-size: 30px;
+  font-size: 26px;
   margin: 20px;
-  padding: 50px;
+  padding: 40px;
   height: 150px;
   width: 300px;
   color: white !important;
@@ -63,10 +64,18 @@ form {
   .buttons{
     flex-direction: row;
   }
+  button {
+    padding: 50px;
+    font-size: 30px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
   .buttons{
     flex-direction: row;
+  }
+  button {
+    padding: 50px;
+    font-size: 30px;
   }
 }

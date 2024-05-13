@@ -14,7 +14,7 @@
 }
 .mat-sidenav {
   display: flex;
-  width: 180px;
+  width: 160px;
   flex-direction: column;
   background-color: #e64a19;
 }
