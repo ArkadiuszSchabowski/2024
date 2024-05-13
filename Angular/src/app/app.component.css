@@ -14,13 +14,23 @@
 }
 .mat-sidenav {
   display: flex;
-  width: 160px;
+  width: 180px;
   flex-direction: column;
   background-color: #e64a19;
 }
 .sidenav-item {
   margin: 20px;
   color: white;
+}
+.active {
+  padding: 10px;
+  color: rgb(244, 135, 2) !important;
+  background-color: white;
+  border-radius: 10px;
+}
+#sidenav-reservation{
+  display: flex;
+  justify-content: row;
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
 }

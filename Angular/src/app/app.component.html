@@ -13,7 +13,7 @@
         <span routerLink="/massages" routerLinkActive="active" (click)="hideSideNav()">OFERTA</span>
       </div>
 
-      <div class="sidenav-item">
+      <div id="sidenav-reservation" class="sidenav-item">
         <span routerLink="/booking/guest" routerLinkActive="active" *ngIf="!(accountService.currentUser$ | async)" (click)="hideSideNav()">ZAREZERWUJ MASAŻ</span>
       </div>
 
