@@ -1,7 +1,7 @@
 .container {
   width: 100%;
-  height: auto;
-  background-color: white;
+  height: 100vh;
+  background-color: #e64a19;
 }
 
 .line {
