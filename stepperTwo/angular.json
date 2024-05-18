@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Angular": {
+    "stepperTwo": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular",
+            "outputPath": "dist/stepper-two",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -26,7 +26,6 @@
             ],
             "styles": [
               "src/custom-theme.scss",
-              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -53,13 +52,7 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.development.ts"
-                }
-              ]
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -68,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Angular:build:production"
+              "browserTarget": "stepperTwo:build:production"
             },
             "development": {
-              "browserTarget": "Angular:build:development"
+              "browserTarget": "stepperTwo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Angular:build"
+            "browserTarget": "stepperTwo:build"
           }
         },
         "test": {

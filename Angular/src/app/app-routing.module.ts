@@ -10,6 +10,7 @@ import { ClientPanelComponent } from './client-panel/client-panel.component';
 import { authGuard } from './_guards/auth.guard';
 import { withoutAuthGuard } from './_guards/without-auth.guard';
 import { BookingWithoutLoginComponent } from './booking-without-login/booking-without-login.component';
+import { StepperWithoutLoginComponent } from './stepper-without-login/stepper-without-login.component';
 
 const routes: Routes = [
   {path: "", component: HomePageComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: "massages", component: OfferComponent},
   {path: "contact", component: ContactComponent},
   {path: "client-panel", component: ClientPanelComponent, canActivate: [authGuard]},
+  {path: "stepper", component: StepperWithoutLoginComponent},
   {path: "**", component: HomePageComponent}
 ];
 

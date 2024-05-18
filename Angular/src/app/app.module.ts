@@ -29,6 +29,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { StepperWithoutLoginComponent } from './stepper-without-login/stepper-without-login.component';
+import {FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     OfferComponent,
     ClientPanelComponent,
     BookingWithoutLoginComponent,
+    StepperWithoutLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatNativeDateModule,
     MatChipsModule,
     MatSidenavModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({ positionClass: 'toast-bottom-right' })
   ],
   providers: [],

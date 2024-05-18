@@ -1,0 +1,26 @@
+<mat-horizontal-stepper [labelPosition]="'bottom'">
+
+  <mat-step label="step 1">
+    <ng-template matStepLabel>
+      <p>Like</p>
+    </ng-template>
+    <div>
+      <p>Hej jestem tu</p>
+    </div>
+    <button mat-flat-button color="primary" matStepperNext>Next</button>
+  </mat-step>
+
+  <mat-step label="step 2">
+    <div>
+      <p>Albo tu</p>
+    </div>
+    <button mat-flat-button color="primary" matStepperPrevious>Back</button>
+    <button mat-flat-button color="primary" matStepperNext>Next</button>
+  </mat-step>
+
+  <mat-step label="step 3">
+    <button mat-flat-button color="primary" matStepperPrevious>Back</button>
+    <button mat-flat-button color="primary" type="submit">Ok</button>
+  </mat-step>
+
+</mat-horizontal-stepper>
