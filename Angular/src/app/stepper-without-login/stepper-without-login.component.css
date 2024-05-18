@@ -1,3 +1,54 @@
 mat-vertical-stepper{
     margin-top: 50px;
+    min-width: 100px;
+}
+.demo-inline-calendar-card{
+    width: 300px;
+}
+.select-service-item{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+.button-hour{
+    margin: 5px;
+}
+.button-green{
+    background-color: rgb(20, 204, 20);
+    margin-right: 20px;
+}
+.button-red{
+    background-color: red;
+    margin-right: 20px;
+}
+.margin-top{
+    margin-top: 25px;
+}
+#guest-information-container{
+    display: flex;
+    flex-direction: column;
+}
+mat-form-field{
+    width: 300px;
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    #selectTermContainer{
+        display: flex;
+        flex-direction: row;
+    }
+    #select-hour-container{
+        margin-left: 40px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #selectTermContainer{
+        display: flex;
+        flex-direction: row;
+    }
+    #select-hour-container{
+        margin-left: 100px;
+    }
 }

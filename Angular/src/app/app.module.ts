@@ -15,7 +15,6 @@ import { ContactComponent } from './contact/contact.component';
 import { OfferComponent } from './offer/offer.component';
 import { ClientPanelComponent } from './client-panel/client-panel.component';
 import { ToastrModule } from 'ngx-toastr';
-import { BookingWithoutLoginComponent } from './booking-without-login/booking-without-login.component';
 import { StepperWithoutLoginComponent } from './stepper-without-login/stepper-without-login.component';
 
 import {MatSelectModule} from '@angular/material/select';
@@ -44,7 +43,6 @@ import {MatStepperModule} from '@angular/material/stepper';
     ContactComponent,
     OfferComponent,
     ClientPanelComponent,
-    BookingWithoutLoginComponent,
     StepperWithoutLoginComponent,
   ],
   imports: [

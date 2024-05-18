@@ -1,17 +1,130 @@
 <mat-vertical-stepper>
   <mat-step label="Wybór masażu">
-    <button mat-flat-button color="primary" matStepperNext>Ok</button>
+    <form
+      #ngForm="ngForm"
+      (ngSubmit)="setServiceName()"
+      id="selectMassageContainer"
+    >
+      <div id="select-service-title" class="margin-top">
+        Wybierz rodzaj masażu:
+      </div>
+      <mat-form-field class="select-service-item">
+        <mat-label>Wybierz rodzaj usługi:</mat-label>
+        <mat-select [(value)]="massageName">
+          <mat-option value="Classic Massage"
+            >Zabieg + masaż czekoladą</mat-option
+          >
+          <mat-option value="Honey Massage">Zabieg + masaż miodem</mat-option>
+          <mat-option value="Chocolate Massage">Masaż klasyczny</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button
+        mat-flat-button
+        color="primary"
+        matStepperNext
+        type="button"
+        class="button-green"
+      >
+        Ok
+      </button>
+    </form>
   </mat-step>
+
   <mat-step label="Wybór daty i godziny">
-    <div>
-      <p>Albo tu</p>
+    <form
+      #ngForm="ngForm"
+      id="selectTermContainer"
+      (ngSubmit)="setDateMassage()"
+    >
+      <div id="select-date-container" class="margin-top">
+        <p>Wybierz dostępną datę:</p>
+        <mat-card class="demo-inline-calendar-card">
+          <mat-calendar [(selected)]="selected"></mat-calendar>
+        </mat-card>
+      </div>
+
+      <div id="select-hour-container" class="margin-top">
+        <p>Wybierz dostępną godzinę:</p>
+        <div id="selectHourText">
+          <button
+            *ngFor="let hour of hours"
+            mat-flat-button
+            class="button-hour"
+            color="primary"
+            type="button"
+          >
+            {{ hour }}
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="margin-top">
+      <button
+        mat-flat-button
+        color="primary"
+        matStepperPrevious
+        class="button-red"
+      >
+        Wstecz
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        matStepperNext
+        class="button-green"
+      >
+        Ok
+      </button>
     </div>
-    <button mat-flat-button color="primary" matStepperPrevious>Wstecz</button>
-    <button mat-flat-button color="primary" matStepperNext>Ok</button>
   </mat-step>
 
   <mat-step label="Dane Kontaktowe">
-    <button mat-flat-button color="primary" matStepperPrevious>Wstecz</button>
-    <button mat-flat-button color="primary" type="submit">Ok</button>
+    <form
+      #ngForm="ngForm"
+      (ngSubmit)="setGuestInformation()"
+      class="margin-top"
+    >
+      <div id="guest-information-container">
+        <mat-form-field>
+          <mat-label>Imię</mat-label>
+          <input name="name" [(ngModel)]="model.name" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Nazwisko</mat-label>
+          <input name="surname" [(ngModel)]="model.surname" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>E-Mail</mat-label>
+          <input name="eMail" [(ngModel)]="model.eMail" matInput />
+        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Numer telefonu</mat-label>
+            <input
+              name="phoneNumber"
+              [(ngModel)]="model.phoneNumber"
+              matInput
+            />
+          </mat-form-field>
+      </div>
+    </form>
+    <div class="margin-top">
+      <button
+        mat-flat-button
+        color="primary"
+        matStepperPrevious
+        class="button-red"
+      >
+        Wstecz
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        matStepperNext
+        class="button-green"
+        type="submit"
+      >
+        Zarezerwuj
+      </button>
+    </div>
   </mat-step>
 </mat-vertical-stepper>
