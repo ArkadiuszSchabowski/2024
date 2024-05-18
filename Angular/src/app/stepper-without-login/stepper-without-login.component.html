@@ -1,13 +1,17 @@
-<form [formGroup]="formGroup">
-    <mat-stepper formArrayName="formArray" linear>
-        <div>
-          <button mat-button matStepperNext type="button">Next</button>
-        </div>
+<mat-vertical-stepper>
+  <mat-step label="Wybór masażu">
+    <button mat-flat-button color="primary" matStepperNext>Ok</button>
+  </mat-step>
+  <mat-step label="Wybór daty i godziny">
+    <div>
+      <p>Albo tu</p>
+    </div>
+    <button mat-flat-button color="primary" matStepperPrevious>Wstecz</button>
+    <button mat-flat-button color="primary" matStepperNext>Ok</button>
+  </mat-step>
 
-        <div>
-          <button mat-button matStepperPrevious type="button">Back</button>
-          <button mat-button matStepperNext type="button">Next</button>
-        </div>
-      ...
-    </mat-stepper>
-  </form>
+  <mat-step label="Dane Kontaktowe">
+    <button mat-flat-button color="primary" matStepperPrevious>Wstecz</button>
+    <button mat-flat-button color="primary" type="submit">Ok</button>
+  </mat-step>
+</mat-vertical-stepper>

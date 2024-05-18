@@ -7,13 +7,6 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,16 +14,24 @@ import { BookingComponent } from './booking/booking.component';
 import { ContactComponent } from './contact/contact.component';
 import { OfferComponent } from './offer/offer.component';
 import { ClientPanelComponent } from './client-panel/client-panel.component';
-import {MatMenuModule} from '@angular/material/menu';
 import { ToastrModule } from 'ngx-toastr';
 import { BookingWithoutLoginComponent } from './booking-without-login/booking-without-login.component';
+import { StepperWithoutLoginComponent } from './stepper-without-login/stepper-without-login.component';
+
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { StepperWithoutLoginComponent } from './stepper-without-login/stepper-without-login.component';
-import {FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import {FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MatTabsModule,
     MatCardModule,
@@ -57,7 +59,6 @@ import {FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
     MatButtonModule,
     MatToolbarModule,
     FormsModule,
-    BrowserAnimationsModule,
     HttpClientModule,
     MatMenuModule,
     MatSelectModule,
@@ -65,7 +66,7 @@ import {FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
     MatNativeDateModule,
     MatChipsModule,
     MatSidenavModule,
-    ReactiveFormsModule,
+    MatStepperModule,
     ToastrModule.forRoot({ positionClass: 'toast-bottom-right' })
   ],
   providers: [],
