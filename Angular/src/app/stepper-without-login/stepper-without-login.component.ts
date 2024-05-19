@@ -13,29 +13,24 @@ export class StepperWithoutLoginComponent {
   ) {}
   model: any = {};
 
-
-  availableColors: any[] = [
-    { name: 'None', color: undefined },
-    { name: 'Primary', color: 'primary' },
-    { name: 'Accent', color: 'accent' },
-    { name: 'Warn', color: 'warn' }
-  ];
-
   baseUrl: string = 'https://localhost:7004/api/';
 
   bookingWithoutLogin: any = {};
 
-  isMassageSelected: boolean = false;
+  isMassageTypeSelected: boolean = false;
   isDateSelected: boolean = false;
-  isFormFilled: boolean = false;
+  isHourSelected: boolean = false;
+
+  selectedHour: string | null = null;
 
   massageName: string | null = null;
   selected: Date | null = null;
+  completed: boolean = false;
 
   value: string = '';
   viewValue: string = '';
 
-  hours: string[] = [
+  availableHours: string[] = [
     '13:00',
     '14:00',
     '15:00',
@@ -43,23 +38,22 @@ export class StepperWithoutLoginComponent {
     '17:00',
     '18:00',
     '19:00',
-    '20:00',
-    '21:00',
+    '20:00'
   ];
 
   setServiceName() {
     if (this.massageName === null) {
-      console.log("submit");
       this.toastR.error('Proszę wybrać rodzaj masażu!');
       return;
     }
-    console.log("submit");
 
     this.bookingWithoutLogin.massageName = this.massageName;
+    this.isMassageTypeSelected = true;
 
   }
   setDateMassage() {
     const date = this.selected?.toLocaleDateString();
+    console.log(date);
 
     if(date === undefined){
       this.toastR.error("Proszę wybrać dzień rezerwacji!");
@@ -67,8 +61,18 @@ export class StepperWithoutLoginComponent {
     }
 
     this.bookingWithoutLogin.date = date;
-
     this.isDateSelected = true;
+
+  }
+
+  setHourMassage(){
+    console.log(this.selectedHour);
+    if(this.selectedHour=== null || this.selectedHour === undefined){
+      this.toastR.error("Proszę wybrać godzinę rezerwacji!");
+      return;
+    }
+    console.log();
+    this.isHourSelected = true;
   }
 
   setGuestInformation() {

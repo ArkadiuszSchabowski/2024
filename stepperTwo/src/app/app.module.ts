@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatStepperModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
