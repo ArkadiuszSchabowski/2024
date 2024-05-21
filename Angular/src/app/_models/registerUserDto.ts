@@ -1,5 +1,5 @@
 export class RegisterUserDto{
-    login!: string;
-    password!: string;
-    repeatPassword!: string;
+    login: string ="";
+    password: string="";
+    repeatPassword: string ="";
 }

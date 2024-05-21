@@ -26,6 +26,24 @@ mat-vertical-stepper{
 .margin-top{
     margin-top: 25px;
 }
+#confirmationContainer{
+    margin-top: 20px;
+    border: 2px solid orangered;
+    padding: 20px;
+    border-radius: 10px;
+}
+.decorationText{
+    font-size: 20px;
+    text-align: center;
+    color: orangered;
+    font-family: cursive;
+}
+.bold{
+    font-weight: bold;
+}
+.normal-text{
+    font-weight: normal;
+}
 #guest-information-container{
     display: flex;
     flex-direction: column;

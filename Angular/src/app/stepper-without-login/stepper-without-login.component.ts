@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AccountService } from '../_service/account.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { CreateBookingDto } from '../_models/createBookingDto';
 
 @Component({
   selector: 'app-stepper-without-login',
@@ -11,19 +12,15 @@ import { ToastrService } from 'ngx-toastr';
 export class StepperWithoutLoginComponent {
   constructor(public accountService: AccountService, private httpClient: HttpClient, private toastR: ToastrService
   ) {}
-  model: any = {};
 
   baseUrl: string = 'https://localhost:7004/api/';
 
-  bookingWithoutLogin: any = {};
+  newBooking: CreateBookingDto = new CreateBookingDto();
 
   isMassageTypeSelected: boolean = false;
   isDateSelected: boolean = false;
   isHourSelected: boolean = false;
 
-  selectedHour: string | null = null;
-
-  massageName: string | null = null;
   selected: Date | null = null;
   completed: boolean = false;
 
@@ -42,53 +39,44 @@ export class StepperWithoutLoginComponent {
   ];
 
   setServiceName() {
-    if (this.massageName === null) {
+    if (this.newBooking.massageName === null) {
       this.toastR.error('Proszę wybrać rodzaj masażu!');
       return;
     }
-
-    this.bookingWithoutLogin.massageName = this.massageName;
     this.isMassageTypeSelected = true;
 
   }
   setDateMassage() {
     const date = this.selected?.toLocaleDateString();
-    console.log(date);
 
     if(date === undefined){
       this.toastR.error("Proszę wybrać dzień rezerwacji!");
       return;
     }
 
-    this.bookingWithoutLogin.date = date;
+    this.newBooking.date = date;
+
     this.isDateSelected = true;
 
   }
 
   setHourMassage(){
-    console.log(this.selectedHour);
-    if(this.selectedHour=== null || this.selectedHour === undefined){
+    if(this.newBooking.hour === null || this.newBooking.hour === undefined){
       this.toastR.error("Proszę wybrać godzinę rezerwacji!");
       return;
     }
-    console.log();
     this.isHourSelected = true;
   }
 
   setGuestInformation() {
-    this.bookingWithoutLogin.name = this.model.name;
-    this.bookingWithoutLogin.surname = this.model.surname;
-    this.bookingWithoutLogin.email = this.model.eMail;
-    this.bookingWithoutLogin.phonenumber = this.model.phoneNumber;
-    this.bookingWithoutLogin.city = this.model.city;
 
     this.bookingNewMassage();
   }
 
   bookingNewMassage() {
-    console.log("I'm here");
+    console.log(this.newBooking);
     this.httpClient
-      .post(this.baseUrl + 'booking', this.bookingWithoutLogin)
+      .post(this.baseUrl + 'booking', this.newBooking)
       .subscribe({
         next: (response) => console.log(response),
         error: (error) => console.log(error),

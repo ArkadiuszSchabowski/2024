@@ -10,7 +10,7 @@
       </div>
       <mat-form-field class="select-service-item">
         <mat-label>Wybierz rodzaj usługi:</mat-label>
-        <mat-select [(value)]="massageName" name="massageName">
+        <mat-select [(value)]="newBooking.massageName" name="massageName"  [(ngModel)]="newBooking.massageName">
           <mat-option value="Classic Massage">Zabieg + masaż czekoladą</mat-option>
           <mat-option value="Honey Massage">Zabieg + masaż miodem</mat-option>
           <mat-option value="Chocolate Massage">Masaż klasyczny</mat-option>
@@ -34,7 +34,7 @@
       id="selectTermContainer"
     >
       <div id="select-date-container" class="margin-top">
-        <p>Wybierz dzień, w którym chcesz skorzystać z masażu:</p>
+        <p>Wybierz dzień:</p>
         <mat-card class="demo-inline-calendar-card">
           <mat-calendar [(selected)]="selected" name="selectedDate"></mat-calendar>
         </mat-card>
@@ -46,7 +46,7 @@
       <div id="select-hour-container" class="margin-top" *ngIf="isDateSelected">
         <p>Wybierz dostępną godzinę:</p>
         <mat-chip-set>
-          <mat-chip-listbox class="mat-mdc-chip-set-stacked" [(ngModel)]="selectedHour" name="selectedHour">
+          <mat-chip-listbox class="mat-mdc-chip-set-stacked" [(ngModel)]="newBooking.hour" name="selectedHour">
             <mat-chip-option *ngFor="let hour of availableHours" [value]="hour">
               {{ hour }}
             </mat-chip-option>
@@ -66,26 +66,43 @@
       class="margin-top"
     >
       <div id="guest-information-container">
+        <p>Proszę wypełnić wszystkie pola:</p>
         <mat-form-field>
           <mat-label>Imię</mat-label>
-          <input name="name" [(ngModel)]="model.name" matInput />
+          <input name="name" [(ngModel)]="newBooking.name" matInput />
         </mat-form-field>
         <mat-form-field>
           <mat-label>Nazwisko</mat-label>
-          <input name="surname" [(ngModel)]="model.surname" matInput />
+          <input name="surname" [(ngModel)]="newBooking.surname" matInput />
         </mat-form-field>
         <mat-form-field>
           <mat-label>E-Mail</mat-label>
-          <input name="eMail" [(ngModel)]="model.eMail" matInput />
+          <input name="eMail" [(ngModel)]="newBooking.email" matInput />
         </mat-form-field>
         <mat-form-field>
           <mat-label>Numer telefonu</mat-label>
-          <input name="phoneNumber" [(ngModel)]="model.phoneNumber" matInput />
+          <input name="phoneNumber" [(ngModel)]="newBooking.phoneNumber" matInput />
         </mat-form-field>
       </div>
       <div class="margin-top">
         <button mat-flat-button color="primary" matStepperNext class="button-green" type="submit">Zarezerwuj</button>
       </div>
     </form>
+  </mat-step>
+  <mat-step label="Potwierdzenie">
+    <div id="confirmationContainer">
+      <div class="margin-top decorationText">Dziękujemy za dokonanie rezerwacji i serdecznie zapraszamy do naszego salonu!</div>
+        <ul class="bold">Twoje dane:
+          <li class="normal-text margin-top"> {{newBooking.name}}</li>
+          <li class="normal-text"> {{newBooking.surname}}</li>
+          <li class="normal-text"> {{newBooking.email}}</li>
+          <li class="normal-text"> {{newBooking.phoneNumber}}</li>
+      </ul>
+        <ul class="bold margin-top">Rodzaj i data usługi:
+          <li class="normal-text margin-top"> {{newBooking.massageName}}</li>
+          <li class="normal-text"> {{newBooking.date}}</li>
+          <li class="normal-text"> {{newBooking.hour}}</li>
+      </ul>
+    </div>
   </mat-step>
 </mat-vertical-stepper>
