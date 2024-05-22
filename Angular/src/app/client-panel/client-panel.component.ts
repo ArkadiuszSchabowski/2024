@@ -16,7 +16,7 @@ export class ClientPanelComponent {
   baseUrl = environment.apiUrl;
   currentUser = new BehaviorSubject<CurrentUserDto | null>(null);
   currentUser$ = this.currentUser.asObservable();
-  model: (UpdateUserDto | null) = null;
+  model: UpdateUserDto = {} as UpdateUserDto;
 
   isEditionMode = false;
 
@@ -55,9 +55,12 @@ export class ClientPanelComponent {
     this.isEditionMode = true;
   }
   changeUserData(){
-
-    this.httpClient.put<UpdateUserDto>(this.baseUrl + `/account/${this.id}`, this.model).subscribe({
-      next: response => console.log(response),
+    console.log(this.model);
+    this.httpClient.put<UpdateUserDto>(this.baseUrl + `user/${this.id}`, this.model).subscribe({
+      next: response => {
+        console.log(response);
+        this.getUserData(this.id);
+      },
       error: error => console.log(error)
     })
     this.isEditionMode = false;
