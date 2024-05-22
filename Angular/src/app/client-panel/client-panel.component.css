@@ -8,6 +8,19 @@
     align-items: center;
     background-image:url(../../assets/images/background4.jpg);
   }
+  #userDataContainer{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    color: white;
+  }
+  #userDataEditor{
+    display: flex;
+    flex-direction: column;
+  }
+  label, input{
+    margin-bottom: 20px;
+  }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
   }
   

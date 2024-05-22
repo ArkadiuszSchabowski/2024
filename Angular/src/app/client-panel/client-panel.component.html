@@ -1,1 +1,31 @@
-<div class="container">Hej</div>
+<div id="dataContainer" class="container" *ngIf="!isEditionMode">
+    <div id="userDataContainer" *ngIf="currentUser$ | async as currentUser">
+        <label id="login">Login: {{currentUser.login}}</label>
+        <label id="name">Imię: {{currentUser.firstName}}</label>
+        <label id="surname">Nazwisko: {{currentUser.lastName}}</label>
+        <label id="email">Email: {{currentUser.email}}</label>
+        <label id="phoneNumber">Telefon: {{currentUser.phone}}</label>
+        <button mat-flat-button color="primary" (click)="goToEditionMode()">Edytuj dane</button>
+    </div>
+</div>
+<div id="editorContainer" class="container" *ngIf="isEditionMode">
+    <div id="userDataEditor">
+        <mat-form-field>
+            <mat-label>Imię:</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nazwisko:</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email:</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Telefon:</mat-label>
+            <input matInput>
+          </mat-form-field>
+        <button mat-flat-button color="primary" (click)="changeUserData()">OK</button>
+    </div>
+</div>

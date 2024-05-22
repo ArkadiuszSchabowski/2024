@@ -20,6 +20,7 @@ export class StepperWithoutLoginComponent {
   isMassageTypeSelected: boolean = false;
   isDateSelected: boolean = false;
   isHourSelected: boolean = false;
+  isGuestInformation: boolean = false;
 
   selected: Date | null = null;
   completed: boolean = false;
@@ -69,7 +70,11 @@ export class StepperWithoutLoginComponent {
   }
 
   setGuestInformation() {
-
+    if(this.newBooking.name === null || this.newBooking.surname === null || this.newBooking.email === null || this.newBooking.phoneNumber === null){
+      this.toastR.error("Proszę uzupełnić wszystkie pola!");
+      return;
+    }
+    this.isGuestInformation = true;
     this.bookingNewMassage();
   }
 

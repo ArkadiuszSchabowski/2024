@@ -1,5 +1,5 @@
 <mat-vertical-stepper linear>
-  <mat-step label="Wybór masażu" [completed]="isMassageTypeSelected">
+  <mat-step label="Wybór masażu" [editable]="false" [completed]="isMassageTypeSelected">
     <form
       #ngForm1="ngForm"
       (ngSubmit)="setServiceName()"
@@ -28,7 +28,7 @@
     </form>
   </mat-step>
 
-  <mat-step label="Wybór daty i godziny" [completed]="isDateSelected && isHourSelected">
+  <mat-step label="Wybór daty i godziny" [editable]="false" [completed]="isDateSelected && isHourSelected">
     <form
       #ngForm2="ngForm"
       id="selectTermContainer"
@@ -59,7 +59,7 @@
     </form>
   </mat-step>
 
-  <mat-step label="Dane Kontaktowe">
+  <mat-step label="Dane Kontaktowe" [editable]="false" [completed]="isGuestInformation">
     <form
       #ngForm3="ngForm"
       (ngSubmit)="setGuestInformation()"
