@@ -10,7 +10,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { BookingComponent } from './booking/booking.component';
 import { ContactComponent } from './contact/contact.component';
 import { OfferComponent } from './offer/offer.component';
 import { ClientPanelComponent } from './client-panel/client-panel.component';
@@ -40,7 +39,6 @@ import { ClientReservationComponent } from './client-reservation/client-reservat
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    BookingComponent,
     ContactComponent,
     OfferComponent,
     ClientPanelComponent,

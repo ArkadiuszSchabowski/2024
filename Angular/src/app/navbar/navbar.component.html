@@ -3,7 +3,7 @@
   <span id="menu-title">WELNESS CENTER</span>
   <button mat-button color="secondary" routerLink="/" [ngClass]="{'active': isHomePage()}" class="menu-item">HOME</button>
   <button mat-button color="secondary" routerLink="/massages" routerLinkActive="active" class="menu-item">OFERTA</button>
-  <button mat-button color="secondary" routerLink="/booking/guest" routerLinkActive="active" *ngIf="!(accountService.currentUser$ | async)" class="menu-item">ZAREZERWUJ MASAŻ</button>
+  <button mat-button color="secondary" routerLink="/booking" routerLinkActive="active" class="menu-item">ZAREZERWUJ MASAŻ</button>
   <button mat-button color="secondary" *ngIf="!(accountService.currentUser$ | async)" routerLink="/login" routerLinkActive="active" class="menu-item">
     LOGOWANIE</button>
   <button mat-button color="secondary" *ngIf="!(accountService.currentUser$ | async)" routerLink="/register" routerLinkActive="active" class="menu-item">
