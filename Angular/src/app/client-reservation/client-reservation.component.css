@@ -1,0 +1,27 @@
+#container {
+  display: flex;
+  width: 100%;
+  height: calc(100vh-50px);
+  min-height: 600px;
+  margin-top: 50px;
+  justify-content: center;
+}
+#tableReservation {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  height: 90%;
+  margin-top: 20px;
+  font-weight: bold;
+  border: 2px solid white;
+  background-color: #e64a19;
+}
+.tableColumn{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10%;
+}
+#date{
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}

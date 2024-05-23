@@ -31,6 +31,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatStepperModule} from '@angular/material/stepper';
+import { ClientReservationComponent } from './client-reservation/client-reservation.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     OfferComponent,
     ClientPanelComponent,
     StepperWithoutLoginComponent,
+    ClientReservationComponent,
   ],
   imports: [
     BrowserModule,
