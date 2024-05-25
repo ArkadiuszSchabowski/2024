@@ -14,7 +14,7 @@
       </div>
 
       <div id="sidenav-reservation" class="sidenav-item">
-        <span routerLink="/booking/guest" routerLinkActive="active" *ngIf="!(accountService.currentUser$ | async)" (click)="hideSideNav()">ZAREZERWUJ MASAŻ</span>
+        <span routerLink="/booking" routerLinkActive="active" (click)="hideSideNav()">ZAREZERWUJ MASAŻ</span>
       </div>
 
       <div class="sidenav-item">
