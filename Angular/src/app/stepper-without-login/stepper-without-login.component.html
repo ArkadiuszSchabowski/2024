@@ -1,5 +1,6 @@
 <mat-vertical-stepper linear #stepper>
-  <mat-step label="Wybór masażu" [editable]="false" [completed]="isMassageTypeSelected">
+  <mat-step [editable]="false" [completed]="isMassageTypeSelected">
+    <ng-template matStepLabel>Wybór masażu</ng-template>
     <form
       #ngForm1="ngForm"
       (ngSubmit)="setServiceName()"
@@ -28,7 +29,8 @@
     </form>
   </mat-step>
 
-  <mat-step label="Wybór daty i godziny" [editable]="false" [completed]="isDateSelected && isHourSelected">
+  <mat-step [editable]="false" [completed]="isDateSelected && isHourSelected">
+    <ng-template matStepLabel>Wybór daty i godziny</ng-template>
     <form
       #ngForm2="ngForm"
       id="selectTermContainer"
@@ -59,7 +61,8 @@
     </form>
   </mat-step>
 
-  <mat-step label="Dane Kontaktowe" [editable]="false" [completed]="isGuestInformation">
+  <mat-step [editable]="false" [completed]="isGuestInformation">
+    <ng-template matStepLabel>Dane Kontaktowe</ng-template>
     <form
       #ngForm3="ngForm"
       (ngSubmit)="setGuestInformation()"
@@ -89,7 +92,8 @@
       </div>
     </form>
   </mat-step>
-  <mat-step label="Potwierdzenie">
+  <mat-step>
+    <ng-template matStepLabel>Potwierdzenie</ng-template>
     <div id="confirmationContainer">
       <div class="margin-top decorationText">Dziękujemy za dokonanie rezerwacji i serdecznie zapraszamy do naszego salonu!</div>
         <ul class="bold">Twoje dane:
