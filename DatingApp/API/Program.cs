@@ -11,6 +11,9 @@ builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(
 
 var app = builder.Build();
 
+app.UseCors(options => options.WithOrigins("https://localhost:4200").AllowAnyMethod().AllowAnyHeader());
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
