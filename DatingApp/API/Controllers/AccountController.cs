@@ -1,66 +1,75 @@
-﻿using API.Data;
+﻿using System.Security.Cryptography;
+using System.Text;
+using API.Data;
 using API.Dtos;
 using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
-using System.Text;
 
-namespace API.Controllers
+namespace API.Controllers;
+
+public class AccountController : BaseApiController
 {
-    public class AccountController : BaseApiController
+    private readonly DataContext _context;
+    private readonly ITokenService _tokenService;
+
+    public AccountController(DataContext context, ITokenService tokenService)
     {
-        private readonly DataContext _context;
+        _context = context;
+        _tokenService = tokenService;
+    }
 
-        public AccountController(DataContext context)
+    [HttpPost("register")]
+    public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
+    {
+        if (await UserExists(registerDto.Username)) return BadRequest("Username is taken");
+
+        using var hmac = new HMACSHA512();
+
+        var user = new AppUser
         {
-            _context = context;
-        }
-        [HttpPost("login")]
-        public async Task<ActionResult<AppUser>> Login([FromBody] LoginDto loginDto)
+            UserName = registerDto.Username.ToLower(),
+            PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
+            PasswordSalt = hmac.Key
+        };
+
+        _context.Users.Add(user);
+        await _context.SaveChangesAsync();
+
+        return new UserDto
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.Username);
+            Username = user.UserName,
+            Token = _tokenService.CreateToken(user)
+        };
+    }
 
-            if (user == null)
-            {
-                return Unauthorized("Wrong login or password");
-            }
+    [HttpPost("login")]
+    public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
+    {
+        var user = await _context.Users
+            .SingleOrDefaultAsync(x => x.UserName == loginDto.Username);
 
-            using var hmac = new HMACSHA512(user.PasswordSalt);
-            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
+        if (user == null) return Unauthorized("Invalid username");
 
-            for (int i = 0; i < computedHash.Length; i++)
-            {
-                if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Wrong login or password!");
-            }
+        using var hmac = new HMACSHA512(user.PasswordSalt);
 
-            return user;
-        }
-        [HttpPost("register")]
-        public async Task<ActionResult<UserDto>> Register([FromBody] RegisterDto registerDto)
+        var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
+
+        for (int i = 0; i < computedHash.Length; i++)
         {
-             
-            if (await UserExists(registerDto.Username)) return BadRequest("Username is taken");
-
-            using var hmac = new HMACSHA512();
-
-            var user = new AppUser
-            {
-                UserName = registerDto.Username.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-                PasswordSalt = hmac.Key
-            };
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-
-            return Ok(user);
+            if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password");
         }
-        [NonAction]
-        public async Task<bool> UserExists(string username)
+
+        return new UserDto
         {
+            Username = user.UserName,
+            Token = _tokenService.CreateToken(user)
+        };
+    }
 
-            return await _context.Users.AnyAsync(x => x.UserName == username);
-
-        }
+    private async Task<bool> UserExists(string username)
+    {
+        return await _context.Users.AnyAsync(x => x.UserName == username.ToLower());
     }
 }
