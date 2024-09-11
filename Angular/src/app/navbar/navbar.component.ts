@@ -10,8 +10,16 @@ import { AppComponent } from '../app.component';
 })
 export class NavbarComponent {
 
+  currentUser = this.accountService.currentUser$.subscribe({
+    next: response => {
+      console.log(response)
+    },
+    error: error => console.log(error)
+  })
+
   constructor(public accountService: AccountService, private router: Router, public appComponent: AppComponent) {
   }
+  
   changeVisibleSideNavbar(){
     this.appComponent.isNavbar = !this.appComponent.isNavbar
     console.log(this.appComponent.isNavbar);
